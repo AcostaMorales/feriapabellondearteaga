@@ -12,6 +12,14 @@ const InstallPWAButton = () => {
             return;
         }
 
+        // Mostrar botón si es iOS (donde beforeinstallprompt no funciona)
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        
+        // En iOS Safari siempre mostrar un botón informativo
+        if (isIOS) {
+            setShowInstallButton(true);
+        }
+
         // Escuchar el evento beforeinstallprompt
         const handleBeforeInstallPrompt = (e) => {
             // Prevenir que el navegador muestre automáticamente el prompt
@@ -42,7 +50,18 @@ const InstallPWAButton = () => {
     }, []);
 
     const handleInstallClick = async () => {
+        // Detectar iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        
+        if (isIOS) {
+            // En iOS mostrar instrucciones
+            alert('Para instalar esta app:\n1. Toca el botón "Compartir" (⬆️)\n2. Selecciona "Agregar a pantalla principal"\n3. Confirma la instalación');
+            return;
+        }
+
         if (!deferredPrompt) {
+            // Si no hay prompt disponible, mostrar instrucciones
+            alert('Para instalar esta app:\n• Chrome: Menú (⋮) → "Instalar app"\n• O limpia los datos del sitio en configuración');
             return;
         }
 
