@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 const InstallPWAButton = () => {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [isInstalled, setIsInstalled] = useState(false);
+    const [isInPWA, setIsInPWA] = useState(false);
 
     useEffect(() => {
-        // Verificar si ya está instalada
+        // Verificar si ya está instalada y ejecutándose como PWA
         const checkIfInstalled = () => {
             return (
                 window.matchMedia('(display-mode: standalone)').matches || 
@@ -14,7 +15,22 @@ const InstallPWAButton = () => {
             );
         };
 
+        // Verificar si está ejecutándose dentro de la PWA
+        const checkIfInPWA = () => {
+            return (
+                window.matchMedia('(display-mode: standalone)').matches ||
+                window.navigator.standalone === true ||
+                window.location.search.includes('utm_source=pwa')
+            );
+        };
+
         setIsInstalled(checkIfInstalled());
+        setIsInPWA(checkIfInPWA());
+
+        // Si está dentro de la PWA, no mostrar el botón
+        if (checkIfInPWA()) {
+            return;
+        }
 
         // Escuchar el evento beforeinstallprompt
         const handleBeforeInstallPrompt = (e) => {
@@ -79,46 +95,76 @@ const InstallPWAButton = () => {
             return;
         }
 
-        // Detectar iOS para instalación normal
+        // 🚀 INSTALACIÓN AUTOMÁTICA - Intentar instalar inmediatamente
+        await attemptAutoInstall();
+    };
+
+    const attemptAutoInstall = async () => {
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         
-        if (isIOS) {
-            alert('Para instalar esta app:\n1. Toca el botón "Compartir" (⬆️)\n2. Selecciona "Agregar a pantalla principal"\n3. Confirma la instalación');
-            return;
-        }
-
-        if (!deferredPrompt) {
-            alert('Para instalar esta app:\n• Chrome: Menú (⋮) → "Instalar app"\n• O limpia los datos del sitio en configuración');
-            return;
-        }
-
-        // Mostrar el prompt de instalación
-        deferredPrompt.prompt();
-        
-        // Esperar la respuesta del usuario
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        if (outcome === 'accepted') {
-            console.log('Usuario aceptó instalar la PWA');
+        if (deferredPrompt) {
+            try {
+                // Instalación automática en Chrome/Edge
+                console.log('🚀 Iniciando instalación automática...');
+                deferredPrompt.prompt();
+                
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    console.log('✅ PWA instalada automáticamente');
+                    setIsInstalled(true);
+                } else {
+                    console.log('❌ Usuario rechazó la instalación');
+                    showManualInstructions(isIOS);
+                }
+                
+                setDeferredPrompt(null);
+            } catch (error) {
+                console.error('Error en instalación automática:', error);
+                showManualInstructions(isIOS);
+            }
         } else {
-            console.log('Usuario rechazó instalar la PWA');
+            // Si no hay prompt disponible, mostrar instrucciones
+            showManualInstructions(isIOS);
         }
-
-        // Limpiar el prompt
-        setDeferredPrompt(null);
     };
+
+    const showManualInstructions = (isIOS) => {
+        if (isIOS) {
+            alert(
+                '📱 Instalar en iOS:\n\n' +
+                '1. Toca el botón "Compartir" (⬆️) en la parte inferior\n' +
+                '2. Desplázate y selecciona "Agregar a pantalla principal"\n' +
+                '3. Confirma tocando "Agregar"\n\n' +
+                '¡Listo! La app aparecerá en tu pantalla de inicio 🎉'
+            );
+        } else {
+            alert(
+                '📱 Instalar en Android/Chrome:\n\n' +
+                '• Opción 1: Menú (⋮) → "Instalar aplicación"\n' +
+                '• Opción 2: Busca el ícono de instalación en la barra de direcciones\n' +
+                '• Opción 3: Limpia datos del sitio en configuración\n\n' +
+                '¡Disfruta de la experiencia como app nativa! 🎉'
+            );
+        }
+    };
+
+    // 🔒 No mostrar botón si está ejecutándose dentro de la PWA
+    if (isInPWA) {
+        return null;
+    }
 
     // Determinar el texto del botón
     const getButtonText = () => {
         if (isInstalled) {
-            return '📱 App Instalada - Toca para reinstalar';
+            return '� Reinstalar App';
         }
-        return '📱 Instalar App';
+        return '� Instalar App Ahora';
     };
 
     // Determinar la clase CSS del botón
     const getButtonClass = () => {
-        return isInstalled ? 'install-pwa-button installed' : 'install-pwa-button';
+        return isInstalled ? 'install-pwa-button installed' : 'install-pwa-button auto-install';
     };
 
     return (
@@ -126,9 +172,11 @@ const InstallPWAButton = () => {
             <button 
                 onClick={handleInstallClick}
                 className={getButtonClass()}
-                title={isInstalled ? 'App ya instalada - Clic para opciones de reinstalación' : 'Instalar como aplicación'}
+                title={isInstalled ? 'App ya instalada - Clic para reinstalar' : 'Instalación automática - Un clic y listo!'}
             >
-                <span className="install-icon">📱</span>
+                <span className="install-icon">
+                    {isInstalled ? '🔄' : '�'}
+                </span>
                 {getButtonText()}
             </button>
         </div>

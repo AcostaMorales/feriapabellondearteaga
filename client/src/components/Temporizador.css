@@ -468,6 +468,37 @@
   background: linear-gradient(135deg, #047857, #064e3b);
 }
 
+/* Estilos para auto-instalación */
+.install-pwa-button.auto-install {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: pulse-install 2s infinite;
+}
+
+.install-pwa-button.auto-install:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  box-shadow: 0 12px 35px rgba(245, 158, 11, 0.6);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+.install-pwa-button.auto-install:active {
+  transform: translateY(0);
+  background: linear-gradient(135deg, #b45309, #92400e);
+}
+
+@keyframes pulse-install {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 12px 35px rgba(245, 158, 11, 0.6);
+    transform: scale(1.05);
+  }
+}
+
 .install-icon {
   font-size: 1.1rem;
 }
