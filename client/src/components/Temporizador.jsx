@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import temporizadorService from '../services/temporizador';
 import CuentaRegresiva from './CuentaRegresiva';
+import InstallPWAButton from './InstallPWAButton';
 import './Temporizador.css';
 
 const Temporizador = () => {
@@ -73,6 +74,9 @@ const Temporizador = () => {
                     <p>Pabellón de Arteaga te espera</p>
                 </footer>
             </div>
+            
+            {/* Botón de instalación PWA */}
+            <InstallPWAButton />
         </div>
     );
 }
