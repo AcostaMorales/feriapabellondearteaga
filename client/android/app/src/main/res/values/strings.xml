@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Feria Pabellon de Arteaga</string>
+    <string name="title_activity_main">Feria Pabellon de Arteaga</string>
+    <string name="package_name">com.feriapabellon.arteaga</string>
+    <string name="custom_url_scheme">com.feriapabellon.arteaga</string>
+</resources>

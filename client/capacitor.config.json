@@ -1,6 +1,6 @@
 {
-  "appId": "com.feria.pabellondearteaga",
-  "appName": "Feria Pabellón de Arteaga",
+  "appId": "com.feriapabellon.arteaga",
+  "appName": "Feria Pabellon de Arteaga",
   "webDir": "dist",
   "bundledWebRuntime": false,
   "server": {

@@ -2,23 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 const InstallPWAButton = () => {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
-    const [showInstallButton, setShowInstallButton] = useState(false);
     const [isInstalled, setIsInstalled] = useState(false);
 
     useEffect(() => {
         // Verificar si ya está instalada
-        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
-            setIsInstalled(true);
-            return;
-        }
+        const checkIfInstalled = () => {
+            return (
+                window.matchMedia('(display-mode: standalone)').matches || 
+                window.navigator.standalone === true ||
+                document.referrer.includes('android-app://')
+            );
+        };
 
-        // Mostrar botón si es iOS (donde beforeinstallprompt no funciona)
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        
-        // En iOS Safari siempre mostrar un botón informativo
-        if (isIOS) {
-            setShowInstallButton(true);
-        }
+        setIsInstalled(checkIfInstalled());
 
         // Escuchar el evento beforeinstallprompt
         const handleBeforeInstallPrompt = (e) => {
@@ -26,14 +22,11 @@ const InstallPWAButton = () => {
             e.preventDefault();
             // Guardar el evento para usarlo después
             setDeferredPrompt(e);
-            // Mostrar nuestro botón personalizado
-            setShowInstallButton(true);
         };
 
         // Escuchar cuando la app se instala
         const handleAppInstalled = () => {
             console.log('PWA instalada exitosamente');
-            setShowInstallButton(false);
             setIsInstalled(true);
             setDeferredPrompt(null);
         };
@@ -50,17 +43,51 @@ const InstallPWAButton = () => {
     }, []);
 
     const handleInstallClick = async () => {
-        // Detectar iOS
+        // Si ya está instalada, preguntar si quiere reinstalar
+        if (isInstalled) {
+            const reinstall = window.confirm(
+                '¡La app ya está instalada! 📱\n\n' +
+                '¿Quieres reinstalarla?\n\n' +
+                'Nota: Tendrás que:\n' +
+                '• Desinstalar la app actual primero\n' +
+                '• O limpiar los datos del navegador\n' +
+                '• Luego volver a instalar'
+            );
+            
+            if (reinstall) {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                
+                if (isIOS) {
+                    alert(
+                        'Para reinstalar en iOS:\n\n' +
+                        '1. Mantén presionado el ícono de la app\n' +
+                        '2. Selecciona "Eliminar app"\n' +
+                        '3. Vuelve al navegador Safari\n' +
+                        '4. Toca Compartir (⬆️) → "Agregar a pantalla principal"'
+                    );
+                } else {
+                    alert(
+                        'Para reinstalar en Android/Chrome:\n\n' +
+                        '1. Configuración → Apps → Busca "Feria Pabellón"\n' +
+                        '2. Desinstalar\n' +
+                        '3. O ve a: chrome://settings/content/all\n' +
+                        '4. Busca el sitio y elimina todos los datos\n' +
+                        '5. Recarga esta página para reinstalar'
+                    );
+                }
+            }
+            return;
+        }
+
+        // Detectar iOS para instalación normal
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         
         if (isIOS) {
-            // En iOS mostrar instrucciones
             alert('Para instalar esta app:\n1. Toca el botón "Compartir" (⬆️)\n2. Selecciona "Agregar a pantalla principal"\n3. Confirma la instalación');
             return;
         }
 
         if (!deferredPrompt) {
-            // Si no hay prompt disponible, mostrar instrucciones
             alert('Para instalar esta app:\n• Chrome: Menú (⋮) → "Instalar app"\n• O limpia los datos del sitio en configuración');
             return;
         }
@@ -79,27 +106,30 @@ const InstallPWAButton = () => {
 
         // Limpiar el prompt
         setDeferredPrompt(null);
-        setShowInstallButton(false);
     };
 
-    // No mostrar nada si ya está instalada
-    if (isInstalled) {
-        return null;
-    }
+    // Determinar el texto del botón
+    const getButtonText = () => {
+        if (isInstalled) {
+            return '📱 App Instalada - Toca para reinstalar';
+        }
+        return '📱 Instalar App';
+    };
 
-    // No mostrar si no está disponible la instalación
-    if (!showInstallButton) {
-        return null;
-    }
+    // Determinar la clase CSS del botón
+    const getButtonClass = () => {
+        return isInstalled ? 'install-pwa-button installed' : 'install-pwa-button';
+    };
 
     return (
         <div className="install-pwa-container">
             <button 
                 onClick={handleInstallClick}
-                className="install-pwa-button"
+                className={getButtonClass()}
+                title={isInstalled ? 'App ya instalada - Clic para opciones de reinstalación' : 'Instalar como aplicación'}
             >
                 <span className="install-icon">📱</span>
-                Instalar App
+                {getButtonText()}
             </button>
         </div>
     );
