@@ -59,39 +59,9 @@ const InstallPWAButton = () => {
     }, []);
 
     const handleInstallClick = async () => {
-        // Si ya está instalada, preguntar si quiere reinstalar
+        // Si ya está instalada, ofrecer limpieza automática
         if (isInstalled) {
-            const reinstall = window.confirm(
-                '¡La app ya está instalada! 📱\n\n' +
-                '¿Quieres reinstalarla?\n\n' +
-                'Nota: Tendrás que:\n' +
-                '• Desinstalar la app actual primero\n' +
-                '• O limpiar los datos del navegador\n' +
-                '• Luego volver a instalar'
-            );
-            
-            if (reinstall) {
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                
-                if (isIOS) {
-                    alert(
-                        'Para reinstalar en iOS:\n\n' +
-                        '1. Mantén presionado el ícono de la app\n' +
-                        '2. Selecciona "Eliminar app"\n' +
-                        '3. Vuelve al navegador Safari\n' +
-                        '4. Toca Compartir (⬆️) → "Agregar a pantalla principal"'
-                    );
-                } else {
-                    alert(
-                        'Para reinstalar en Android/Chrome:\n\n' +
-                        '1. Configuración → Apps → Busca "Feria Pabellón"\n' +
-                        '2. Desinstalar\n' +
-                        '3. O ve a: chrome://settings/content/all\n' +
-                        '4. Busca el sitio y elimina todos los datos\n' +
-                        '5. Recarga esta página para reinstalar'
-                    );
-                }
-            }
+            await handleReinstallWithCleanup();
             return;
         }
 
@@ -129,6 +99,124 @@ const InstallPWAButton = () => {
         }
     };
 
+    // 🧹 Función para limpiar datos del sitio automáticamente
+    const clearSiteData = async () => {
+        try {
+            // Método 1: Limpiar Service Worker
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (const registration of registrations) {
+                    await registration.unregister();
+                    console.log('🧹 Service Worker eliminado');
+                }
+            }
+
+            // Método 2: Limpiar Cache Storage
+            if ('caches' in window) {
+                const cacheNames = await caches.keys();
+                for (const cacheName of cacheNames) {
+                    await caches.delete(cacheName);
+                    console.log('🧹 Cache eliminado:', cacheName);
+                }
+            }
+
+            // Método 3: Limpiar Local Storage
+            localStorage.clear();
+            sessionStorage.clear();
+            console.log('🧹 Storage local eliminado');
+
+            // Método 4: Limpiar IndexedDB (si existe)
+            if ('indexedDB' in window) {
+                // Intentar eliminar bases de datos conocidas
+                const databases = ['workbox-expiration', 'keyval-store'];
+                for (const dbName of databases) {
+                    try {
+                        indexedDB.deleteDatabase(dbName);
+                        console.log('🧹 IndexedDB eliminado:', dbName);
+                    } catch (error) {
+                        // Ignorar errores de bases de datos que no existen
+                        console.log(' IndexedDB no encontrado (ignorando):', error);
+                    }
+                }
+            }
+
+            return true;
+        } catch (error) {
+            console.error('Error limpiando datos:', error);
+            return false;
+        }
+    };
+
+    // 🔄 Función para reinstalación automática con limpieza
+    const handleReinstallWithCleanup = async () => {
+        const confirmCleanup = window.confirm(
+            '🧹 LIMPIEZA AUTOMÁTICA\n\n' +
+            '¿Quieres que limpie automáticamente todos los datos del sitio?\n' +
+            'Esto permitirá reinstalar la PWA fácilmente.\n\n' +
+            'OK = Limpiar datos y permitir reinstalación\n' +
+            'Cancelar = Ver instrucciones manuales'
+        );
+
+        if (confirmCleanup) {
+            try {
+                // Mostrar indicador de carga
+                const loadingAlert = setTimeout(() => {
+                    alert('🧹 Limpiando datos del sitio...\n\nEsto tomará unos segundos.');
+                }, 100);
+
+                // Limpiar datos automáticamente
+                const cleaned = await clearSiteData();
+                clearTimeout(loadingAlert);
+
+                if (cleaned) {
+                    alert(
+                        '✅ ¡LIMPIEZA COMPLETADA!\n\n' +
+                        '🔄 Recargando página para permitir reinstalación...\n' +
+                        '¡El botón de instalación aparecerá nuevamente!'
+                    );
+                    
+                    // Recargar página después de limpiar
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                } else {
+                    // Si falla la limpieza automática, mostrar instrucciones manuales
+                    showManualCleanupInstructions();
+                }
+            } catch (error) {
+                console.error('Error en limpieza automática:', error);
+                showManualCleanupInstructions();
+            }
+        } else {
+            showManualCleanupInstructions();
+        }
+    };
+
+    const showManualCleanupInstructions = () => {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        
+        if (isIOS) {
+            alert(
+                '🧹 LIMPIEZA MANUAL - iOS:\n\n' +
+                '1. Configuración → Safari → Avanzado\n' +
+                '2. Datos de sitios web\n' +
+                '3. Buscar: "feriapabellondearteaga"\n' +
+                '4. Deslizar izquierda → Eliminar\n' +
+                '5. Volver a Safari y recargar página\n\n' +
+                '✅ ¡El botón de instalación aparecerá!'
+            );
+        } else {
+            alert(
+                '🧹 LIMPIEZA MANUAL - Chrome:\n\n' +
+                '1. chrome://settings/content/all\n' +
+                '2. Buscar: "feriapabellondearteaga"\n' +
+                '3. Clic en el sitio → "Eliminar datos y permisos"\n' +
+                '4. Recargar esta página\n\n' +
+                '✅ ¡El botón de instalación aparecerá!'
+            );
+        }
+    };
+
     const showManualInstructions = (isIOS) => {
         if (isIOS) {
             alert(
@@ -139,13 +227,25 @@ const InstallPWAButton = () => {
                 '¡Listo! La app aparecerá en tu pantalla de inicio 🎉'
             );
         } else {
-            alert(
-                '📱 Instalar en Android/Chrome:\n\n' +
-                '• Opción 1: Menú (⋮) → "Instalar aplicación"\n' +
-                '• Opción 2: Busca el ícono de instalación en la barra de direcciones\n' +
-                '• Opción 3: Limpia datos del sitio en configuración\n\n' +
-                '¡Disfruta de la experiencia como app nativa! 🎉'
+            // Ofrecer limpieza automática si no hay prompt
+            const offerCleanup = window.confirm(
+                '📱 INSTALACIÓN - Android/Chrome:\n\n' +
+                'Parece que ya instalaste la app antes.\n\n' +
+                'OK = Limpiar datos automáticamente para reinstalar\n' +
+                'Cancelar = Ver instrucciones manuales'
             );
+
+            if (offerCleanup) {
+                handleReinstallWithCleanup();
+            } else {
+                alert(
+                    '📱 Instalar manualmente:\n\n' +
+                    '• Opción 1: Menú (⋮) → "Instalar aplicación"\n' +
+                    '• Opción 2: Busca el ícono de instalación en la barra de direcciones\n' +
+                    '• Opción 3: Limpia datos del sitio en configuración\n\n' +
+                    '¡Disfruta de la experiencia como app nativa! 🎉'
+                );
+            }
         }
     };
 

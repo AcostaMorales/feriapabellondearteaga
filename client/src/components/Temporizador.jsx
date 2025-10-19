@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import temporizadorService from '../services/temporizador';
 import CuentaRegresiva from './CuentaRegresiva';
 import InstallPWAButton from './InstallPWAButton';
+import ClearSiteDataButton from './ClearSiteDataButton';
 import './Temporizador.css';
 
 const Temporizador = () => {
@@ -77,6 +78,9 @@ const Temporizador = () => {
             
             {/* Botón de instalación PWA */}
             <InstallPWAButton />
+            
+            {/* Botón para limpiar datos del sitio */}
+            <ClearSiteDataButton />
         </div>
     );
 }
