@@ -1,21 +1,11 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "cd client && yarn install && yarn build:pwa",
+  "outputDirectory": "client/dist",
+  "installCommand": "yarn install",
+  "rewrites": [
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "client/dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/.*",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
