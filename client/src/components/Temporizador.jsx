@@ -9,9 +9,6 @@ const Temporizador = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log('Base URL:', import.meta.env.VITE_APP_URL);
-        console.log('Haciendo petición a:', `${import.meta.env.VITE_APP_URL}/temporizador/`);
-        
         temporizadorService.get('/temporizador/')
             .then(res => {
                 console.log('Respuesta del servidor:', res.data);
@@ -59,6 +56,9 @@ const Temporizador = () => {
                     <div className="header-decoration"></div>
                 </header>
 
+                {/* Cuenta regresiva */}
+                <CuentaRegresiva fechaLimite={temporizador.fechaLimite} />
+
                 {/* Imagen del evento */}
                 <div className="event-image-container">
                     <img 
@@ -68,33 +68,6 @@ const Temporizador = () => {
                     />
                     <div className="image-overlay">
                         <h2 className="event-subtitle">¡Te esperamos!</h2>
-                    </div>
-                </div>
-
-                {/* Cuenta regresiva */}
-                <CuentaRegresiva fechaLimite={temporizador.fechaLimite} />
-
-                {/* Información adicional */}
-                <div className="event-info">
-                    <div className="info-card">
-                        <div className="info-icon">📅</div>
-                        <div className="info-content">
-                            <h3>Fecha del evento</h3>
-                            <p>{new Date(temporizador.fechaLimite).toLocaleDateString('es-ES', {
-                                weekday: 'long',
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                            })}</p>
-                        </div>
-                    </div>
-                    
-                    <div className="info-card">
-                        <div className="info-icon">🎪</div>
-                        <div className="info-content">
-                            <h3>¡No te lo pierdas!</h3>
-                            <p>Diversión, cultura y tradición en un solo lugar</p>
-                        </div>
                     </div>
                 </div>
 
