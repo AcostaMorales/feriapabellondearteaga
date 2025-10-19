@@ -9,7 +9,10 @@ const Temporizador = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        temporizadorService.get('')
+        console.log('Base URL:', import.meta.env.VITE_APP_URL);
+        console.log('Haciendo petición a:', `${import.meta.env.VITE_APP_URL}/temporizador/`);
+        
+        temporizadorService.get('/temporizador/')
             .then(res => {
                 console.log('Respuesta del servidor:', res.data);
                 setTemporizador(res.data);
