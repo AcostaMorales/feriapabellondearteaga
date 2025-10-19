@@ -66,9 +66,6 @@ const Temporizador = () => {
                         alt="Imagen del evento" 
                         className="event-image"
                     />
-                    <div className="image-overlay">
-                        <h2 className="event-subtitle">¡Te esperamos!</h2>
-                    </div>
                 </div>
 
                 {/* Footer */}
