@@ -9,7 +9,7 @@ const Temporizador = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        temporizadorService.get('/')
+        temporizadorService.get('')
             .then(res => {
                 console.log('Respuesta del servidor:', res.data);
                 setTemporizador(res.data);
