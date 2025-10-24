@@ -60,6 +60,13 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         skipWaiting: true,
         clientsClaim: true,
+        // Importar el service worker de notificaciones
+        additionalManifestEntries: [
+          {
+            url: '/sw-notifications.js',
+            revision: Date.now().toString()
+          }
+        ],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/.*\.(?:png|jpg|jpeg|svg|gif)$/,

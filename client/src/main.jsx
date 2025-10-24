@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import './utils/registerNotificationSW.js'
 
 // Registrar Service Worker para PWA
 if ('serviceWorker' in navigator) {
