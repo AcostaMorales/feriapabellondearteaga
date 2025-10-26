@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.js',
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
@@ -56,6 +59,7 @@ export default defineConfig({
           }
         ]
       },
+      // workbox es en donde se configuran las estrategias de caché
       workbox: {
         cleanupOutdatedCaches: true,
         skipWaiting: true,

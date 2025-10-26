@@ -4,16 +4,21 @@ import './index.css'
 import App from './App.jsx'
 import './utils/registerNotificationSW.js'
 
-// Registrar Service Worker para PWA
+// Registrar Service Worker para PWA y Push
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
+  window.addEventListener('load', async () => {
+    try {
+      // Registrar SW principal de PWA
+      const registration = await navigator.serviceWorker.register('/sw.js');
+      console.log('✅ SW PWA registered:', registration);
+      
+      // Registrar SW de push notifications
+      const pushRegistration = await navigator.serviceWorker.register('/sw-push.js');
+      console.log('✅ SW Push registered:', pushRegistration);
+      
+    } catch (error) {
+      console.error('❌ SW registration failed:', error);
+    }
   });
 }
 

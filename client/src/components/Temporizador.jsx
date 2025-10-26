@@ -3,7 +3,9 @@ import temporizadorService from '../services/temporizador';
 import CuentaRegresiva from './CuentaRegresiva';
 import InstallPWAButton from './InstallPWAButton';
 import ClearSiteDataButton from './ClearSiteDataButton';
+
 import NotificationButton from './NotificationButton';
+
 import './Temporizador.css';
 
 const Temporizador = () => {
