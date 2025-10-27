@@ -3,6 +3,7 @@ import temporizadorService from '../services/temporizador';
 import CuentaRegresiva from './CuentaRegresiva';
 import InstallPWAButton from './InstallPWAButton';
 import ClearSiteDataButton from './ClearSiteDataButton';
+import NotificationPermissionButton from './NotificationPermissionButton';
 import './Temporizador.css';
 
 const Temporizador = () => {
@@ -11,15 +12,26 @@ const Temporizador = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        temporizadorService.get('/temporizador/')
+        console.log('🔄 Iniciando fetch de temporizador...');
+        console.log('🌐 Base URL:', import.meta.env.VITE_APP_URL);
+        
+        temporizadorService.get('/')
             .then(res => {
-                console.log('Respuesta del servidor:', res.data);
+                console.log('✅ Respuesta del servidor:', res.data);
+                console.log('📅 Fecha límite recibida:', res.data.fechaLimite);
+                console.log('📅 Tipo de fecha:', typeof res.data.fechaLimite);
+                console.log('📅 Fecha parseada:', new Date(res.data.fechaLimite));
                 setTemporizador(res.data);
                 setLoading(false);
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
-                setError(error.message);
+                console.error('❌ Error fetching data:', error);
+                console.error('📋 Error details:', {
+                    message: error.message,
+                    status: error.response?.status,
+                    data: error.response?.data
+                });
+                setError(error.response?.data?.message || error.message);
                 setLoading(false);
             });
     }, []);
@@ -81,6 +93,9 @@ const Temporizador = () => {
             
             {/* Botón para limpiar datos del sitio */}
             <ClearSiteDataButton />
+            
+            {/* Botón de notificaciones */}
+            <NotificationPermissionButton />
         </div>
     );
 }

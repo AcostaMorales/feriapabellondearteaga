@@ -53,7 +53,7 @@ export default function NotificationPermissionButton() {
     const getButtonStyle = () => {
         const baseStyle = {
             position: 'fixed',
-            bottom: '80px',
+            bottom: '220px', // Más arriba para evitar empalme
             right: '20px',
             padding: '12px 20px',
             border: 'none',

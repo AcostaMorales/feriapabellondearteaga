@@ -7,6 +7,12 @@ import {corsOptions } from './config/corsOption.js';
 
 const app = express();
 
+// Log de CORS para debugging
+app.use((req, res, next) => {
+    console.log(`🌐 CORS - Origin: ${req.headers.origin} | Method: ${req.method} | URL: ${req.url}`);
+    next();
+});
+
 // Middlewares base
 app.use(cors(corsOptions));
 //app.use('*', cors(corsOptions)); // para preflight requests

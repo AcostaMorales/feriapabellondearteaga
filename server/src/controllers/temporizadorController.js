@@ -8,19 +8,15 @@ export const getTemporizador = async (req, res) => {
         const count = await Temporizador.countDocuments();
         console.log(`📊 Total de temporizadores en DB: ${count}`);
         
-        // Buscamos todos los temporizadores para debug
-        const allTemporizadores = await Temporizador.find();
-        console.log('📋 Todos los temporizadores:', allTemporizadores);
-        
-        const temporizador = await Temporizador.findOne();
+        // Buscar el temporizador más reciente
+        const temporizador = await Temporizador.findOne().sort({ _id: -1 });
         
         if (!temporizador) {
             console.log('❌ No se encontró ningún temporizador');
             return res.status(404).json({ 
                 message: 'No se encontró el temporizador',
                 debug: {
-                    totalDocuments: count,
-                    allTemporizadores: allTemporizadores
+                    totalDocuments: count
                 }
             });
         }
