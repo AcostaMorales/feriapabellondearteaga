@@ -18,9 +18,6 @@ const Temporizador = () => {
         temporizadorService.get('/')
             .then(res => {
                 console.log('✅ Respuesta del servidor:', res.data);
-                console.log('📅 Fecha límite recibida:', res.data.fechaLimite);
-                console.log('📅 Tipo de fecha:', typeof res.data.fechaLimite);
-                console.log('📅 Fecha parseada:', new Date(res.data.fechaLimite));
                 setTemporizador(res.data);
                 setLoading(false);
             })
