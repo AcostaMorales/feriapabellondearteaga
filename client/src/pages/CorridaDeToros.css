@@ -1,0 +1,79 @@
+/* ===== PÁGINA CORRIDA DE TOROS ===== */
+
+.corrida-container {
+  width: 100%;
+  max-width: 414px;
+  margin: 0 auto;
+  background: #ffffff; /* Fondo blanco en lugar de negro */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow: hidden;
+  /* Ocupar toda la altura disponible entre header y footer */
+  min-height: calc(100vh - var(--total-header-height) - var(--footer-height));
+  height: calc(100vh - var(--total-header-height) - var(--footer-height));
+}
+
+.corrida-imagen-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff; /* Fondo blanco en lugar de negro */
+}
+
+.corrida-imagen-completa {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Muestra la imagen completa sin recortar */
+  object-position: center;
+  display: block;
+  background: #f8f9fa; /* Fondo gris claro en lugar de negro */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .corrida-imagen-completa {
+    object-fit: contain; /* Mantiene la imagen completa en tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .corrida-imagen-completa {
+    object-fit: contain; /* Mantiene la imagen completa en móviles */
+  }
+}
+
+@media (max-width: 360px) {
+  .corrida-imagen-completa {
+    object-fit: contain; /* Mantiene la imagen completa en móviles pequeños */
+  }
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  .corrida-imagen-completa {
+    transition: none;
+  }
+}
+
+/* ===== ESTADOS DE CARGA ===== */
+.corrida-imagen-completa {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); /* Gradiente gris claro */
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.corrida-imagen-completa[src] {
+  background: #f8f9fa; /* Fondo gris claro cuando la imagen carga */
+  animation: none;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

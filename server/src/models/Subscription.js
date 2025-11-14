@@ -27,10 +27,18 @@ const SubscriptionSchema = new mongoose.Schema({
         // auth es un valor utilizado en el proceso de cifrado para asegurar la integridad y confidencialidad de los mensajes enviados a través de las notificaciones push
         auth: {type: String, required: true},
     },
+    // createdAt es la fecha en la que se creo la suscripcion
     createdAt: {
         type: Date,
         default: Date.now,
-    }
+    },
+    // lastSeen es la ultima vez que se utilizo la suscripcion
+    lastSeen: { type: Date, default: Date.now},
+    // userAgent es el agente de usuario del cliente que se suscribio
+    // osea desde que navegador o dispositivo se suscribio
+    userAgent: { type: String },
 });
 
+// Para búsquedas rápidas por endpoint también (p. ej. evitar duplicados raros)
+SubscriptionSchema.index({ endpoint: 1 });
 export default mongoose.model('Subscription', SubscriptionSchema);

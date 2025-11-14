@@ -1,23 +1,21 @@
-import webpush from 'web-push'
-import dotenv from 'dotenv'
-dotenv.config()
+import webpush from 'web-push';
+import dotenv from 'dotenv';
 
-// Configuracion de las claves VAPID para las notificaciones push
-// VAPID (Voluntary Application Server Identification) es un estandar que permite a los servidores
-// de aplicaciones identificarse ante los servicios de notificaciones push
-// Esto es necesario para enviar notificaciones push a los clientes de manera segura y autentificada
+dotenv.config();
 
-const SUBJECT = process.env.VAPID_SUBJECT
-const PUB = process.env.VAPID_PUBLIC_KEY
-const PRIV = process.env.VAPID_PRIVATE_KEY
+/* Configure VAPID keys for web push notifications */
+const SUBJECT = process.env.VAPID_SUBJECT;
+const PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY;
+const PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY;
 
-if (!SUBJECT) {
-  throw new Error('VAPID_SUBJECT no definido. Usa mailto:alguien@dominio.com o https://tu-dominio')
-}
-if (!PUB || !PRIV) {
-  throw new Error('VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY no definidos')
+if (!SUBJECT || !PUBLIC_KEY || !PRIVATE_KEY) {
+    throw new Error('VAPID keys no están configuradas en las variables de entorno.');
 }
 
-webpush.setVapidDetails(SUBJECT, PUB, PRIV)
+webpush.setVapidDetails(
+    SUBJECT,
+    PUBLIC_KEY,
+    PRIVATE_KEY
+);
 
-export default webpush;
+export default webpush; 

@@ -3,6 +3,18 @@ import { precacheAndRoute } from 'workbox-precaching';
 // Precache de archivos estáticos
 precacheAndRoute(self.__WB_MANIFEST);
 
+// Manejar actualizaciones del service worker
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+});
+
+// Reclamar control inmediatamente cuando el SW se activa
+self.addEventListener('activate', (event) => {
+    event.waitUntil(self.clients.claim());
+});
+
 // Escuchar eventos push
 self.addEventListener('push', (event) => {
     console.log('Push recibido:', event);

@@ -1,0 +1,358 @@
+/* Página de Notificaciones */
+.notifications-page {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  padding-top: var(--header-height);
+}
+
+.notifications-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* Header de notificaciones */
+.notifications-header {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.notifications-header h1 {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.notifications-count {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Estados de carga y error */
+.loading-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-light);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-state p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.error-state p {
+  color: var(--error-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.retry-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.retry-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Estado vacío */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Lista de notificaciones */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Item de notificación */
+.notification-item {
+  background-color: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: var(--spacing-md);
+  position: relative;
+  transition: all var(--transition);
+  border-left: 4px solid transparent;
+}
+
+.notification-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.notification-item.unread {
+  border-left-color: var(--primary-color);
+  background-color: #f8f9ff;
+}
+
+/* Icono de la notificación */
+.notification-icon {
+  font-size: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--gray-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.notification-item.unread .notification-icon {
+  background-color: var(--primary-light);
+}
+
+/* Contenido de la notificación */
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 var(--spacing-xs) 0;
+  line-height: 1.4;
+}
+
+.notification-message {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* Meta información de la notificación */
+.notification-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.notification-date {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.notification-new {
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Botón de eliminar */
+.delete-button {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.delete-button:hover {
+  background-color: var(--error-color);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .notifications-container {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .notification-item {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+  
+  .notification-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .notification-title {
+    font-size: 15px;
+  }
+  
+  .notification-message {
+    font-size: 13px;
+  }
+}
+
+/* Animaciones de entrada */
+.notification-item {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sección de desinscripción */
+.unsubscribe-section {
+  background-color: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  border: 2px solid var(--gray-light);
+  box-shadow: var(--shadow);
+}
+
+.unsubscribe-info {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.unsubscribe-info h3 {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.unsubscribe-info p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.unsubscribe-button {
+  width: 100%;
+  background-color: var(--error-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.unsubscribe-button:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.unsubscribe-button:active {
+  transform: translateY(0);
+}
+
+.unsubscribe-button:disabled {
+  background-color: var(--gray-medium);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive para móvil */
+@media (max-width: 480px) {
+  .unsubscribe-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+  
+  .unsubscribe-info h3 {
+    font-size: 16px;
+  }
+  
+  .unsubscribe-info p {
+    font-size: 13px;
+  }
+  
+  .unsubscribe-button {
+    font-size: 14px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

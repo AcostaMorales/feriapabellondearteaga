@@ -1,0 +1,584 @@
+/* ===== PÁGINA TEATRO DEL PUEBLO ===== */
+
+.teatro-container {
+  width: 100%;
+  max-width: 414px;
+  margin: 0 auto;
+  background: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== IMAGEN PROMOCIONAL DEL TEATRO ===== */
+.teatro-promocional-container {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Altura más razonable */
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.teatro-imagen-promocional {
+  position: absolute;
+  inset: 0;           /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* muestra TODO, pueden quedar "barras" laterales o arriba/abajo */
+  object-position: center;
+  display: block;
+}
+
+.teatro-promocional-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+  color: white;
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.teatro-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.teatro-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== SECCIÓN DE BANDAS ===== */
+.bandas-section {
+  padding: 0 20px 30px;
+}
+
+.bandas-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+/* ===== CARRUSEL DE BANDAS ===== */
+.bandas-carrusel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.bandas-carrusel-wrapper {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.bandas-carrusel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.bandas-carrusel-slide {
+  flex: 0 0 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ===== TARJETAS DE BANDAS ===== */
+.banda-card {
+  position: relative;
+  width: 100%;
+  height: auto; /* Altura automática para adaptarse a la imagen */
+  min-height: 200px; /* Altura mínima para mantener consistencia */
+  overflow: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.banda-imagen {
+  width: 100%;
+  height: auto; /* Altura automática */
+  max-height: 400px; /* Altura máxima para evitar imágenes muy grandes */
+  object-fit: contain; /* Muestra la imagen completa sin recortar */
+  object-position: center;
+  transition: transform 0.3s ease;
+  background: #f8f9fa; /* Fondo para cuando la imagen no llena todo el espacio */
+}
+
+.bandas-carrusel-slide:hover .banda-imagen {
+  transform: scale(1.05);
+}
+
+.banda-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 70%,
+    transparent 100%
+  );
+  color: white;
+  padding: 25px 20px 20px;
+  text-align: center;
+  min-height: 80px; /* Altura mínima para el overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.banda-nombre {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.2;
+}
+
+.banda-fecha {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+.banda-hoy-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ===== INDICADORES DEL CARRUSEL DE BANDAS ===== */
+.bandas-carrusel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.banda-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(102, 126, 234, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.banda-indicator:hover {
+  background: rgba(102, 126, 234, 0.6);
+  transform: scale(1.2);
+}
+
+.banda-indicator.active {
+  background: #667eea;
+  transform: scale(1.4);
+  box-shadow: 0 2px 12px rgba(102, 126, 234, 0.5);
+}
+
+/* ===== SECCIÓN DE INFORMACIÓN DE BANDA ===== */
+.banda-info-section {
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  margin: 30px 0;
+}
+
+.banda-info-container {
+  background: white;
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.banda-info-header {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.banda-info-nombre {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 15px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.banda-info-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.banda-info-fecha,
+.banda-info-genero {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.banda-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.banda-descripcion,
+.banda-biografia {
+  text-align: left;
+}
+
+.banda-descripcion h3,
+.banda-biografia h3,
+.banda-canciones h3,
+.banda-redes h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 12px 0;
+  padding-left: 15px;
+  position: relative;
+}
+
+.banda-descripcion h3:before,
+.banda-biografia h3:before,
+.banda-canciones h3:before,
+.banda-redes h3:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.banda-descripcion p,
+.banda-biografia p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+  text-align: justify;
+}
+
+/* ===== LISTA DE CANCIONES ===== */
+.canciones-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cancion-item {
+  font-size: 0.9rem;
+  color: #4b5563;
+  padding: 10px 15px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid #667eea;
+  transition: all 0.2s ease;
+}
+
+.cancion-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateX(5px);
+}
+
+/* ===== REDES SOCIALES ===== */
+.redes-sociales {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.red-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: white;
+  text-align: center;
+}
+
+.red-social.facebook {
+  background: #1877f2;
+}
+
+.red-social.instagram {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.red-social.youtube {
+  background: #ff0000;
+}
+
+.red-social:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== INFORMACIÓN ADICIONAL DEL TEATRO ===== */
+.teatro-info-adicional {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.teatro-info-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.teatro-info-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+
+.teatro-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.teatro-detalles p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin: 0;
+  padding: 8px 12px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #667eea;
+}
+
+.teatro-detalles strong {
+  color: #374151;
+}
+
+/* ===== ESTADOS DE CARGA ===== */
+.banda-imagen {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  object-fit: cover;
+}
+
+.banda-imagen[src] {
+  background: none;
+  animation: none;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .teatro-container {
+    max-width: 100%;
+  }
+  
+  .teatro-promocional-container {
+    height: 500px;
+  }
+  
+  .teatro-title {
+    font-size: 1.5rem;
+  }
+  
+  .teatro-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .bandas-section {
+    padding: 0 15px 20px;
+  }
+  
+  .bandas-title {
+    font-size: 1.2rem;
+  }
+  
+  .banda-card {
+    min-height: 180px; /* Altura mínima reducida para móviles */
+  }
+  
+  .banda-imagen {
+    max-height: 300px; /* Altura máxima reducida para móviles */
+  }
+  
+  .banda-nombre {
+    font-size: 1.1rem;
+  }
+  
+  .banda-fecha {
+    font-size: 0.8rem;
+  }
+  
+  .banda-hoy-badge {
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+  
+  .banda-info-section {
+    padding: 15px;
+  }
+  
+  .banda-info-container {
+    padding: 20px 15px;
+  }
+  
+  .banda-info-nombre {
+    font-size: 1.3rem;
+  }
+  
+  .banda-info-meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .redes-sociales {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .red-social {
+    justify-content: center;
+    padding: 12px 20px;
+  }
+  
+  .teatro-info-adicional {
+    padding: 15px;
+  }
+  
+  .teatro-info-card {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .teatro-promocional-container {
+    height: 400px;
+  }
+  
+  .banda-card {
+    min-height: 150px; /* Altura mínima para pantallas muy pequeñas */
+  }
+  
+  .banda-imagen {
+    max-height: 250px; /* Altura máxima reducida para pantallas muy pequeñas */
+  }
+  
+  .banda-info-container {
+    padding: 15px 12px;
+  }
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bandas-carrusel-track {
+    transition: none;
+  }
+  
+  .banda-imagen,
+  .banda-indicator,
+  .red-social {
+    transition: none;
+  }
+  
+  .bandas-carrusel-slide:hover .banda-imagen {
+    transform: none;
+  }
+  
+  .banda-hoy-badge {
+    animation: none;
+  }
+}
+
+/* ===== FOCUS STATES PARA ACCESIBILIDAD ===== */
+.banda-indicator:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.bandas-carrusel-slide:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+
+.red-social:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}

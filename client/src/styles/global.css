@@ -1,0 +1,201 @@
+/* Variables CSS para Pabellón de Arteaga */
+:root {
+  /* Colores principales */
+  --primary-color: #667eea;
+  --primary-dark: #5a67d8;
+  --primary-light: #764ba2;
+  --secondary-color: #8b5cf6;
+  --accent-color: #a855f7;
+  --background-color: #f8f9fa;
+  --white: #ffffff;
+  --gray-light: #e9ecef;
+  --gray-medium: #6c757d;
+  --gray-dark: #343a40;
+  --black: #000000;
+  
+  /* Colores de texto */
+  --text-primary: #343a40;
+  --text-secondary: #6c757d;
+  --text-tertiary: #adb5bd;
+  
+  /* Colores de estado */
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  
+  /* Header y Footer */
+  --header-height: 100px;
+  --header-image-height: 25vh;
+  --total-header-height: var(--header-height); /* Se actualiza dinámicamente */
+  --footer-height: 20vh; /* Reducido de 25vh a 18vh */
+  
+  /* Espaciado */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 32px;
+  
+  /* Bordes */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Sombras */
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+  
+  /* Transiciones */
+  --transition: 0.3s ease;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--gray-dark);
+  background-color: var(--background-color);
+  /* Asegurar scroll desde arriba en navegación */
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
+  /* Resetear scroll en cambios de página */
+  scroll-margin-top: 0;
+}
+
+/* Layout principal PWA */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 414px; /* Ancho máximo para móvil */
+  margin: 0 auto;
+  background-color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Contenido principal entre header y footer */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0; /* Sin padding para eliminar espacios en blanco */
+  margin: 0;
+  padding-top: var(--total-header-height); /* Empieza donde termina el header */
+  padding-bottom: var(--footer-height); /* Espacio para el footer */
+  width: 100%;
+  min-height: calc(100vh - var(--total-header-height) - var(--footer-height));
+}
+
+/* Clases utilitarias para adaptar el contenido al encabezado */
+.body-with-header-image {
+  --total-header-height: calc(var(--header-height) + var(--header-image-height));
+}
+
+.body-without-header-image {
+  --total-header-height: var(--header-height);
+}
+
+/* Responsive para desktop */
+@media (min-width: 481px) {
+  body {
+    background-color: var(--gray-light);
+  }
+  
+  .app-layout {
+    border-radius: var(--border-radius-lg);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    height: calc(100vh - 48px);
+    max-width: 414px; /* Mantener ancho móvil en desktop */
+  }
+}
+
+/* Componentes base */
+.btn {
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-primary:hover {
+  background: #f8f9fa;
+  transform: translateY(-1px);
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+}
+
+/* Estados de carga */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-light);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estados de error */
+.error-message {
+  background: #fff5f5;
+  border: 1px solid var(--error-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg);
+  color: var(--error-color);
+  text-align: center;
+}
+
+/* Clase especial para temporizador a pantalla completa */
+.timer-full-screen {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important;
+  background: transparent !important;
+}
+
+/* Clase especial para el nuevo contenedor del temporizador */
+.timer-full-screen .temporizador-container {
+  width: 100% !important;
+  max-width: 414px !important;
+  margin: 0 auto !important;
+  min-height: 100vh !important;
+  background: #ffffff !important;
+}

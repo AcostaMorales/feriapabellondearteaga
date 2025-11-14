@@ -1,0 +1,360 @@
+/* ===== PÁGINA HOME ===== */
+
+.home-container {
+  width: 100%;
+ 
+  margin: 0 auto;
+  background: #ffffff;
+  /* Altura menos el header */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== IMAGEN PROMOCIONAL PRINCIPAL ===== */
+.promocional-container {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Altura más razonable */
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.imagen-promocional {
+  position: absolute;
+  inset: 0;           /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* muestra TODO, pueden quedar "barras" laterales o arriba/abajo */
+  object-position: center;
+  display: block;
+}
+
+.promocional-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+  color: white;
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.promocional-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.promocional-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== SECCIÓN DE EVENTOS ===== */
+.eventos-section {
+  padding: 0 20px 30px;
+}
+
+.eventos-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+/* ===== CARRUSEL DE EVENTOS ===== */
+.carrusel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.carrusel-wrapper {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.carrusel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carrusel-slide {
+  flex: 0 0 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ===== TARJETAS DE EVENTOS ===== */
+.evento-card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.evento-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.carrusel-slide:hover .evento-imagen {
+  transform: scale(1.05);
+}
+
+.evento-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 70%,
+    transparent 100%
+  );
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.evento-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+/* ===== INDICADORES DEL CARRUSEL ===== */
+.carrusel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(102, 126, 234, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover {
+  background: rgba(102, 126, 234, 0.6);
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  background: #667eea;
+  transform: scale(1.3);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+
+
+/* Estados de carga para imágenes de navegación */
+.nav-imagen {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.nav-imagen[src] {
+  background: none;
+  animation: none;
+}
+
+/* ===== CONTENIDO ADICIONAL ===== */
+.contenido-adicional {
+  padding: 20px;
+}
+
+.info-feria {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 16px;
+  padding: 25px 20px;
+  text-align: center;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.info-feria h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 12px 0;
+}
+
+.info-feria p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===== ESTADOS DE CARGA DE IMÁGENES ===== */
+.evento-imagen {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.evento-imagen[src] {
+  background: none;
+  animation: none;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .home-container {
+    max-width: 100%;
+  }
+  
+  .eventos-section {
+    padding: 0 15px 20px;
+  }
+  
+  .promocional-container {
+    height: 500px; /* Altura específica para móviles */
+  }
+  
+  .promocional-overlay {
+    padding: 20px 15px 15px;
+  }
+  
+  .promocional-title {
+    font-size: 1.3rem;
+  }
+  
+  .promocional-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .eventos-title {
+    font-size: 1.2rem;
+  }
+  
+  .evento-card {
+    height: 180px;
+  }
+  
+  .evento-titulo {
+    font-size: 1rem;
+  }
+  
+  /* Navigation Grid Responsive */
+  .navigation-section {
+    padding: 20px 15px 15px;
+  }
+  
+  .navigation-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .navigation-grid {
+    gap: 10px;
+  }
+  
+  .nav-image-container {
+    height: 90px;
+  }
+  
+  .nav-titulo {
+    font-size: 0.9rem;
+  }
+  
+  .nav-descripcion {
+    font-size: 0.7rem;
+  }
+  
+  .contenido-adicional {
+    padding: 15px;
+  }
+  
+  .info-feria {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .promocional-container {
+    height: 400px;
+  }
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  .carrusel-track {
+    transition: none;
+  }
+  
+  .evento-imagen,
+  .indicator {
+    transition: none;
+  }
+  
+  .carrusel-slide:hover .evento-imagen {
+    transform: none;
+  }
+}
+
+/* ===== ESTADOS DE HOVER PARA DESKTOP ===== */
+@media (hover: hover) {
+  .carrusel-slide:hover {
+    cursor: pointer;
+  }
+  
+  .carrusel-slide:hover .evento-card {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+  }
+}
+
+/* ===== FOCUS STATES PARA ACCESIBILIDAD ===== */
+.indicator:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.carrusel-slide:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}

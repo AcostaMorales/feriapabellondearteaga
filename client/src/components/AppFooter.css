@@ -1,0 +1,178 @@
+/* Footer Component Styles */
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 414px;
+  height: var(--footer-height);
+  background: var(--white);
+  border-top: 1px solid var(--gray-light);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Carrusel de patrocinadores - 3/4 del footer */
+.sponsors-carousel {
+  flex: 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gray-light) 0%, #f1f3f4 100%);
+  border-bottom: 1px solid var(--gray-light);
+  position: relative;
+}
+
+.sponsors-track {
+  display: flex;
+  width: 500%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.sponsor-slide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--spacing-md);
+  transition: all 0.3s ease;
+}
+
+.sponsor-slide:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: scale(1.05);
+}
+
+.sponsor-logo {
+  max-height: 60%;
+  max-width: 80%;
+  object-fit: contain;
+  filter: brightness(0.8);
+  transition: all 0.3s ease;
+}
+
+.sponsor-slide:hover .sponsor-logo {
+  filter: brightness(1);
+}
+
+/* Navegación - 1/4 del footer */
+.footer-navigation {
+  flex: 1;
+  display: flex;
+  background: var(--white);
+  border-top: 1px solid var(--gray-light);
+}
+
+.nav-button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--gray-medium);
+}
+
+.nav-button:hover {
+  background: var(--gray-light);
+  color: var(--primary-color);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+.nav-button.active {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: var(--white);
+}
+
+.nav-button.active .nav-icon {
+  transform: scale(1.1);
+}
+
+/* Iconos y etiquetas */
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-label {
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .app-footer {
+    max-width: 100%;
+    left: 0;
+    transform: none;
+  }
+  
+  .sponsor-slide {
+    padding: var(--spacing-sm);
+  }
+  
+  .sponsor-logo {
+    max-height: 50%;
+    max-width: 70%;
+  }
+  
+  .nav-button {
+    padding: var(--spacing-xs);
+  }
+  
+  .nav-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .nav-label {
+    font-size: 9px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 481px) {
+  .app-footer {
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  }
+  
+  .sponsors-carousel {
+    border-radius: 0;
+  }
+  
+  .footer-navigation {
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  }
+}
+
+/* Estados especiales */
+@media (prefers-reduced-motion: reduce) {
+  .sponsors-track {
+    transition: none;
+  }
+  
+  .sponsor-slide:hover {
+    transform: none;
+  }
+}

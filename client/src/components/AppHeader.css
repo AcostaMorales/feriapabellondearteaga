@@ -1,0 +1,146 @@
+/* Header Component Styles */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 414px;
+  height: var(--header-height);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Layout de tres secciones */
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-center {
+  justify-content: center;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+/* Botón de regreso */
+.back-button {
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  color: var(--white);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.back-button:active {
+  transform: scale(0.95);
+}
+
+/* Logo y título */
+.header-logo {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  margin: 0;
+}
+
+/* Botón de notificaciones */
+.notification-button {
+  position: relative;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  color: var(--white);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.notification-button:active {
+  transform: scale(0.95);
+}
+
+/* Punto de notificación */
+.notification-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--error-color);
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .app-header {
+    max-width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0 var(--spacing-md);
+  }
+  
+  .header-logo {
+    height: 35px;
+    max-width: 100px;
+  }
+  
+  .header-title {
+    font-size: 16px;
+  }
+  
+  .back-button,
+  .notification-button {
+    padding: var(--spacing-xs);
+  }
+}
+
+/* Desktop */
+@media (min-width: 481px) {
+  .app-header {
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  }
+}

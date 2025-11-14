@@ -1,0 +1,41 @@
+version: 2
+services:
+  # Frontend (Cliente React con Vite)
+  - type: web
+    name: feria-pabellon-client
+    runtime: node
+    env: node
+    buildCommand: cd client && yarn install && yarn build
+    startCommand: cd client && yarn preview --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: NODE_ENV
+        value: production
+    
+  # Backend (Servidor Node.js/Express)
+  - type: web
+    name: feria-pabellon-server
+    runtime: node
+    env: node
+    buildCommand: cd server && yarn install
+    startCommand: cd server && yarn start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        sync: false
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASS
+        sync: false
+      - key: FRONTEND_URL
+        value: https://feria-pabellon-client.onrender.com
+      - key: CLIENT_URL
+        value: https://feria-pabellon-server.onrender.com

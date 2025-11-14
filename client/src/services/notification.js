@@ -19,6 +19,8 @@ export const requestNotificationPermission = async () => {
         throw new Error('Las notificaciones no están soportadas en este navegador');
     }
 
+    // Notification es una API del navegador que maneja los permisos
+    // para mostrar notificaciones al usuario
     const permission = await Notification.requestPermission();
     return permission === 'granted';
 };
@@ -51,6 +53,7 @@ export const subscribeToPushNotifications = async () => {
             throw new Error('Permisos de notificación denegados');
         }
 
+        // Registrar el service worker si no está registrado
         const registration = await navigator.serviceWorker.ready;
         
         const subscription = await registration.pushManager.subscribe({
@@ -61,7 +64,7 @@ export const subscribeToPushNotifications = async () => {
         const deviceId = generateDeviceId();
 
         // Enviar suscripción al servidor
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/notifications/subscribe`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/push/subscribe`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,7 +101,7 @@ export const unsubscribeFromPushNotifications = async () => {
 
         const deviceId = localStorage.getItem('deviceId');
         if (deviceId) {
-            await fetch(`${import.meta.env.VITE_API_URL}/api/notifications/unsubscribe/${deviceId}`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/push/unsubscribe/${deviceId}`, {
                 method: 'DELETE'
             });
             localStorage.removeItem('deviceId');

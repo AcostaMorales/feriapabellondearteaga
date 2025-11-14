@@ -1,28 +1,34 @@
 import dotenv from 'dotenv';
 import http from 'http';
-import mongoose from 'mongoose';
+import express from 'express';
 
-import app from './app.js';
+import app from './App.js';
 import connectDB from './config/db.js';
 import './config/webpush.js';
+import notificationScheduler from './services/notificationScheduler.js';
 
 dotenv.config();
 await connectDB();
 
-const PORT = process.env.PORT || 4000;
-
-// Health check
-app.get('/health', (req, res) => {
-    res.json({ 
-        status: 'OK', 
-        message: 'Server running',
-        timestamp: new Date().toISOString()
-    });
-});
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor ejecutándose en puerto ${PORT}`);
-    console.log(`🌐 Health check: http://localhost:${PORT}/health`);
-    console.log(`🔔 Admin panel: http://localhost:${PORT}/api/admin/notify`);
-    console.log(`📱 Frontend URL: ${process.env.FRONTEND_URL}`);
+  console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
+  
+  // 🕒 Iniciar el scheduler de notificaciones automáticas
+  console.log('🔔 Iniciando sistema de notificaciones automáticas...');
+  notificationScheduler.start('*/2 * * * *'); // Cada 2 minutos
+});
+
+// 🛑 Graceful shutdown - Detener scheduler al cerrar servidor
+process.on('SIGINT', () => {
+  console.log('\n🛑 Cerrando servidor graciosamente...');
+  notificationScheduler.stop();
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.log('\n🛑 SIGTERM recibido, cerrando servidor...');
+  notificationScheduler.stop();
+  process.exit(0);
 });

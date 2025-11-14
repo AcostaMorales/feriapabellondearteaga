@@ -1,0 +1,401 @@
+/* ===== PLAZA DEL ABUELO ===== */
+
+.plaza-abuelo-container {
+  width: 100%;
+  max-width: 414px;
+  margin: 0 auto;
+  background: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding-bottom: 20px;
+}
+
+.plaza-abuelo-container * {
+  background-image: none !important;
+  background: #ffffff !important;
+}
+
+.plaza-abuelo-container .fecha-header {
+  background: #ffffff !important;
+}
+
+.plaza-abuelo-container .evento-card {
+  background: #ffffff !important;
+}
+
+.plaza-abuelo-container .evento-hora {
+  background: #ffffff !important;
+}
+
+/* ===== IMAGEN DE PORTADA ===== */
+.portada-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.imagen-portada {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+.titulo-section {
+  text-align: center;
+  padding: 0 20px 20px;
+  border-bottom: 2px solid rgba(245, 158, 11, 0.1);
+  margin-bottom: 20px;
+}
+
+.titulo-principal {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #374151;
+  margin: 0 0 8px 0;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ===== CONTENEDOR DE EVENTOS ===== */
+.eventos-contenedor {
+  padding: 0 20px;
+}
+
+/* ===== SECCIÓN POR FECHA ===== */
+.fecha-seccion {
+  margin-bottom: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(245, 158, 11, 0.1);
+}
+
+.fecha-header {
+  background: #ffffff;
+  color: #374151;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.fecha-titulo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.fecha-mes {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* ===== LISTA DE EVENTOS ===== */
+.eventos-lista {
+  padding: 20px;
+}
+
+.sin-eventos {
+  text-align: center;
+  padding: 30px 20px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.sin-eventos p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ===== TARJETA DE EVENTO ===== */
+.evento-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #fef3c7;
+  transition: all 0.3s ease;
+}
+
+.evento-card:hover {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.evento-card:last-child {
+  margin-bottom: 0;
+}
+
+.evento-info {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+
+.evento-hora {
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  min-width: 60px;
+  text-align: center;
+  height: fit-content;
+}
+
+.evento-detalles {
+  flex: 1;
+}
+
+.evento-titulo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.evento-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.evento-artista {
+  background: #f59e0b;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.evento-tipo {
+  background: #6366f1;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.evento-descripcion {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.btn-eliminar {
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-eliminar:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+/* ===== FORMULARIO ===== */
+.formulario-container {
+  padding: 0 20px 20px;
+  border-top: 1px solid #fef3c7;
+  margin-top: 20px;
+}
+
+.btn-agregar-evento {
+  width: 100%;
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #e2e8f0;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-agregar-evento:hover {
+  transform: translateY(-1px);
+}
+
+.evento-form {
+  margin-top: 20px;
+  padding: 20px;
+  background: #fffbeb;
+  border-radius: 12px;
+  border: 1px solid #fef3c7;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 80px;
+  margin-bottom: 15px;
+  font-family: inherit;
+  background: white;
+  transition: border-color 0.2s ease;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-guardar {
+  flex: 1;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-guardar:hover {
+  background: #d97706;
+}
+
+.btn-cancelar {
+  flex: 1;
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background: #4b5563;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .plaza-abuelo-container {
+    max-width: 100%;
+  }
+  
+  .titulo-section {
+    padding: 0 15px 15px;
+  }
+  
+  .titulo-principal {
+    font-size: 1.6rem;
+  }
+  
+  .eventos-contenedor {
+    padding: 0 15px;
+  }
+  
+  .formulario-container {
+    padding: 0 15px 15px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .portada-container {
+    height: 250px;
+  }
+  
+  .evento-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  .evento-card,
+  .btn-eliminar,
+  .btn-agregar-evento {
+    transition: none;
+  }
+  
+  .evento-card:hover,
+  .btn-agregar-evento:hover {
+    transform: none;
+  }
+}
+
+/* ===== ESTADOS DE CARGA ===== */
+.imagen-portada {
+  background: #ffffff;
+}
+
+.imagen-portada[src] {
+  background: none;
+}
