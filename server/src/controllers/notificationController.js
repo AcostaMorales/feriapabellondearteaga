@@ -415,4 +415,6 @@ const NotificationController = {
   },
 };
 
+// Exportación por defecto y también nombrada para compatibilidad
+export { NotificationController };
 export default NotificationController;

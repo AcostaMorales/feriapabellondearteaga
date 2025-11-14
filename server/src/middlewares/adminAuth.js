@@ -20,7 +20,7 @@ const adminAuth = (req, res, next) => {
 
     // Verificar credenciales contra variables de entorno
     const adminUser = process.env.ADMIN_USER;
-    const adminPassword = process.env.ADMIN_PASSWORD;
+    const adminPassword = process.env.ADMIN_PASS || process.env.ADMIN_PASSWORD;
 
     if (!adminUser || !adminPassword) {
       console.error('❌ ADMIN_USER o ADMIN_PASSWORD no están configurados en .env');

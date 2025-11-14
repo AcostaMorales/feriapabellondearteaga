@@ -104,6 +104,15 @@
   letter-spacing: 0.8px;
 }
 
+.tiempo-mensaje {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #667eea;
+  font-weight: 500;
+  font-style: italic;
+  opacity: 0.8;
+}
+
 /* ===== IMAGEN DEL EVENTO ===== */
 .event-image-container {
   position: relative;
