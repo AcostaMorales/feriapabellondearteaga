@@ -5,89 +5,52 @@ const PlazaDelAbuelo = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
-            {
-                id: 1,
-                titulo: 'Serenata de Boleros',
-                descripcion: 'Noche de boleros clásicos y románticos',
-                hora: '20:00',
-                artista: 'Trío Nostalgia',
-                tipo: 'Musical'
-            },
-            {
-                id: 2,
-                titulo: 'Cuentacuentos Tradicionales',
-                descripcion: 'Relatos y leyendas de la región',
-                hora: '18:00',
-                artista: 'Don Aurelio Narrador',
-                tipo: 'Narrativa'
-            }
+            
         ],
         '2025-11-15': [
-            {
-                id: 3,
-                titulo: 'Danza Folklórica',
-                descripcion: 'Presentación del Ballet Folklórico Regional',
-                hora: '19:00',
-                artista: 'Ballet Folklórico Arteaga',
-                tipo: 'Danza'
-            }
+           
         ],
         '2025-11-16': [
-            {
-                id: 4,
-                titulo: 'Tarde de Trova',
-                descripcion: 'Canciones y poemas de trovadores locales',
-                hora: '17:30',
-                artista: 'Trovadores de Coahuila',
-                tipo: 'Musical'
-            },
-            {
-                id: 5,
-                titulo: 'Teatro de Títeres',
-                descripcion: 'Función familiar con títeres tradicionales',
-                hora: '16:00',
-                artista: 'Compañía Titiriteros',
-                tipo: 'Teatro'
-            }
+            
         ],
         '2025-11-17': [
             {
-                id: 6,
-                titulo: 'Mariachi en Vivo',
-                descripcion: 'Música tradicional mexicana',
-                hora: '20:30',
+                id: 1,
+                titulo: 'Tarde de rondallas (principales calles)',
+                descripcion: 'Tematica de cine de oro',
+                hora: '17:00',
                 artista: 'Mariachi Nuevo Milenio',
                 tipo: 'Musical'
             }
         ],
         '2025-11-18': [
             {
-                id: 7,
-                titulo: 'Exposición de Artesanías',
-                descripcion: 'Muestra de trabajos artesanales locales',
-                hora: '15:00',
-                artista: 'Artesanos de Pabellón',
-                tipo: 'Exposición'
+                id: 2,
+                titulo: 'Musica en vivo',
+                descripcion: '',
+                hora: '17:00',
+                artista: '',
+                tipo: ''
             }
         ],
         '2025-11-19': [
             {
-                id: 8,
-                titulo: 'Recital de Poesía',
-                descripcion: 'Poetas locales comparten sus obras',
-                hora: '18:30',
-                artista: 'Círculo Literario',
-                tipo: 'Literatura'
+                id: 3,
+                titulo: 'Tamborazo',
+                descripcion: '',
+                hora: '17:00',
+                artista: '',
+                tipo: ''
             }
         ],
         '2025-11-20': [
             {
-                id: 9,
-                titulo: 'Noche de Rancheras',
-                descripcion: 'Canciones rancheras con mariachi',
-                hora: '21:00',
-                artista: 'Mariachi Los Caporales',
-                tipo: 'Musical'
+                id: 4,
+                titulo: 'NMusica en vivo',
+                descripcion: '',
+                hora: '17:00',
+                artista: '',
+                tipo: ''
             }
         ],
         '2025-11-21': [

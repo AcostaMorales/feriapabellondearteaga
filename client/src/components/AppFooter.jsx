@@ -50,7 +50,7 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
         </svg>
       ), 
       label: 'Inicio', 
-      route: '/home'
+      route: '/'
     },
     { 
       icon: (

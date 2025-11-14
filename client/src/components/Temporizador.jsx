@@ -66,7 +66,7 @@ const Temporizador = () => {
                 console.log('🎉 ¡Llegaron las 2 PM!');
                 // Navegar a Home después de llegar las 2 PM
                 setTimeout(() => {
-                    navigate('/home');
+                    navigate('/');
                 }, 2000); // Esperar 2 segundos para mostrar que llegó a 0
             }
         };

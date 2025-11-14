@@ -5,78 +5,144 @@ const FeriaDeportiva = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
-            {
-                id: 1,
-                titulo: 'Torneo de Fútbol Infantil',
-                descripcion: 'Torneo para niños de 8 a 12 años',
-                hora: '09:00',
-                deporte: 'Fútbol',
-                categoria: 'Infantil'
-            },
-            {
-                id: 2,
-                titulo: 'Competencia de Natación',
-                descripcion: 'Competencia libre para todas las edades',
-                hora: '16:00',
-                deporte: 'Natación',
-                categoria: 'Libre'
-            }
         ],
         '2025-11-15': [
             {
+                id: 1,
+                titulo: 'Torneo de Box Dualmeet',
+                descripcion: '',
+                hora: '08:00',
+                deporte: 'Box',
+                categoria: ''
+            },
+            {
+                id: 2,
+                titulo: 'Coadr5angular de Tocho flag',
+                descripcion: '',
+                hora: '08:00',
+                deporte: 'Tocho flag',
+                categoria: ''
+            }, 
+            {
                 id: 3,
-                titulo: 'Torneo de Básquetbol Juvenil',
-                descripcion: 'Campeonato estatal juvenil de básquetbol',
-                hora: '14:00',
-                deporte: 'Básquetbol',
-                categoria: 'Juvenil'
+                titulo: 'Torneo local de tenis',
+                descripcion: '',
+                hora: '08:30',
+                deporte: 'Tenis',
+                categoria: ''
             },
             {
                 id: 4,
-                titulo: 'Exhibición de Box',
-                descripcion: 'Peleas de exhibición con boxeadores profesionales',
-                hora: '19:00',
-                deporte: 'Box',
-                categoria: 'Adulto'
-            }
-        ],
-        '2025-11-16': [
+                titulo: 'Torneo de tocho flag libre',
+                descripcion: '',
+                hora: '09:00',
+                deporte: 'Tocho flag',
+                categoria: ''
+            },
             {
                 id: 5,
-                titulo: 'Maratón Familiar',
-                descripcion: 'Carrera de 5k para toda la familia',
-                hora: '07:00',
-                deporte: 'Atletismo',
-                categoria: 'Mixto'
+                titulo: 'Cuadrangular de tocho infantil LIPAF',
+                descripcion: '',
+                hora: '09:00',
+                deporte: 'Tocho flag',
+                categoria: 'infantil'
             },
             {
                 id: 6,
-                titulo: 'Torneo de Voleibol Femenil',
-                descripcion: 'Competencia de voleibol equipos femeniles',
-                hora: '15:00',
-                deporte: 'Voleibol',
-                categoria: 'Adulto'
-            }
+                titulo: 'Derby de la Revolución homerun',
+                descripcion: '',
+                hora: '17:00',
+                deporte: 'Derby',
+                categoria: ''
+            },
+            {
+                id: 7,
+                titulo: 'Nacional de artes marciales mixtas',
+                descripcion: '',
+                hora: '17:00',
+                deporte: 'Artes marciales mixtas',
+                categoria: ''
+            },
+            {
+                id: 8,
+                titulo: 'Cuadrangular 1era especial de béisbol',
+                descripcion: '',
+                hora: '18:30',
+                deporte: 'Besísbol',
+                categoria: ''
+            },
+
+        ],
+        '2025-11-16': [
+            {
+                id: 10,
+                titulo: 'Torneo de ajedrez',
+                descripcion: '',
+                hora: '08:00',
+                deporte: 'Ajedrez',
+                categoria: ''
+            },
+            {
+                id: 11,
+                titulo: 'Cuadrangular de rugby',
+                descripcion: '',
+                hora: '09:00',
+                deporte: 'rugby',
+                categoria: ''
+            },
+            {
+                id: 12,
+                titulo: 'Cuadrangular de sóftbol',
+                descripcion: '',
+                hora: '10:00',
+                deporte: 'rugby',
+                categoria: ''
+            },
+            {
+                id: 13,
+                titulo: 'Cuadrangular municipal de fútbol libre',
+                descripcion: '',
+                hora: '09:00',
+                deporte: 'futbol',
+                categoria: ''
+            },
         ],
         '2025-11-17': [
             {
-                id: 7,
-                titulo: 'Ciclismo de Montaña',
-                descripcion: 'Recorrido por las montañas de Pabellón',
-                hora: '08:00',
-                deporte: 'Ciclismo',
-                categoria: 'Adulto'
-            }
+                id: 14,
+                titulo: 'Carrera de carros sin motor',
+                descripcion: '',
+                hora: '17:00',
+                deporte: '',
+                categoria: ''
+            },
+            {
+                id: 15,
+                titulo: 'Cuadrangular de voleibol',
+                descripcion: '',
+                hora: '17:00',
+                deporte: 'Voleibol',
+                categoria: ''
+            },
+        
         ],
         '2025-11-18': [
             {
-                id: 8,
-                titulo: 'Torneo de Ajedrez',
-                descripcion: 'Campeonato municipal de ajedrez',
-                hora: '10:00',
-                deporte: 'Ajedrez',
-                categoria: 'Libre'
-            }
+                id: 16,
+                titulo: 'Torneo nacional de cachibol',
+                descripcion: '',
+                hora: '08:00',
+                deporte: '',
+                categoria: ''
+            },
+            {
+                id: 17,
+                titulo: 'Clinica de basquetbol Mtra. Jezabel Noemí Medina Rodriguez',
+                descripcion: '',
+                hora: '08:00',
+                deporte: '',
+                categoria: ''
+            },
         ],
         '2025-11-19': [
             {

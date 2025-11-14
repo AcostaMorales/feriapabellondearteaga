@@ -5,12 +5,30 @@ const LienzoCharro = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
+           
             
         ],
         '2025-11-15': [
-           
+            {
+                id: 1,
+                titulo: 'Rodeo',
+                descripcion: '',
+                hora: '16:00',
+                participante: '',
+                modalidad: ''
+
+            }
         ],
         '2025-11-16': [
+             {
+                id: 2,
+                titulo: 'Charreada de gala',
+                descripcion: 'Musica en vivo ',
+                hora: '15:00',
+                participante: '',
+                modalidad: ''
+
+            }
            
         ],
         '2025-11-17': [
@@ -23,7 +41,24 @@ const LienzoCharro = () => {
             
         ],
         '2025-11-20': [
-            
+            {
+                id: 3,
+                titulo: 'Corrida de toros',
+                descripcion: '',
+                hora: '15:00',
+                participante: '',
+                modalidad: ''
+
+            },
+            {
+                id: 4,
+                titulo: 'Corrida Mixta',
+                descripcion: '',
+                hora: '17:00',
+                participante: '',
+                modalidad: ''
+
+            }
         ],
         '2025-11-21': [
            

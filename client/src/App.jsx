@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css'
 import './styles/global.css'
-import Temporizador from "./components/Temporizador.jsx";
 import Home from "./pages/Home.jsx";
 import AppHeader from "./components/AppHeader.jsx";
 import AppFooter from "./components/AppFooter.jsx";
@@ -15,14 +14,15 @@ import FeriaDeportiva from "./pages/FeriaDeportiva.jsx";
 import ForoJuvenil from "./pages/ForoJuvenil.jsx";
 import PlazaDelAbuelo from "./pages/PlazaDelAbuelo.jsx";
 import LienzoCharro from "./pages/LienzoCharro.jsx";
+import DesfileDelaRevolucion from "./pages/DesfileDelaRevolucion.jsx";
+import VocesDelPueblo from "./pages/VocesDelPueblo.jsx";
+import ZonaPeques from "./pages/ZonaPeques.jsx";
 
 function AppLayout() {
   const location = useLocation();
   
-  // El temporizador es la página principal y no necesita header ni footer
-  const isTimerPage = location.pathname === '/';
-  // Home es la página principal después del temporizador
-  const isHomePage = location.pathname === '/home';
+  // Home es ahora la página principal
+  const isHomePage = location.pathname === '/';
   
   const handleNotificationClick = () => {
     console.log('Notificación clickeada');
@@ -31,19 +31,16 @@ function AppLayout() {
 
   return (
     <div className="app-layout">
-      {/* Header solo en páginas que no sean el temporizador */}
-      {!isTimerPage && (
-        <AppHeader 
-          showBackButton={!isHomePage} // No mostrar botón de regreso en Home
-          onNotificationClick={handleNotificationClick}
-        />
-      )}
+      {/* Header en todas las páginas */}
+      <AppHeader 
+        showBackButton={!isHomePage} // No mostrar botón de regreso en Home
+        onNotificationClick={handleNotificationClick}
+      />
       
       {/* Contenido principal */}
-      <main className={`main-content ${isTimerPage ? 'timer-full-screen' : ''}`}>
+      <main className="main-content">
         <Routes>
-          <Route path="/" element={<Temporizador />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/teatrodelpueblo" element={<TeatroDelPueblo />} />
           <Route path="/coronacion" element={<Coronacion />} />
           <Route path="/corridasdetoros" element={<CorridaDeToros />} />
@@ -52,11 +49,14 @@ function AppLayout() {
           <Route path="/forojuvenil" element={<ForoJuvenil />} />
           <Route path="/plazadelabuelo" element={<PlazaDelAbuelo />} />
           <Route path="/lienzocharro" element={<LienzoCharro />} />
+          <Route path="/desfiledelarevolucion" element={<DesfileDelaRevolucion />} />
+          <Route path="/vocesdelpueblo" element={<VocesDelPueblo />} />
+          <Route path="/zonapeques" element={<ZonaPeques />} />
         </Routes>
       </main>
       
-      {/* Footer solo en páginas que no sean el temporizador */}
-      {!isTimerPage && <AppFooter />}
+      {/* Footer en todas las páginas */}
+      <AppFooter />
     </div>
   );
 }

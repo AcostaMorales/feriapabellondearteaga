@@ -1,8 +1,28 @@
 import React from 'react';
 import NavigationGrid from '../components/NavigationGrid.jsx';
+import FloatingVideo from '../components/FloatingVideo.jsx';
+import PromoCarousel from '../components/PromoCarousel.jsx';
 import './Home.css';
 
 const Home = () => {
+    // Array de imágenes promocionales para el carrusel
+    const promocionalImages = [
+        {
+            url: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+            alt: 'Promocional Feria de Pabellón de Arteaga',
+            overlay: true,
+            title: 'Feria de Pabellón de Arteaga',
+            subtitle: '¡Vive la tradición y la cultura!'
+        },
+        {
+            url: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763151519/Mensaje_presidenta_mptszs.png',
+            alt: 'Mensaje de la presidenta',
+            overlay: true,
+            title: 'Teatro del Pueblo',
+            subtitle: 'Disfruta de los mejores espectáculos'
+        },
+    ];
+
     // Array de botones de navegación (adaptado para NavigationGrid)
     const navigationItems = [
         {
@@ -25,6 +45,12 @@ const Home = () => {
             title: 'Teatro Bicentenario',
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389323/teatro_bicentenario_mkovq6.png',
             route: '/teatrobicentenario',
+            
+        },
+        {
+            title: 'Voces del Pueblo',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389323/teatro_del_pueblo_x5gnmu.png',
+            route: '/vocesdelpueblo',
             
         },
         {
@@ -52,22 +78,30 @@ const Home = () => {
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763143783/Lienzocharro_cnspoy.png',
             route: '/lienzocharro',
         },
+        {
+            title: 'Zona Peques',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+            route: '/zonapeques',
+        },
     
         
     ];
 
     return (
         <div className="home-container">
-            {/* Imagen Promocional Principal */}
-            <div className="promocional-container">
-                <img 
-                    src="https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png" 
-                    alt="Promocional Feria de Pabellón de Arteaga" 
-                    className="imagen-promocional"
-                />
-                
-            </div>
-            
+            {/* Video Flotante */}
+            <FloatingVideo 
+                videoUrl="https://drive.google.com/uc?export=download&id=1AHo2b78_YpU2uznezFa6AgxaOCyANXRb"
+                thumbnailUrl="https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png"
+                title="Video Promocional - Feria de Pabellón de Arteaga"
+            />
+
+            {/* Carrusel Promocional Principal */}
+            <PromoCarousel 
+                images={promocionalImages}
+                autoPlay={true}
+                interval={6000}
+            />
 
             {/* Grid de Navegación usando el componente NavigationGrid */}
             <NavigationGrid 
