@@ -8,6 +8,9 @@ export function basicAuth(req, res, next) {
   return unauthorized(res)
 }
 
+// Alias para compatibilidad
+export const basicAuthMiddleware = basicAuth;
+
 function unauthorized(res) {
   res.set('WWW-Authenticate', 'Basic realm="Admin Area"')
   return res.status(401).send('Unauthorized')
