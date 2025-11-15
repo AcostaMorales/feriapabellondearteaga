@@ -9,23 +9,6 @@
   padding-bottom: 20px;
 }
 
-.feria-deportiva-container * {
-  background-image: none !important;
-  background: #ffffff !important;
-}
-
-.feria-deportiva-container .fecha-header {
-  background: #ffffff !important;
-}
-
-.feria-deportiva-container .evento-card {
-  background: #ffffff !important;
-}
-
-.feria-deportiva-container .evento-hora {
-  background: #ffffff !important;
-}
-
 /* ===== IMAGEN DE PORTADA ===== */
 .portada-container {
   position: relative;
@@ -81,25 +64,27 @@
 }
 
 .fecha-header {
-  background: #ffffff;
-  color: #374151;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #059669;
 }
 
 .fecha-titulo {
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
+  color: #ffffff;
 }
 
 .fecha-mes {
   font-size: 0.9rem;
   opacity: 0.9;
   font-weight: 500;
+  color: #ffffff;
 }
 
 /* ===== LISTA DE EVENTOS ===== */

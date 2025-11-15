@@ -27,8 +27,8 @@ const Home = () => {
     const navigationItems = [
         {
             title: 'Mapa de vinícolas pabellón',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763143254/boton_mapa_vinicolas_du1zt6.png',
-            route: 'https://view.genially.com/69169ef6f29001777d69cd40/interactive-content-mapa-vinicolas',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763157921/ChatGPT_Image_13_nov_2025_08_37_10_p.m._o3sq0l.png',
+            route: 'https://view.genially.com/6913fa88c898b013b0b39c94/interactive-content-mapa-interactivo',
         },
         {
             title: 'Teatro del Pueblo',
@@ -83,6 +83,16 @@ const Home = () => {
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
             route: '/zonapeques',
         },
+        {
+            title: 'Expo Ganadera',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/plaza_del_abuelo_zp7vqz.png',
+            route: '/expoganadera',
+        },
+        {
+            title: 'Expo Ganadera',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763157161/ExpoGanadera_vy80e7.jpg',
+            route: '/expoganadera',
+        },
     
         
     ];
@@ -91,9 +101,9 @@ const Home = () => {
         <div className="home-container">
             {/* Video Flotante */}
             <FloatingVideo 
-                videoUrl="https://drive.google.com/uc?export=download&id=1AHo2b78_YpU2uznezFa6AgxaOCyANXRb"
-                thumbnailUrl="https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png"
+                videoUrl="https://www.youtube.com/embed/7OFjFb2iePU?autoplay=1&mute=1&loop=1&playlist=7OFjFb2iePU"
                 title="Video Promocional - Feria de Pabellón de Arteaga"
+                isYouTube={true}
             />
 
             {/* Carrusel Promocional Principal */}

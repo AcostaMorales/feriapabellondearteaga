@@ -12,92 +12,51 @@ const TeatroBicentenario = () => {
                 hora: '20:00',
                 artista: 'Orquesta Sinfónica de Aguascalientes'
             },
-            {
-                id: 2,
-                titulo: 'Presentación Ballet Folklórico',
-                descripcion: 'Espectáculo de danza tradicional mexicana',
-                hora: '18:00',
-                artista: 'Ballet Folklórico Nacional'
-            }
+            
         ],
         '2025-11-15': [
             {
-                id: 3,
-                titulo: 'Teatro: "La Casa de Bernarda Alba"',
-                descripcion: 'Obra clásica de Federico García Lorca',
-                hora: '19:30',
-                artista: 'Compañía Teatro del Estado'
+                id: 2,
+                titulo: 'Teatro bicentenario ballet ballet bali hai',
+                descripcion: '',
+                hora: '19:00',
+                artista: ''
             }
         ],
         '2025-11-16': [
-            {
-                id: 4,
-                titulo: 'Concierto de Rock Sinfónico',
-                descripcion: 'Fusión de rock clásico con orquesta sinfónica',
-                hora: '21:00',
-                artista: 'Banda Sinfónica Rock'
-            },
-            {
-                id: 5,
-                titulo: 'Espectáculo Infantil',
-                descripcion: 'Obra musical para toda la familia',
-                hora: '17:00',
-                artista: 'Grupo Infantil Arcoíris'
-            }
+            
         ],
         '2025-11-17': [
-            {
-                id: 6,
-                titulo: 'Concierto Gospel',
-                descripcion: 'Música gospel con coro internacional',
-                hora: '19:00',
-                artista: 'Coro Gospel Internacional'
-            }
+            
         ],
-        '2025-11-18': [],
+        '2025-11-18': [
+            
+        ],
         '2025-11-19': [
-            {
-                id: 7,
-                titulo: 'Monólogo Cómico',
-                descripcion: 'Stand-up comedy con comediante nacional',
-                hora: '20:30',
-                artista: 'Carlos Comedian'
-            }
+            
         ],
         '2025-11-20': [
-            {
-                id: 8,
-                titulo: 'Concierto de Jazz',
-                descripcion: 'Noche de jazz con músicos locales e internacionales',
-                hora: '21:00',
-                artista: 'Jazz Ensemble Pabellón'
-            }
+           
         ],
         '2025-11-21': [
-            {
-                id: 9,
-                titulo: 'Teatro: "Romeo y Julieta"',
-                descripcion: 'Adaptación moderna del clásico de Shakespeare',
-                hora: '19:00',
-                artista: 'Compañía Juvenil de Teatro'
-            }
+            
         ],
         '2025-11-22': [
             {
-                id: 10,
-                titulo: 'Concierto de Cierre',
-                descripcion: 'Gran finale con artistas invitados',
-                hora: '20:00',
-                artista: 'Artistas Varios'
+                id: 3,
+                titulo: 'Ballet municipal de danza folklorico izkaltékatl, alternando con el grupo de danza folklórica kan ometeotl',
+                descripcion: '',
+                hora: '19:00',
+                artista: ''
             }
         ],
         '2025-11-23': [
             {
-                id: 11,
-                titulo: 'Gala de Clausura',
-                descripcion: 'Ceremonia de clausura con espectáculo especial',
-                hora: '19:30',
-                artista: 'Elenco Especial de Clausura'
+                id: 4,
+                titulo: 'Grupo de danza folklórica Ehecatl de Pabellón de Arteaga, alternando con el grupo de danza folklórica Metsi Nei',
+                descripcion: '',
+                hora: '19:00',
+                artista: ''
             }
         ]
     };

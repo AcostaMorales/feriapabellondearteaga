@@ -8,100 +8,35 @@ const DesfileDelaRevolucion = () => {
             
         ],
         '2025-11-15': [
-            {
-                id: 2,
-                titulo: 'Desfile Histórico de la Revolución',
-                descripcion: 'Representación de los momentos más importantes de 1910',
-                hora: '10:00',
-                artista: 'Grupos Históricos Regionales'
-            },
-            {
-                id: 3,
-                titulo: 'Exhibición de Armas Históricas',
-                descripcion: 'Muestra de armamento usado durante la Revolución',
-                hora: '14:00',
-                artista: 'Museo de la Revolución'
-            }
+            
         ],
         '2025-11-16': [
-            {
-                id: 4,
-                titulo: 'Teatro: "Villa y Zapata"',
-                descripcion: 'Obra sobre los líderes revolucionarios más emblemáticos',
-                hora: '18:00',
-                artista: 'Compañía Teatral Histórica'
-            },
-            {
-                id: 5,
-                titulo: 'Corridos Revolucionarios',
-                descripcion: 'Música tradicional de la época revolucionaria',
-                hora: '20:30',
-                artista: 'Mariachi Revolución'
-            }
+            
         ],
         '2025-11-17': [
-            {
-                id: 6,
-                titulo: 'Conferencia: "Aguascalientes en la Revolución"',
-                descripcion: 'Historia local durante el movimiento revolucionario',
-                hora: '16:00',
-                artista: 'Dr. Historiador Regional'
-            },
-            {
-                id: 7,
-                titulo: 'Baile de la Época',
-                descripcion: 'Danzas tradicionales del México revolucionario',
-                hora: '19:00',
-                artista: 'Ballet Folklórico Revolucionario'
-            }
+            
         ],
         '2025-11-18': [
-            {
-                id: 8,
-                titulo: 'Exposición Fotográfica',
-                descripcion: 'Imágenes históricas de la Revolución Mexicana',
-                hora: '11:00',
-                artista: 'Archivo Histórico del Estado'
-            }
+            
         ],
         '2025-11-19': [
-            {
-                id: 9,
-                titulo: 'Taller de Vestimenta Revolucionaria',
-                descripcion: 'Aprende sobre la moda y vestimenta de 1910',
-                hora: '15:00',
-                artista: 'Diseñadores Históricos'
+             {
+                id: 1,
+                titulo: 'Desfile de prescolar',
+                descripcion: '',
+                hora: '17:30',
+                artista: '',
             },
-            {
-                id: 10,
-                titulo: 'Concierto de Música Revolucionaria',
-                descripcion: 'Canciones que marcaron la época',
-                hora: '20:00',
-                artista: 'Orquesta Típica Mexicana'
-            }
         ],
         '2025-11-20': [
             {
-                id: 11,
-                titulo: 'Día de la Revolución - Acto Cívico',
-                descripcion: 'Ceremonia conmemorativa del 20 de noviembre',
-                hora: '09:00',
-                artista: 'Autoridades Municipales'
+                id: 2,
+                titulo: 'Desfile de la revolución',
+                descripcion: 'invitado especial Horacio Llamas',
+                hora: '08:00',
+                artista: '',
             },
-            {
-                id: 12,
-                titulo: 'Gran Desfile Revolucionario',
-                descripcion: 'Desfile principal con carros alegóricos y participantes',
-                hora: '11:00',
-                artista: 'Escuelas y Organizaciones Civiles'
-            },
-            {
-                id: 13,
-                titulo: 'Festival Gastronómico Revolucionario',
-                descripcion: 'Platillos típicos de la época revolucionaria',
-                hora: '13:00',
-                artista: 'Cocineras Tradicionales'
-            }
+            
         ],
         '2025-11-21': [
             {

@@ -17,7 +17,7 @@ const FeriaDeportiva = () => {
             },
             {
                 id: 2,
-                titulo: 'Coadr5angular de Tocho flag',
+                titulo: 'Cuadrangular de Tocho flag',
                 descripcion: '',
                 hora: '08:00',
                 deporte: 'Tocho flag',
@@ -146,8 +146,8 @@ const FeriaDeportiva = () => {
         ],
         '2025-11-19': [
             {
-                id: 9,
-                titulo: 'Competencia de Lucha Libre',
+                id: 18,
+                titulo: 'Clinica deportiva de básquetbol con Horacio Llamas',
                 descripcion: 'Torneo regional de lucha libre',
                 hora: '18:00',
                 deporte: 'Lucha',
@@ -155,44 +155,129 @@ const FeriaDeportiva = () => {
             }
         ],
         '2025-11-20': [
-            {
-                id: 10,
-                titulo: 'Torneo de Tenis',
-                descripcion: 'Campeonato individual y dobles',
-                hora: '09:00',
-                deporte: 'Tenis',
-                categoria: 'Adulto'
-            }
+            
         ],
         '2025-11-21': [
             {
-                id: 11,
-                titulo: 'Atletismo Veteranos',
-                descripcion: 'Competencias para atletas mayores de 40',
-                hora: '17:00',
-                deporte: 'Atletismo',
-                categoria: 'Veteranos'
+                id: 19,
+                titulo: 'Cuadrangular Fuútbol "Copa Revolución 2025"',
+                descripcion: '',
+                hora: '18:00',
+                deporte: 'Futbol',
+                categoria: ''
             }
         ],
         '2025-11-22': [
             {
-                id: 12,
-                titulo: 'Torneo de Fútbol Final',
-                descripcion: 'Gran final del torneo de fútbol',
-                hora: '16:00',
-                deporte: 'Fútbol',
-                categoria: 'Adulto'
-            }
+                id: 20,
+                titulo: 'Encuentro de Taekwondo',
+                descripcion: '',
+                hora: '08:00',
+                deporte: 'Taekwondo',
+                categoria: ''
+            },
+            {
+                id: 21,
+                titulo: 'Torneo Revolucionario de Frontenis',
+                descripcion: '',
+                hora: '08:00',
+                deporte: 'Frontenis',
+                categoria: ''
+            },
+            {
+                id: 22,
+                titulo: 'Torneo local de tenis',
+                descripcion: '',
+                hora: '08:30',
+                deporte: 'Tenis',
+                categoria: ''
+            },
+            {
+                id: 23,
+                titulo: 'Cuadrangular de Basquetbol varonil 40 y más',
+                descripcion: '',
+                hora: '09:00',
+                deporte: 'Basquetbol',
+                categoria: ''
+            },
+            {
+                id: 24,
+                titulo: 'Crossfit Marvelous',
+                descripcion: '',
+                hora: '09:00',
+                deporte: 'Crossfit',
+                categoria: ''
+            },
+            {
+                id: 25,
+                titulo: 'Torneo de Tocho flag libre',
+                descripcion: '',
+                hora: '10:00',
+                deporte: 'Tocho flag',
+                categoria: ''
+            },
+            {
+                id: 26,
+                titulo: 'Cuadrangular de básquetbol femenil libre',
+                descripcion: '',
+                hora: '10:00',
+                deporte: 'Basquetbol',
+                categoria: ''
+            },
+            {
+                id: 27,
+                titulo: 'Cuadrangular fútbol "Copa Revolución 2025"',
+                descripcion: '',
+                hora: '10:00',
+                deporte: 'Futbol',
+                categoria: ''
+            },
+            {
+                id: 28,
+                titulo: 'Cuadrangular 1era especial de béisbol',
+                descripcion: '',
+                hora: '17:30',
+                deporte: 'Besísbol',
+                categoria: ''
+            },
+
+
+
         ],
         '2025-11-23': [
             {
-                id: 13,
-                titulo: 'Clausura Deportiva',
-                descripcion: 'Ceremonia de clausura y premiación',
-                hora: '18:00',
-                deporte: 'Ceremonia',
-                categoria: 'General'
-            }
+                id: 29,
+                titulo: 'Carrera atlética "de la pista al campo',
+                descripcion: '',
+                hora: '08:00',
+                deporte: '',
+                categoria: ''
+            },
+            {
+                id: 30,
+                titulo: 'Torneo de tocho flag libre',
+                descripcion: '',
+                hora: '10:00',
+                deporte: '',
+                categoria: ''
+            },
+            {
+                id: 31,
+                titulo: 'Cuadrangular municipal de fútbol libre',
+                descripcion: '',
+                hora: '10:00',
+                deporte: '',
+                categoria: ''
+            },
+            {
+                id: 32,
+                titulo: 'Final de sóftbol',
+                descripcion: '',
+                hora: '10:00',
+                deporte: '',
+                categoria: ''
+            },
+            
         ]
     };
 

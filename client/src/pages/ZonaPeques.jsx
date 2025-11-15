@@ -5,164 +5,103 @@ const ZonaPeques = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
-            {
-                id: 1,
-                titulo: 'Inauguración de la Zona Peques',
-                descripcion: 'Bienvenida con payasos y globos',
-                hora: '16:00',
-                artista: 'Payasos Divertidos'
-            }
+           
+             
         ],
         '2025-11-15': [
             {
+                id: 1,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
+            },
+            {
                 id: 2,
-                titulo: 'Teatro de Títeres',
-                descripcion: 'Aventuras mágicas con títeres gigantes',
-                hora: '11:00',
-                artista: 'Compañía Los Títeres Mágicos'
-            },
-            {
-                id: 3,
-                titulo: 'Taller de Pintura Infantil',
-                descripcion: 'Los niños crean su propia obra de arte',
-                hora: '15:00',
-                artista: 'Maestra Colorín'
-            },
-            {
-                id: 4,
-                titulo: 'Show Musical Infantil',
-                descripcion: 'Canciones y bailes para toda la familia',
-                hora: '18:00',
-                artista: 'Grupo Musical Arcoíris'
+                titulo: 'Inauguración Zona Peques que trascienden',
+                descripcion: '',
+                hora: '17:30',
+                artista: ''
             }
+            
         ],
         '2025-11-16': [
             {
-                id: 5,
-                titulo: 'Cuentacuentos Mágico',
-                descripcion: 'Historias fantásticas llenas de aventura',
-                hora: '10:30',
-                artista: 'El Narrador Encantado'
+                id: 3,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
             },
-            {
-                id: 6,
-                titulo: 'Taller de Manualidades',
-                descripcion: 'Creación de figuras con materiales reciclados',
-                hora: '14:00',
-                artista: 'Equipo Eco-Arte'
-            },
-            {
-                id: 7,
-                titulo: 'Espectáculo de Magia',
-                descripcion: 'Trucos de magia sorprendentes para niños',
-                hora: '17:30',
-                artista: 'Mago Fantasía'
-            }
+           
         ],
         '2025-11-17': [
             {
-                id: 8,
-                titulo: 'Obra de Teatro Infantil',
-                descripcion: 'Los Tres Cochinitos - versión musical',
-                hora: '11:00',
-                artista: 'Teatro Infantil Municipal'
+                id: 4,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
             },
-            {
-                id: 9,
-                titulo: 'Taller de Cocina Divertida',
-                descripcion: 'Preparación de postres fáciles para niños',
-                hora: '16:00',
-                artista: 'Chef Pequeñín'
-            }
+            
         ],
         '2025-11-18': [
             {
-                id: 10,
-                titulo: 'Festival de Juegos Tradicionales',
-                descripcion: 'Matarile rile ron, vibora de la mar y más',
-                hora: '15:30',
-                artista: 'Animadores Tradicionales'
+                id: 5,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
             },
-            {
-                id: 11,
-                titulo: 'Cinema Infantil',
-                descripcion: 'Proyección de película familiar',
-                hora: '19:00',
-                artista: 'Cine Familiar'
-            }
+            
         ],
         '2025-11-19': [
             {
-                id: 12,
-                titulo: 'Taller de Ciencias Divertidas',
-                descripcion: 'Experimentos seguros y emocionantes',
-                hora: '10:00',
-                artista: 'Científicos Locos'
-            },
-            {
-                id: 13,
-                titulo: 'Show de Burbujas Gigantes',
-                descripcion: 'Espectáculo visual con burbujas de colores',
+                id: 6,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
                 hora: '17:00',
-                artista: 'El Reino de las Burbujas'
-            }
+                artista: ''
+            },
+            
         ],
         '2025-11-20': [
             {
-                id: 14,
-                titulo: 'Concurso de Disfraces Infantiles',
-                descripcion: 'Los mejores disfraces creativos de los niños',
-                hora: '16:30',
-                artista: 'Jurado Especializado'
+                id: 7,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
             },
-            {
-                id: 15,
-                titulo: 'Baile Infantil',
-                descripcion: 'Música y coreografías para niños',
-                hora: '18:30',
-                artista: 'DJ Pequeños Bailarines'
-            }
+            
         ],
         '2025-11-21': [
             {
-                id: 16,
-                titulo: 'Taller de Jardinería para Niños',
-                descripcion: 'Plantación de semillas en macetas decoradas',
-                hora: '14:00',
-                artista: 'Equipo Verde Infantil'
-            },
-            {
-                id: 17,
-                titulo: 'Espectáculo de Música y Movimiento',
-                descripcion: 'Canciones interactivas con movimientos',
+                id: 8,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
                 hora: '17:00',
-                artista: 'Música en Movimiento'
-            }
+                artista: ''
+            },
         ],
         '2025-11-22': [
             {
-                id: 18,
-                titulo: 'Gran Festival de Talentos Infantiles',
-                descripcion: 'Los niños muestran sus habilidades especiales',
-                hora: '15:00',
-                artista: 'Participantes Especiales'
+                id: 9,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
             },
-            {
-                id: 19,
-                titulo: 'Noche de Karaoke Infantil',
-                descripcion: 'Cantemos juntos nuestras canciones favoritas',
-                hora: '19:30',
-                artista: 'Karaoke Diversión'
-            }
+            
         ],
         '2025-11-23': [
             {
-                id: 20,
-                titulo: 'Clausura Zona Peques',
-                descripcion: 'Gran finale con todos los personajes favoritos',
-                hora: '16:00',
-                artista: 'Elenco Completo Zona Peques'
-            }
+                id: 10,
+                titulo: 'Multisensorial ',
+                descripcion: 'Estimulación dendorial, sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación ...',
+                hora: '17:00',
+                artista: ''
+            },
         ]
     };
 

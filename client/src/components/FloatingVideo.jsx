@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './FloatingVideo.css';
 
-const FloatingVideo = ({ videoUrl, thumbnailUrl, title = "Video de la Feria" }) => {
+const FloatingVideo = ({ videoUrl, thumbnailUrl, title = "Video de la Feria", isYouTube = false }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -238,32 +238,46 @@ const FloatingVideo = ({ videoUrl, thumbnailUrl, title = "Video de la Feria" }) 
                     </>
                   ) : (
                     <>
-                      <video
-                        ref={videoRef}
-                        src={videoUrl}
-                        muted
-                        loop
-                        autoPlay
-                        playsInline
-                        className="video-element-small"
-                        onClick={openFullscreen}
-                      />
+                      {isYouTube ? (
+                        <iframe
+                          src={videoUrl}
+                          title={title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="video-element-small"
+                          onClick={openFullscreen}
+                        />
+                      ) : (
+                        <video
+                          ref={videoRef}
+                          src={videoUrl}
+                          muted
+                          loop
+                          autoPlay
+                          playsInline
+                          className="video-element-small"
+                          onClick={openFullscreen}
+                        />
+                      )}
                       <div className="video-controls-overlay">
-                        <button 
-                          className="play-pause-btn"
-                          onClick={(e) => {e.stopPropagation(); togglePlayPause();}}
-                          title={isPlaying ? "Pausar" : "Reproducir"}
-                        >
-                          {isPlaying ? (
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                            </svg>
-                          ) : (
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          )}
-                        </button>
+                        {!isYouTube && (
+                          <button 
+                            className="play-pause-btn"
+                            onClick={(e) => {e.stopPropagation(); togglePlayPause();}}
+                            title={isPlaying ? "Pausar" : "Reproducir"}
+                          >
+                            {isPlaying ? (
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="#333">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                              </svg>
+                            ) : (
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="#333">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
+                            )}
+                          </button>
+                        )}
                       </div>
                     </>
                   )}
@@ -328,16 +342,27 @@ const FloatingVideo = ({ videoUrl, thumbnailUrl, title = "Video de la Feria" }) 
               </svg>
             </button>
             
-            <video
-              ref={videoRef}
-              src={videoUrl}
-              controls
-              autoPlay
-              className="video-element-fullscreen"
-              onPlay={() => console.log('Video playing')}
-            >
-              Tu navegador no soporta el elemento de video.
-            </video>
+            {isYouTube ? (
+              <iframe
+                src={videoUrl.replace('autoplay=1&mute=1', 'autoplay=1')}
+                title={title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="video-element-fullscreen"
+              />
+            ) : (
+              <video
+                ref={videoRef}
+                src={videoUrl}
+                controls
+                autoPlay
+                className="video-element-fullscreen"
+                onPlay={() => console.log('Video playing')}
+              >
+                Tu navegador no soporta el elemento de video.
+              </video>
+            )}
             
             <div className="video-info">
               <h3 className="video-title-fullscreen">{title}</h3>

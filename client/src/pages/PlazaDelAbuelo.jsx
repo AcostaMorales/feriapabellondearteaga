@@ -5,81 +5,190 @@ const PlazaDelAbuelo = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
-            
+            {
+                id: 1,
+                titulo: 'Inauguración Plaza del Abuelo',
+                descripcion: 'Ceremonia de apertura con autoridades locales y bendición del espacio',
+                hora: '18:00',
+                artista: 'Autoridades Municipales',
+                tipo: 'Inauguración'
+            },
+            {
+                id: 2,
+                titulo: 'Serenata Tradicional',
+                descripcion: 'Música tradicional mexicana bajo las estrellas',
+                hora: '20:00',
+                artista: 'Trío Los Nostálgicos',
+                tipo: 'Musical'
+            }
         ],
         '2025-11-15': [
-           
+            {
+                id: 3,
+                titulo: 'Cuentacuentos del Abuelo',
+                descripcion: 'Historias y leyendas de Pabellón de Arteaga narradas por adultos mayores',
+                hora: '17:00',
+                artista: 'Círculo de Adultos Mayores',
+                tipo: 'Cultural'
+            },
+            {
+                id: 4,
+                titulo: 'Noche de Boleros',
+                descripcion: 'Los mejores boleros de la época dorada interpretados en vivo',
+                hora: '19:30',
+                artista: 'Dúo Romántico Corazón',
+                tipo: 'Musical'
+            }
         ],
         '2025-11-16': [
-            
+            {
+                id: 5,
+                titulo: 'Matinée Familiar',
+                descripcion: 'Actividades recreativas para toda la familia en honor a los abuelos',
+                hora: '16:00',
+                artista: 'Grupo de Animación Familiar',
+                tipo: 'Familiar'
+            },
+            {
+                id: 6,
+                titulo: 'Tarde de Rondallas',
+                descripcion: 'Música tradicional de cine de oro mexicano',
+                hora: '17:00',
+                artista: 'Mariachi Nuevo Milenio',
+                tipo: 'Musical'
+            },
+            {
+                id: 7,
+                titulo: 'Baile de Salón',
+                descripcion: 'Demostración y participación de bailes de salón clásicos',
+                hora: '20:00',
+                artista: 'Academia de Baile Elegancia',
+                tipo: 'Danza'
+            }
         ],
         '2025-11-17': [
             {
-                id: 1,
-                titulo: 'Tarde de rondallas (principales calles)',
-                descripcion: 'Tematica de cine de oro',
+                id: 8,
+                titulo: 'Misa Dominical',
+                descripcion: 'Celebración religiosa en honor a los adultos mayores',
+                hora: '10:00',
+                artista: 'Padre Miguel Hernández',
+                tipo: 'Religioso'
+            },
+            {
+                id: 9,
+                titulo: 'Tarde de Nostalgia',
+                descripción: 'Música de los 60s, 70s y 80s que marcó una generación',
                 hora: '17:00',
-                artista: 'Mariachi Nuevo Milenio',
+                artista: 'Los Veteranos del Rock',
                 tipo: 'Musical'
             }
         ],
         '2025-11-18': [
             {
-                id: 2,
-                titulo: 'Musica en vivo',
-                descripcion: '',
+                id: 10,
+                titulo: 'Taller de Memorias',
+                descripcion: 'Espacio para compartir anécdotas y recuerdos de la comunidad',
+                hora: '16:00',
+                artista: 'Asociación Cultural Memorias',
+                tipo: 'Cultural'
+            },
+            {
+                id: 11,
+                titulo: 'Música en Vivo',
+                descripcion: 'Presentación de artistas locales con repertorio variado',
                 hora: '17:00',
-                artista: '',
-                tipo: ''
+                artista: 'Conjunto Musical Tradición',
+                tipo: 'Musical'
             }
         ],
         '2025-11-19': [
             {
-                id: 3,
-                titulo: 'Tamborazo',
-                descripcion: '',
+                id: 12,
+                titulo: 'Exposición de Fotografías',
+                descripcion: 'Muestra fotográfica de la historia de Pabellón de Arteaga',
+                hora: '15:00',
+                artista: 'Archivo Histórico Municipal',
+                tipo: 'Cultural'
+            },
+            {
+                id: 13,
+                titulo: 'Tamborazo Tradicional',
+                descripcion: 'Música de banda con el sabor tradicional de Aguascalientes',
                 hora: '17:00',
-                artista: '',
-                tipo: ''
+                artista: 'Tamborazo San Miguel',
+                tipo: 'Musical'
             }
         ],
         '2025-11-20': [
             {
-                id: 4,
-                titulo: 'NMusica en vivo',
-                descripcion: '',
+                id: 14,
+                titulo: 'Día de la Revolución - Homenaje',
+                descripcion: 'Ceremonia cívica en memoria de los héroes revolucionarios',
+                hora: '10:00',
+                artista: 'Comité Cívico Municipal',
+                tipo: 'Cívico'
+            },
+            {
+                id: 15,
+                titulo: 'Música Revolucionaria',
+                descripcion: 'Interpretación de corridos y música de la época revolucionaria',
                 hora: '17:00',
-                artista: '',
-                tipo: ''
+                artista: 'Los Corridos de la Patria',
+                tipo: 'Musical'
             }
         ],
         '2025-11-21': [
             {
-                id: 10,
-                titulo: 'Función de Teatro Popular',
-                descripcion: 'Obra teatral con temas regionales',
-                hora: '19:30',
-                artista: 'Grupo Teatral Coahuilense',
-                tipo: 'Teatro'
+                id: 16,
+                titulo: 'Charla: Historias de Vida',
+                descripcion: 'Testimonios de adultos mayores sobre la evolución del pueblo',
+                hora: '16:00',
+                artista: 'Cronistas Locales',
+                tipo: 'Cultural'
+            },
+            {
+                id: 17,
+                titulo: 'Noche de Trova',
+                descripcion: 'Música de trova y canción de protesta de los años dorados',
+                hora: '19:00',
+                artista: 'Trovadores de Aguascalientes',
+                tipo: 'Musical'
             }
         ],
         '2025-11-22': [
             {
-                id: 11,
-                titulo: 'Baile Popular',
-                descripcion: 'Baile tradicional con música en vivo',
-                hora: '20:00',
-                artista: 'Orquesta Los Antiguos',
-                tipo: 'Baile'
+                id: 18,
+                titulo: 'Festival de Talentos Senior',
+                descripcion: 'Presentación de talentos artísticos de adultos mayores',
+                hora: '16:00',
+                artista: 'Participantes Locales',
+                tipo: 'Variado'
+            },
+            {
+                id: 19,
+                titulo: 'Gran Serenata de Clausura',
+                descripcion: 'Presentación especial de cierre con todos los artistas participantes',
+                hora: '19:00',
+                artista: 'Elenco Completo',
+                tipo: 'Musical'
             }
         ],
         '2025-11-23': [
             {
-                id: 12,
-                titulo: 'Gran Concierto de Clausura',
-                descripcion: 'Cierre musical con artistas locales',
-                hora: '21:00',
-                artista: 'Artistas Unidos de Pabellón',
+                id: 20,
+                titulo: 'Misa de Acción de Gracias',
+                descripcion: 'Ceremonia religiosa de agradecimiento por los eventos realizados',
+                hora: '11:00',
+                artista: 'Padre Miguel Hernández',
+                tipo: 'Religioso'
+            },
+            {
+                id: 21,
+                titulo: 'Despedida Musical',
+                descripcion: 'Último concierto de la temporada con música tradicional mexicana',
+                hora: '17:00',
+                artista: 'Mariachi Tradición Mexicana',
                 tipo: 'Musical'
             }
         ]
@@ -120,30 +229,22 @@ const PlazaDelAbuelo = () => {
                         <div className="eventos-lista">
                             {eventos[fecha] && eventos[fecha].length > 0 ? (
                                 eventos[fecha].map(evento => (
-                                    <div key={evento.id} className="evento-item">
-                                        <div className="evento-content">
-                                            <div className="evento-header">
-                                                <h3 className="evento-titulo">{evento.titulo}</h3>
-                                                <span className="evento-hora">{evento.hora}</span>
+                                    <div key={evento.id} className="evento-card">
+                                        <div className="evento-info">
+                                            <div className="evento-hora">
+                                                {evento.hora}
                                             </div>
-                                            <div className="evento-info">
+                                            <div className="evento-detalles">
+                                                <h3 className="evento-titulo">{evento.titulo}</h3>
+                                                <p className="evento-descripcion">{evento.descripcion}</p>
                                                 <div className="evento-meta">
                                                     <span className="evento-artista">{evento.artista}</span>
                                                     {evento.tipo && (
                                                         <span className="evento-tipo">{evento.tipo}</span>
                                                     )}
                                                 </div>
-                                                <p className="evento-descripcion">{evento.descripcion}</p>
                                             </div>
                                         </div>
-                                        <button 
-                                            className="btn-eliminar"
-                                            onClick={() => console.log('Función de eliminación deshabilitada')}
-                                            aria-label="Eliminar evento"
-                                            disabled
-                                        >
-                                            ✕
-                                        </button>
                                     </div>
                                 ))
                             ) : (

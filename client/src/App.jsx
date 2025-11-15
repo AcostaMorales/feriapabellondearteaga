@@ -17,6 +17,7 @@ import LienzoCharro from "./pages/LienzoCharro.jsx";
 import DesfileDelaRevolucion from "./pages/DesfileDelaRevolucion.jsx";
 import VocesDelPueblo from "./pages/VocesDelPueblo.jsx";
 import ZonaPeques from "./pages/ZonaPeques.jsx";
+import ExpoGanadera from "./pages/ExpoGanadera.jsx";
 
 function AppLayout() {
   const location = useLocation();
@@ -52,6 +53,7 @@ function AppLayout() {
           <Route path="/desfiledelarevolucion" element={<DesfileDelaRevolucion />} />
           <Route path="/vocesdelpueblo" element={<VocesDelPueblo />} />
           <Route path="/zonapeques" element={<ZonaPeques />} />
+          <Route path="/expoganadera" element={<ExpoGanadera />} />
         </Routes>
       </main>
       

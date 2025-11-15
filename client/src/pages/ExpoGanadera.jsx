@@ -1,94 +1,73 @@
 import React from 'react';
-import './VocesDelPueblo.css';
+import './ExpoGanadera.css';
 
-const VocesDelPueblo = () => {
+const ExpoGanadera = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
-           
+            
         ],
         '2025-11-15': [
-            {
-                id: 1,
-                titulo: 'Renacidos de pabellón',
-                descripcion:'',
-                hora: '19:00',
-                artista: ''
-            },
             
         ],
         '2025-11-16': [
+            
+        ],
+        '2025-11-17': [
+            
+        ],
+        '2025-11-18': [
+            
+        ],
+        '2025-11-19': [
+            
+        ],
+        '2025-11-20': [
             {
+                id: 1,
+                titulo: 'Expo ganadera',
+                descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo caballos...',
+                hora: '09:00',
+                artista: ''
+            },
+             {
                 id: 2,
-                titulo: 'Marijuana',
-                descripcion: '',
-                hora: '17:00',
+                titulo: 'Inauguración ',
+                descripcion: 'Musica en vivo banda del rancho',
+                hora: '18:00',
                 artista: ''
             },
             
         ],
-        '2025-11-17': [
-            {
-                id: 3,
-                titulo: 'Los aguerridos',
-                descripcion: '',
-                hora: '19:00',
-                artista: ''
-            }
-        ],
-        '2025-11-18': [
-            {
-                id: 4,
-                titulo: 'Los gallardos',
-                descripcion: '',
-                hora: '19:00',
-                artista: ''
-            }
-        ],
-        '2025-11-19': [
-            {
-                id: 9,
-                titulo: 'Mariachi Monumental Gigantes de Ags vs Pichi Macías',
-                descripcion: '',
-                hora: '19:00',
-                artista: ''
-            }
-        ],
-        '2025-11-20': [
-            {
-                id: 10,
-                titulo: 'Cls',
-                descripcion: '',
-                hora: '19:00',
-                artista: ''
-            }
-        ],
         '2025-11-21': [
-            {
-                id: 11,
-                titulo: 'Grupo índigo',
-                descripcion: '',
-                hora: '19:00',
+             {
+                id: 3,
+                titulo: 'Expo ganadera',
+                descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo caballos...',
+                hora: '09:00',
                 artista: ''
-            }
+            },
+            
         ],
         '2025-11-22': [
-            {
-                id: 12,
-                titulo: 'Grupo denso',
-                descripcion: '',
-                hora: '19:00',
+             {
+                id: 4,
+                titulo: 'Expo ganadera',
+                descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo caballos...',
+                hora: '09:00',
                 artista: ''
-            }
+            },
+           
         ],
         '2025-11-23': [
-            {
-                id: 13,
-                titulo: 'Grupo pro activo',
-                descripcion: '',
-                hora: '19:00',
+             {
+                id: 5,
+                titulo: 'Expo ganadera',
+                descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo caballos...',
+                hora: '09:00',
                 artista: ''
-            }
+            },
+            
         ]
     };
 
@@ -111,12 +90,12 @@ const VocesDelPueblo = () => {
     };
 
     return (
-        <div className="voces-container">
+        <div className="expo-ganadera-container">
 
             {/* Título principal */}
             <div className="titulo-section">
-                <h1 className="titulo-principal">Voces del Pueblo</h1>
-                <p className="subtitulo">Programación del 14 al 23 de Noviembre 2025</p>
+                <h1 className="titulo-principal">Expo Ganadera</h1>
+                <p className="subtitulo">Muestra Ganadera Regional - 14 al 23 de Noviembre 2025</p>
             </div>
 
             {/* Sección de eventos por fechas */}
@@ -164,4 +143,4 @@ const VocesDelPueblo = () => {
     );
 };
 
-export default VocesDelPueblo;
+export default ExpoGanadera;

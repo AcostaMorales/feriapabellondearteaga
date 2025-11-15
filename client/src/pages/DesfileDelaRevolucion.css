@@ -59,7 +59,7 @@
   position: relative;
 }
 
-.titulo-section::before {
+.desfile-container .titulo-section::before {
   content: "🇲🇽";
   position: absolute;
   top: 10px;
@@ -138,7 +138,7 @@
   margin-top: 3px;
 }
 
-.fecha-header::after {
+.desfile-container .fecha-header::after {
   content: "⚔️";
   position: absolute;
   right: 15px;
@@ -199,7 +199,7 @@
   position: relative;
 }
 
-.evento-card::before {
+.desfile-container .evento-card::before {
   content: "🎖️";
   position: absolute;
   top: -5px;
@@ -463,9 +463,9 @@
     transform: none;
   }
   
-  .titulo-section::before,
-  .fecha-header::after,
-  .evento-card::before {
+  .desfile-container .titulo-section::before,
+  .desfile-container .fecha-header::after,
+  .desfile-container .evento-card::before {
     animation: none;
   }
   

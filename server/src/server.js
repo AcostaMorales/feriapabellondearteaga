@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import http from 'http';
 import express from 'express';
 
-import app from './App.js';
+import app from './app.js';
 import connectDB from './config/db.js';
 import './config/webpush.js';
 import notificationScheduler from './services/notificationScheduler.js';

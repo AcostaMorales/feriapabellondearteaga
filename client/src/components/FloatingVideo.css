@@ -1,5 +1,6 @@
-/* ===== VIDEO FLOTANTE ===== */
+/* ===== MEJORAS DE VISIBILIDAD ADICIONALES ===== */
 
+/* Asegurar que el video flotante tenga un borde visible */
 .floating-video {
   position: fixed;
   width: 280px;
@@ -10,13 +11,26 @@
   z-index: 1000;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.2);
   user-select: none; /* Prevenir selección de texto durante arrastre */
 }
 
 .floating-video:hover {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mejorar contraste del área de arrastre */
+.drag-handle {
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .floating-video.dragging {
@@ -38,19 +52,8 @@
 
 /* ===== HANDLE DE ARRASTRE ===== */
 
-.drag-handle {
-  width: 100%;
-  height: 25px;
-  background: rgba(0, 0, 0, 0.8);
-  cursor: grab;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px 12px 0 0;
-}
-
 .drag-handle:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
 }
 
 .floating-video.dragging .drag-handle {
@@ -66,12 +69,14 @@
 .drag-indicator span {
   width: 3px;
   height: 3px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .drag-handle:hover .drag-indicator span {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 /* ===== CONTENIDO DEL VIDEO FLOTANTE ===== */
@@ -108,6 +113,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos específicos para iframes de YouTube */
+.video-element-small[src*="youtube.com"],
+.video-element-small[src*="youtu.be"] {
+  width: 100%;
+  height: 160px;
+  border: none;
 }
 
 .play-overlay {
@@ -151,7 +166,7 @@
   position: absolute;
   bottom: 8px;
   left: 8px;
-  opacity: 0;
+  opacity: 0.7;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
@@ -161,11 +176,27 @@
   pointer-events: all;
 }
 
+/* Hacer visible los controles principales siempre */
+.video-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.floating-video:hover .video-controls {
+  opacity: 1;
+}
+
 .play-pause-btn {
   width: 32px;
   height: 32px;
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -173,11 +204,18 @@
   justify-content: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.play-pause-btn svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .play-pause-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* ===== VIDEO MINIMIZADO ===== */
@@ -218,8 +256,8 @@
 .control-btn {
   width: 28px;
   height: 28px;
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -227,21 +265,69 @@
   justify-content: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .control-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo específico para el botón de cerrar */
 .close-btn {
-  background: rgba(220, 38, 38, 0.8);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .close-btn:hover {
-  background: rgba(220, 38, 38, 1);
-  transform: scale(1.1);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.close-btn svg {
+  filter: none;
+}
+
+/* Estilo específico para el botón de minimizar */
+.minimize-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.minimize-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.minimize-btn svg {
+  filter: none;
+}
+
+/* Estilo específico para el botón de pantalla completa */
+.fullscreen-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.fullscreen-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.fullscreen-btn svg {
+  filter: none;
 }
 
 .floating-video.minimized .video-controls {
@@ -313,6 +399,16 @@
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+/* Estilos específicos para iframes de YouTube en pantalla completa */
+.video-element-fullscreen[src*="youtube.com"],
+.video-element-fullscreen[src*="youtu.be"] {
+  width: 100%;
+  height: calc(80vh - 60px);
+  border: none;
+  border-radius: 12px;
 }
 
 .video-info {

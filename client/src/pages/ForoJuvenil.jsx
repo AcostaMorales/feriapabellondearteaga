@@ -5,119 +5,68 @@ const ForoJuvenil = () => {
     // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
     const eventos = {
         '2025-11-14': [
-            {
-                id: 1,
-                titulo: 'Taller de Emprendimiento Digital',
-                descripcion: 'Cómo crear tu startup en la era digital',
-                hora: '16:00',
-                ponente: 'María González',
-                tema: 'Emprendimiento'
-            },
-            {
-                id: 2,
-                titulo: 'Conferencia: Futuro de la IA',
-                descripcion: 'Inteligencia artificial y su impacto en los jóvenes',
-                hora: '18:30',
-                ponente: 'Dr. Roberto Martínez',
-                tema: 'Tecnología'
-            }
+            
         ],
         '2025-11-15': [
-            {
-                id: 3,
-                titulo: 'Mesa Redonda: Medio Ambiente',
-                descripcion: 'Acciones juveniles contra el cambio climático',
-                hora: '15:00',
-                ponente: 'Colectivo Verde Joven',
-                tema: 'Medio Ambiente'
-            }
+            
         ],
         '2025-11-16': [
-            {
-                id: 4,
-                titulo: 'Taller de Liderazgo',
-                descripcion: 'Desarrolla tus habilidades de liderazgo',
-                hora: '10:00',
-                ponente: 'Coach Laura Sánchez',
-                tema: 'Liderazgo'
-            },
-            {
-                id: 5,
-                titulo: 'Charla: Salud Mental',
-                descripcion: 'Bienestar emocional en la juventud',
-                hora: '17:00',
-                ponente: 'Psic. Ana Rodríguez',
-                tema: 'Salud Mental'
-            }
+           
         ],
         '2025-11-17': [
-            {
-                id: 6,
-                titulo: 'Foro de Innovación',
-                descripcion: 'Proyectos innovadores de jóvenes emprendedores',
-                hora: '11:00',
-                ponente: 'Jóvenes Innovadores',
-                tema: 'Innovación'
-            }
+            
         ],
         '2025-11-18': [
-            {
-                id: 7,
-                titulo: 'Taller de Comunicación',
-                descripcion: 'Comunicación efectiva en redes sociales',
-                hora: '16:30',
-                ponente: 'Influencer Carlos López',
-                tema: 'Comunicación'
-            }
+            
         ],
         '2025-11-19': [
             {
-                id: 8,
-                titulo: 'Mesa de Educación',
-                descripcion: 'El futuro de la educación superior',
-                hora: '14:00',
-                ponente: 'Rectores Universitarios',
-                tema: 'Educación'
+                id: 1,
+                titulo: 'Conjunto plata',
+                descripcion: '',
+                hora: '19:00',
+                ponente: '',
+                tema: ''
             }
         ],
         '2025-11-20': [
             {
-                id: 9,
-                titulo: 'Taller de Arte Digital',
-                descripcion: 'Creación artística con herramientas digitales',
-                hora: '15:30',
-                ponente: 'Artista Digital Maya',
-                tema: 'Arte y Cultura'
+                id: 2,
+                titulo: 'LDB Vázquez',
+                descripcion: '',
+                hora: '19:00',
+                ponente: '',
+                tema: ''
             }
         ],
         '2025-11-21': [
             {
-                id: 10,
-                titulo: 'Conferencia de Voluntariado',
-                descripcion: 'Impacto social a través del voluntariado',
-                hora: '17:30',
-                ponente: 'ONG Corazón Solidario',
-                tema: 'Voluntariado'
+                id: 3,
+                titulo: 'Nueva era',
+                descripcion: '',
+                hora: '19:00',
+                ponente: '',
+                tema: ''
             }
         ],
         '2025-11-22': [
             {
-                id: 11,
-                titulo: 'Panel Deportivo Juvenil',
-                descripcion: 'Deporte como herramienta de desarrollo',
-                hora: '16:00',
-                ponente: 'Atletas Olímpicos',
-                tema: 'Deportes'
+                id: 4,
+                titulo: 'Super Sammy',
+                descripcion: '',
+                hora: '19:00',
+                ponente: '',
+                tema: ''
             }
         ],
         '2025-11-23': [
             {
-                id: 12,
-                titulo: 'Ceremonia de Clausura Juvenil',
-                descripcion: 'Reconocimientos y compromisos juveniles',
-                hora: '18:00',
-                ponente: 'Consejo Juvenil',
-                tema: 'Clausura'
+                id: 5,
+                titulo: 'Caldo de brujas',
+                descripcion: '',
+                hora: '19:00',
+                ponente: '',
+                tema: ''
             }
         ]
     };

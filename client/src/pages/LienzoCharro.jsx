@@ -61,13 +61,29 @@ const LienzoCharro = () => {
             }
         ],
         '2025-11-21': [
-           
+           {
+                id: 5,
+                titulo: 'Enanitos toreros de aguascalientes',
+                descripcion: '',
+                hora: '17:00',
+                participante: '',
+                modalidad: ''
+
+            }
         ],
         '2025-11-22': [
             
         ],
         '2025-11-23': [
-           
+           {
+                id: 6,
+                titulo: 'Charreada de gala',
+                descripcion: 'Musica en vivo banda riel nueva era',
+                hora: '15:00',
+                participante: '',
+                modalidad: ''
+
+            }
         ]
     };
 
