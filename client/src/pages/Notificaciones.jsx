@@ -22,6 +22,9 @@ const Notificaciones = () => {
     
     // Limpiar notificaciones expiradas (más de 24 horas)
     cleanExpiredNotifications();
+
+    // Verificar si ya hay una suscripción activa
+    checkExistingSubscription();
   }, []);
 
   const loadNotifications = async () => {
@@ -74,6 +77,35 @@ const Notificaciones = () => {
     setNotificationsEnabled(permission === 'granted' && localEnabled);
   };
 
+  const checkExistingSubscription = async () => {
+    try {
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        return;
+      }
+
+      const registration = await navigator.serviceWorker.ready;
+      const subscription = await registration.pushManager.getSubscription();
+      const deviceId = localStorage.getItem('deviceId');
+
+      console.log('🔍 Verificando suscripción existente...');
+      console.log('Suscripción del navegador:', subscription ? 'Existe' : 'No existe');
+      console.log('DeviceId guardado:', deviceId ? 'Existe' : 'No existe');
+
+      // Si hay suscripción del navegador pero no deviceId, o viceversa, sincronizar
+      if (subscription && !deviceId) {
+        console.log('🔄 Sincronizando deviceId para suscripción existente...');
+        const newDeviceId = 'device-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('deviceId', newDeviceId);
+        
+        // Enviar al servidor
+        await subscribeToNotifications();
+      }
+
+    } catch (error) {
+      console.warn('⚠️ Error verificando suscripción existente:', error);
+    }
+  };
+
   const cleanExpiredNotifications = () => {
     const stored = localStorage.getItem('fairNotifications');
     if (!stored) return;
@@ -104,51 +136,187 @@ const Notificaciones = () => {
       setNotificationPermission(permission);
       
       if (permission === 'granted') {
+        // Suscribirse a push notifications
+        await subscribeToNotifications();
+        
         setNotificationsEnabled(true);
         localStorage.setItem('notificationsEnabled', 'true');
         
-        // Registrar el service worker para push notifications si no está registrado
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
-          const registration = await navigator.serviceWorker.ready;
-          console.log('Service Worker registrado para notificaciones:', registration);
-          
-          // Agregar notificación de bienvenida
-          addNotification({
-            title: '¡Notificaciones activadas!',
-            body: 'Ahora recibirás notificaciones sobre eventos y actualizaciones de la feria.',
-            type: 'success'
-          });
-        }
+        // Agregar notificación de bienvenida
+        addNotification({
+          title: '¡Notificaciones activadas!',
+          body: 'Ahora recibirás notificaciones sobre eventos y actualizaciones de la feria.',
+          type: 'success'
+        });
       } else {
         setNotificationsEnabled(false);
         localStorage.setItem('notificationsEnabled', 'false');
       }
     } catch (error) {
       console.error('Error solicitando permisos:', error);
+      setError('Error activando notificaciones: ' + error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const disableNotifications = () => {
-    setNotificationsEnabled(false);
-    localStorage.setItem('notificationsEnabled', 'false');
-    addNotification({
-      title: 'Notificaciones desactivadas',
-      body: 'Ya no recibirás notificaciones de la aplicación.',
-      type: 'info'
-    });
+  const subscribeToNotifications = async () => {
+    try {
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        throw new Error('Push notifications no soportadas en este navegador');
+      }
+
+      console.log('🔔 Iniciando suscripción a notificaciones push...');
+
+      // Registrar service worker
+      const registration = await navigator.serviceWorker.ready;
+      console.log('✅ Service Worker listo:', registration);
+
+      // Verificar si ya existe una suscripción
+      let subscription = await registration.pushManager.getSubscription();
+      
+      if (!subscription) {
+        console.log('📱 Creando nueva suscripción push...');
+        
+        // Crear nueva suscripción con clave VAPID del servidor
+        subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: 'BJ_9c-A2tYORWHOGMkP_NCHQEM1Hw-fQ2Gwinwspm988HwiNi2QjPNbqPbILAfyA8ZvQH1EbbAKRiYnDj0AZfX0'
+        });
+      } else {
+        console.log('♻️ Usando suscripción existente');
+      }
+
+      console.log('📡 Suscripción creada:', subscription);
+
+      // Generar o recuperar deviceId
+      let deviceId = localStorage.getItem('deviceId');
+      if (!deviceId) {
+        deviceId = 'device-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('deviceId', deviceId);
+      }
+
+      // Preparar datos para enviar al servidor
+      const subscriptionData = {
+        deviceId: deviceId,
+        subscription: {
+          endpoint: subscription.endpoint,
+          keys: {
+            p256dh: subscription.getKey('p256dh') ? btoa(String.fromCharCode(...new Uint8Array(subscription.getKey('p256dh')))) : null,
+            auth: subscription.getKey('auth') ? btoa(String.fromCharCode(...new Uint8Array(subscription.getKey('auth')))) : null
+          }
+        }
+      };
+
+      console.log('📤 Enviando suscripción al servidor:', subscriptionData);
+
+      // Enviar suscripción al servidor
+      const response = await fetch(`${API_BASE}/push/subscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(subscriptionData)
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error del servidor: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ Suscripción enviada al servidor exitosamente:', result);
+      
+    } catch (error) {
+      console.error('❌ Error suscribiéndose a notificaciones:', error);
+      throw error;
+    }
   };
 
-  const enableNotifications = () => {
-    if (notificationPermission === 'granted') {
-      setNotificationsEnabled(true);
-      localStorage.setItem('notificationsEnabled', 'true');
-      addNotification({
-        title: 'Notificaciones activadas',
-        body: 'Volverás a recibir notificaciones de la aplicación.',
-        type: 'success'
+  const unsubscribeFromNotifications = async () => {
+    try {
+      const deviceId = localStorage.getItem('deviceId');
+      if (!deviceId) {
+        console.log('⚠️ No hay deviceId para desuscribir');
+        return;
+      }
+
+      console.log('🔕 Desuscribiendo del servidor...');
+
+      // Desuscribir del servidor
+      const response = await fetch(`${API_BASE}/push/unsubscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ deviceId })
       });
+
+      if (response.ok) {
+        console.log('✅ Desuscripción exitosa del servidor');
+      } else {
+        console.warn('⚠️ Error desuscribiendo del servidor, continuando...');
+      }
+
+      // Desuscribir del navegador
+      if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.ready;
+        const subscription = await registration.pushManager.getSubscription();
+        
+        if (subscription) {
+          await subscription.unsubscribe();
+          console.log('✅ Desuscripción exitosa del navegador');
+        }
+      }
+
+    } catch (error) {
+      console.error('❌ Error desuscribiendo:', error);
+    }
+  };
+
+  const disableNotifications = async () => {
+    setLoading(true);
+    try {
+      // Desuscribir del servidor y navegador
+      await unsubscribeFromNotifications();
+      
+      setNotificationsEnabled(false);
+      localStorage.setItem('notificationsEnabled', 'false');
+      
+      addNotification({
+        title: 'Notificaciones desactivadas',
+        body: 'Te has desuscrito de las notificaciones push.',
+        type: 'info'
+      });
+    } catch (error) {
+      console.error('Error desactivando notificaciones:', error);
+      setError('Error desactivando notificaciones');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const enableNotifications = async () => {
+    if (notificationPermission === 'granted') {
+      setLoading(true);
+      try {
+        // Suscribirse nuevamente
+        await subscribeToNotifications();
+        
+        setNotificationsEnabled(true);
+        localStorage.setItem('notificationsEnabled', 'true');
+        
+        addNotification({
+          title: 'Notificaciones activadas',
+          body: 'Te has suscrito nuevamente a las notificaciones push.',
+          type: 'success'
+        });
+      } catch (error) {
+        console.error('Error activando notificaciones:', error);
+        setError('Error activando notificaciones: ' + error.message);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -214,21 +382,37 @@ const Notificaciones = () => {
     }
   };
 
-  const sendTestNotification = () => {
+  const sendTestNotification = async () => {
     if (notificationsEnabled) {
-      addNotification({
-        title: 'Notificación de prueba',
-        body: 'Esta es una notificación de prueba para verificar que todo funciona correctamente.',
-        type: 'test'
-      });
-
-      // También enviar notificación del navegador si es posible
-      if (Notification.permission === 'granted') {
-        new Notification('Notificación de prueba', {
-          body: 'Esta es una notificación de prueba para verificar que todo funciona correctamente.',
-          icon: '/Icon-192x192.png',
-          badge: '/Icon-192x192.png'
+      try {
+        // Agregar notificación local
+        addNotification({
+          title: 'Notificación de prueba',
+          body: 'Esta es una notificación de prueba local para verificar la funcionalidad.',
+          type: 'test'
         });
+
+        // Enviar notificación del navegador si es posible
+        if (Notification.permission === 'granted') {
+          new Notification('Notificación de prueba', {
+            body: 'Esta es una notificación de prueba del navegador.',
+            icon: '/Icon-192x192.png',
+            badge: '/Icon-192x192.png'
+          });
+        }
+
+        // Verificar si hay suscripción activa
+        const deviceId = localStorage.getItem('deviceId');
+        if (!deviceId) {
+          console.warn('⚠️ No hay deviceId, re-suscribiendo...');
+          await subscribeToNotifications();
+        }
+
+        console.log('✅ Notificación de prueba enviada');
+        
+      } catch (error) {
+        console.error('❌ Error enviando notificación de prueba:', error);
+        setError('Error enviando notificación de prueba');
       }
     }
   };
