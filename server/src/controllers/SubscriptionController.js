@@ -6,13 +6,31 @@ const SubscriptionController = {
   // POST /push/subscribe
   async subscribe(req, res, next) {
     try {
+      console.log('📥 Recibiendo suscripción:', {
+        body: req.body,
+        headers: req.headers['content-type'],
+        userAgent: req.get('user-agent')
+      });
+
       const { deviceId, subscription } = req.body || {};
 
       if (!deviceId || !subscription?.endpoint || !subscription?.keys?.p256dh || !subscription?.keys?.auth) {
+        console.error('❌ Datos de suscripción inválidos:', {
+          deviceId: !!deviceId,
+          endpoint: !!subscription?.endpoint,
+          p256dh: !!subscription?.keys?.p256dh,
+          auth: !!subscription?.keys?.auth
+        });
         return res.status(400).json({ message: 'Invalid subscription data' });
       }
 
-      await Subscription.findOneAndUpdate(
+      console.log('💾 Guardando suscripción en MongoDB:', {
+        deviceId,
+        endpoint: subscription.endpoint.substring(0, 50) + '...',
+        hasKeys: !!subscription.keys
+      });
+
+      const result = await Subscription.findOneAndUpdate(
         { deviceId },
         {
           deviceId,
@@ -24,8 +42,15 @@ const SubscriptionController = {
         { upsert: true, new: true, setDefaultsOnInsert: true }
       );
 
+      console.log('✅ Suscripción guardada exitosamente:', {
+        id: result._id,
+        deviceId: result.deviceId,
+        created: result.createdAt
+      });
+
       return res.status(201).json({ message: 'Subscription saved successfully' });
     } catch (err) {
+      console.error('❌ Error guardando suscripción:', err);
       next(err);
     }
   },
@@ -33,8 +58,27 @@ const SubscriptionController = {
   // POST /push/broadcast
   async broadcast(req, res, next) {
     try {
+      console.log('📢 Iniciando broadcast...');
+      console.log('Request body:', req.body);
+
       // 1) Carga endpoints
       const subs = await Subscription.find({}, { endpoint: 1, keys: 1, deviceId: 1 });
+      console.log(`📱 Suscripciones encontradas en MongoDB: ${subs.length}`);
+      
+      if (subs.length > 0) {
+        console.log('📋 Dispositivos suscritos:', subs.map(s => s.deviceId));
+      }
+
+      if (subs.length === 0) {
+        console.log('⚠️ No hay suscripciones en la base de datos');
+        return res.status(200).json({
+          message: 'No hay suscripciones activas',
+          total: 0,
+          successful: 0,
+          failed: 0,
+          removed: 0
+        });
+      }
 
       // 2) Payload (con defaults)
       const payload = JSON.stringify({
