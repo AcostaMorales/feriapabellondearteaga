@@ -34,7 +34,7 @@ const CuentaRegresiva = ({ fechaLimite }) => {
 
     return (
         <div className="cuenta-regresiva">
-            <h2 className="cuenta-regresiva-titulo">¡La feria comienza en!</h2>
+           
             <div className="contador-grid">
                 <div className="contador-item">
                     <div className="contador-numero">{tiempoRestante.dias}</div>
@@ -53,6 +53,7 @@ const CuentaRegresiva = ({ fechaLimite }) => {
                     <div className="contador-label">Segundos</div>
                 </div>
             </div>
+            <p className="tiempo-mensaje">Hora de México (UTC-6)</p>
         </div>
     );
 };

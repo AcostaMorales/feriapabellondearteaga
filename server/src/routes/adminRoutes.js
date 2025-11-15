@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import adminAuth from '../middlewares/adminAuth.js';
-import { NotificationController } from '../controllers/NotificationController.js';
+import NotificationController from '../controllers/NotificationController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
