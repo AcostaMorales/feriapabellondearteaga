@@ -18,6 +18,7 @@ import DesfileDelaRevolucion from "./pages/DesfileDelaRevolucion.jsx";
 import VocesDelPueblo from "./pages/VocesDelPueblo.jsx";
 import ZonaPeques from "./pages/ZonaPeques.jsx";
 import ExpoGanadera from "./pages/ExpoGanadera.jsx";
+import Notificaciones from "./pages/Notificaciones.jsx";
 
 function AppLayout() {
   const location = useLocation();
@@ -26,8 +27,8 @@ function AppLayout() {
   const isHomePage = location.pathname === '/';
   
   const handleNotificationClick = () => {
-    console.log('Notificación clickeada');
-    // Aquí puedes implementar la lógica de notificaciones
+    // Navegar a la página de notificaciones
+    window.location.href = '/notificaciones';
   };
 
   return (
@@ -54,6 +55,7 @@ function AppLayout() {
           <Route path="/vocesdelpueblo" element={<VocesDelPueblo />} />
           <Route path="/zonapeques" element={<ZonaPeques />} />
           <Route path="/expoganadera" element={<ExpoGanadera />} />
+          <Route path="/notificaciones" element={<Notificaciones />} />
         </Routes>
       </main>
       

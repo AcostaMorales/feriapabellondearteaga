@@ -1,204 +1,334 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import UnsubscribeButton from '../components/UnsubscribeButton';
 import './Notificaciones.css';
 
 const Notificaciones = () => {
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [notificationPermission, setNotificationPermission] = useState(Notification.permission);
   const [notifications, setNotifications] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // Verificar el estado actual de las notificaciones
+    checkNotificationStatus();
+    
+    // Cargar notificaciones desde localStorage
     loadNotifications();
-    // Marcar notificaciones como leídas al entrar
-    markAllAsRead();
+    
+    // Limpiar notificaciones expiradas (más de 24 horas)
+    cleanExpiredNotifications();
   }, []);
 
-  const loadNotifications = async () => {
+  const checkNotificationStatus = () => {
+    const permission = Notification.permission;
+    const localEnabled = localStorage.getItem('notificationsEnabled') === 'true';
+    setNotificationPermission(permission);
+    setNotificationsEnabled(permission === 'granted' && localEnabled);
+  };
+
+  const loadNotifications = () => {
     try {
-      setLoading(true);
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/notifications`);
-      if (!response.ok) {
-        throw new Error('Error al cargar notificaciones');
+      const storedNotifications = localStorage.getItem('fairNotifications');
+      if (storedNotifications) {
+        const parsed = JSON.parse(storedNotifications);
+        setNotifications(parsed);
       }
-      const result = await response.json();
+    } catch (error) {
+      console.error('Error cargando notificaciones:', error);
+    }
+  };
+
+  const saveNotifications = (newNotifications) => {
+    try {
+      localStorage.setItem('fairNotifications', JSON.stringify(newNotifications));
+      setNotifications(newNotifications);
+    } catch (error) {
+      console.error('Error guardando notificaciones:', error);
+    }
+  };
+
+  const cleanExpiredNotifications = () => {
+    const stored = localStorage.getItem('fairNotifications');
+    if (!stored) return;
+
+    try {
+      const notifications = JSON.parse(stored);
+      const now = Date.now();
+      const validNotifications = notifications.filter(notification => {
+        const notificationTime = notification.timestamp;
+        const timeDiff = now - notificationTime;
+        const hoursElapsed = timeDiff / (1000 * 60 * 60);
+        return hoursElapsed < 24; // Mantener solo las de las últimas 24 horas
+      });
+
+      if (validNotifications.length !== notifications.length) {
+        saveNotifications(validNotifications);
+      }
+    } catch (error) {
+      console.error('Error limpiando notificaciones expiradas:', error);
+    }
+  };
+
+  const requestNotificationPermission = async () => {
+    setLoading(true);
+    
+    try {
+      const permission = await Notification.requestPermission();
+      setNotificationPermission(permission);
       
-      // El servidor puede devolver { data: [...] } o directamente [...]
-      let notificationsData;
-      if (result && typeof result === 'object') {
-        // Si tiene propiedad data, usarla; sino usar el objeto completo
-        notificationsData = result.data || result;
+      if (permission === 'granted') {
+        setNotificationsEnabled(true);
+        localStorage.setItem('notificationsEnabled', 'true');
+        
+        // Registrar el service worker para push notifications si no está registrado
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+          const registration = await navigator.serviceWorker.ready;
+          console.log('Service Worker registrado para notificaciones:', registration);
+          
+          // Agregar notificación de bienvenida
+          addNotification({
+            title: '¡Notificaciones activadas!',
+            body: 'Ahora recibirás notificaciones sobre eventos y actualizaciones de la feria.',
+            type: 'success'
+          });
+        }
       } else {
-        notificationsData = result;
+        setNotificationsEnabled(false);
+        localStorage.setItem('notificationsEnabled', 'false');
       }
-      
-      // Asegurar que sea un array
-      const finalData = Array.isArray(notificationsData) ? notificationsData : [];
-      setNotifications(finalData);
-      
-    } catch (err) {
-      setError(err.message);
-      console.error('Error cargando notificaciones:', err);
-      // En caso de error, asegurar que notifications sea un array vacío
-      setNotifications([]);
+    } catch (error) {
+      console.error('Error solicitando permisos:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  const markAllAsRead = async () => {
-    try {
-      await fetch(`${import.meta.env.VITE_API_URL}/notifications/mark-read`, {
-        method: 'PATCH'
+  const disableNotifications = () => {
+    setNotificationsEnabled(false);
+    localStorage.setItem('notificationsEnabled', 'false');
+    addNotification({
+      title: 'Notificaciones desactivadas',
+      body: 'Ya no recibirás notificaciones de la aplicación.',
+      type: 'info'
+    });
+  };
+
+  const enableNotifications = () => {
+    if (notificationPermission === 'granted') {
+      setNotificationsEnabled(true);
+      localStorage.setItem('notificationsEnabled', 'true');
+      addNotification({
+        title: 'Notificaciones activadas',
+        body: 'Volverás a recibir notificaciones de la aplicación.',
+        type: 'success'
       });
-      // Actualizar el estado local
-      localStorage.setItem('lastNotificationCheck', new Date().toISOString());
-    } catch (err) {
-      console.error('Error marcando notificaciones como leídas:', err);
     }
   };
 
-  const deleteNotification = async (id) => {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/notifications/${id}`, {
-        method: 'DELETE'
+  const addNotification = (notificationData) => {
+    const newNotification = {
+      id: Date.now() + Math.random(),
+      ...notificationData,
+      timestamp: Date.now(),
+      read: false
+    };
+
+    const updatedNotifications = [newNotification, ...notifications];
+    saveNotifications(updatedNotifications);
+  };
+
+  const markAsRead = (id) => {
+    const updatedNotifications = notifications.map(notification =>
+      notification.id === id 
+        ? { ...notification, read: true }
+        : notification
+    );
+    saveNotifications(updatedNotifications);
+  };
+
+  const deleteNotification = (id) => {
+    const updatedNotifications = notifications.filter(notification => notification.id !== id);
+    saveNotifications(updatedNotifications);
+  };
+
+  const clearAllNotifications = () => {
+    saveNotifications([]);
+  };
+
+  const sendTestNotification = () => {
+    if (notificationsEnabled) {
+      addNotification({
+        title: 'Notificación de prueba',
+        body: 'Esta es una notificación de prueba para verificar que todo funciona correctamente.',
+        type: 'test'
       });
-      if (response.ok) {
-        setNotifications(prev => prev.filter(n => n._id !== id));
+
+      // También enviar notificación del navegador si es posible
+      if (Notification.permission === 'granted') {
+        new Notification('Notificación de prueba', {
+          body: 'Esta es una notificación de prueba para verificar que todo funciona correctamente.',
+          icon: '/Icon-192x192.png',
+          badge: '/Icon-192x192.png'
+        });
       }
-    } catch (err) {
-      console.error('Error eliminando notificación:', err);
     }
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp);
     const now = new Date();
-    const diff = now - date;
-    
-    const minutes = Math.floor(diff / (1000 * 60));
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const diffInMinutes = Math.floor((now - date) / (1000 * 60));
 
-    if (minutes < 60) {
-      return `Hace ${minutes} minuto${minutes !== 1 ? 's' : ''}`;
-    } else if (hours < 24) {
-      return `Hace ${hours} hora${hours !== 1 ? 's' : ''}`;
-    } else if (days < 7) {
-      return `Hace ${days} día${days !== 1 ? 's' : ''}`;
+    if (diffInMinutes < 60) {
+      return `Hace ${diffInMinutes} minutos`;
+    } else if (diffInMinutes < 1440) {
+      const hours = Math.floor(diffInMinutes / 60);
+      return `Hace ${hours} hora${hours > 1 ? 's' : ''}`;
     } else {
       return date.toLocaleDateString('es-ES', {
-        day: '2-digit',
+        day: 'numeric',
         month: 'short',
-        year: 'numeric'
+        hour: '2-digit',
+        minute: '2-digit'
       });
     }
   };
 
   const getNotificationIcon = (type) => {
     switch (type) {
-      case 'event':
-        return '🎉';
-      case 'update':
-        return '🔄';
-      case 'info':
-        return 'ℹ️';
+      case 'success':
+        return '✅';
       case 'warning':
         return '⚠️';
+      case 'error':
+        return '❌';
+      case 'info':
+        return 'ℹ️';
+      case 'event':
+        return '📅';
+      case 'test':
+        return '🧪';
       default:
-        return '📢';
+        return '🔔';
     }
   };
 
-  if (loading) {
-    return (
-      <div className="notifications-page">
-        <Header />
-        <div className="notifications-container">
-          <div className="notifications-header">
-            <h1>Notificaciones</h1>
-          </div>
-          <div className="loading-state">
-            <div className="loading-spinner"></div>
-            <p>Cargando notificaciones...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="notifications-page">
-        <Header />
-        <div className="notifications-container">
-          <div className="notifications-header">
-            <h1>Notificaciones</h1>
-          </div>
-          <div className="error-state">
-            <p>❌ {error}</p>
-            <button onClick={loadNotifications} className="retry-button">
-              Reintentar
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const unreadCount = notifications.filter(n => !n.read).length;
 
   return (
-    <div className="notifications-page">
-      <Header />
-      <div className="notifications-container">
-        <div className="notifications-header">
-          <h1>Notificaciones</h1>
-          <p className="notifications-count">
-            {Array.isArray(notifications) ? notifications.length : 0} notificación{(Array.isArray(notifications) ? notifications.length : 0) !== 1 ? 'es' : ''}
-          </p>
+    <div className="notificaciones-container">
+      {/* Título principal */}
+      <div className="titulo-section">
+        <h1 className="titulo-principal">Notificaciones</h1>
+        <p className="subtitulo">Gestiona tus notificaciones de la feria</p>
+      </div>
+
+      {/* Control de notificaciones */}
+      <div className="notification-settings">
+        <div className="setting-card">
+          <div className="setting-info">
+            <h3>Notificaciones Push</h3>
+            <p>Recibe actualizaciones sobre eventos y actividades</p>
+            <div className="permission-status">
+              Estado: <span className={`status ${notificationPermission}`}>
+                {notificationPermission === 'granted' ? 'Permitidas' : 
+                 notificationPermission === 'denied' ? 'Denegadas' : 'No configuradas'}
+              </span>
+            </div>
+          </div>
+          
+          <div className="setting-actions">
+            {notificationPermission === 'granted' ? (
+              <div className="toggle-container">
+                <label className="toggle-switch">
+                  <input
+                    type="checkbox"
+                    checked={notificationsEnabled}
+                    onChange={(e) => e.target.checked ? enableNotifications() : disableNotifications()}
+                  />
+                  <span className="toggle-slider"></span>
+                </label>
+              </div>
+            ) : (
+              <button
+                className="enable-btn"
+                onClick={requestNotificationPermission}
+                disabled={loading || notificationPermission === 'denied'}
+              >
+                {loading ? 'Activando...' : 'Activar'}
+              </button>
+            )}
+          </div>
         </div>
 
-        {!Array.isArray(notifications) || notifications.length === 0 ? (
-          <div className="empty-state">
-            <div className="empty-icon">🔔</div>
-            <h3>No tienes notificaciones</h3>
-            <p>Te avisaremos cuando haya algo nuevo</p>
+        {notificationPermission === 'denied' && (
+          <div className="permission-help">
+            <p>
+              <strong>Para activar notificaciones:</strong><br/>
+              1. Ve a la configuración de tu navegador<br/>
+              2. Busca la sección de "Notificaciones" o "Permisos"<br/>
+              3. Permite notificaciones para este sitio
+            </p>
           </div>
-        ) : (
-          <div className="notifications-list">
-            {notifications.map((notification) => (
-              <div 
-                key={notification._id} 
+        )}
+        
+        {notificationsEnabled && (
+          <div className="test-section">
+            <button className="test-btn" onClick={sendTestNotification}>
+              Enviar notificación de prueba
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Lista de notificaciones */}
+      <div className="notifications-section">
+        <div className="section-header">
+          <h2>
+            Notificaciones Recientes
+            {unreadCount > 0 && <span className="unread-badge">{unreadCount}</span>}
+          </h2>
+          {notifications.length > 0 && (
+            <button className="clear-all-btn" onClick={clearAllNotifications}>
+              Limpiar todas
+            </button>
+          )}
+        </div>
+
+        <div className="notifications-list">
+          {notifications.length === 0 ? (
+            <div className="no-notifications">
+              <div className="no-notifications-icon">🔔</div>
+              <h3>No hay notificaciones</h3>
+              <p>Aquí aparecerán las notificaciones que recibas de la feria</p>
+            </div>
+          ) : (
+            notifications.map((notification) => (
+              <div
+                key={notification.id}
                 className={`notification-item ${!notification.read ? 'unread' : ''}`}
+                onClick={() => markAsRead(notification.id)}
               >
                 <div className="notification-icon">
                   {getNotificationIcon(notification.type)}
                 </div>
                 <div className="notification-content">
-                  <h3 className="notification-title">{notification.title}</h3>
-                  <p className="notification-message">{notification.message || notification.body || 'Sin mensaje'}</p>
-                  <div className="notification-meta">
-                    <span className="notification-date">
-                      {formatDate(notification.createdAt)}
-                    </span>
-                    {!notification.read && (
-                      <span className="notification-new">Nuevo</span>
-                    )}
-                  </div>
+                  <h4 className="notification-title">{notification.title}</h4>
+                  <p className="notification-body">{notification.body}</p>
+                  <span className="notification-time">{formatTime(notification.timestamp)}</span>
                 </div>
-                <button 
-                  onClick={() => deleteNotification(notification._id)}
-                  className="delete-button"
-                  aria-label="Eliminar notificación"
+                <button
+                  className="delete-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteNotification(notification.id);
+                  }}
                 >
-                  ×
+                  ✕
                 </button>
               </div>
-            ))}
-          </div>
-        )}
-
-        {/* Botón para desinscribirse */}
-        <UnsubscribeButton />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

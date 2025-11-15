@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import PWAInstall from './PWAInstall';
 import './AppFooter.css';
 
 const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
@@ -117,6 +118,9 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
 
   return (
     <footer className="app-footer">
+      {/* PWA Install Section */}
+      <PWAInstall />
+      
       {/* Carrusel de patrocinadores */}
       {sponsors.length > 0 && (
         <div className="sponsors-carousel">
