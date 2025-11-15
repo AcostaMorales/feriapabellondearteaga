@@ -10,7 +10,7 @@ const Notificaciones = () => {
 
   // API Base URL
   const API_BASE = process.env.NODE_ENV === 'production' 
-    ? 'https://feria-pabellon-server.onrender.com/api' 
+    ? 'https://feriapabellondearteaga.onrender.com/api' 
     : 'http://localhost:10000/api';
 
   useEffect(() => {

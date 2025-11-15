@@ -5,9 +5,9 @@ export const corsOptions = {
             'http://localhost:4173',
             'http://localhost:3000',
             'http://127.0.0.1:5173',
-            'https://feriapabellondearteaga.vercel.app',
+            'https://feriapabellondearteaga.vercel.app', // Vercel deployment
             'https://feriapabellondearteaga.onrender.com', // Cliente en Render
-            'https://feria-pabellon-client.onrender.com', // Si está en otro servicio
+            'https://feria-pabellon-client.onrender.com', // Cliente separado en Render
             process.env.FRONTEND_URL,
             process.env.CLIENT_URL
         ].filter(Boolean);
