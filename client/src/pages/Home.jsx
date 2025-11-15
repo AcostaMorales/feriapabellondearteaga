@@ -49,7 +49,7 @@ const Home = () => {
         },
         {
             title: 'Voces del Pueblo',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389323/teatro_del_pueblo_x5gnmu.png',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389323/voces_del_pueblo_ikzwc7.png',
             route: '/vocesdelpueblo',
             
         },
@@ -82,11 +82,6 @@ const Home = () => {
             title: 'Zona Peques',
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
             route: '/zonapeques',
-        },
-        {
-            title: 'Expo Ganadera',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/plaza_del_abuelo_zp7vqz.png',
-            route: '/expoganadera',
         },
         {
             title: 'Expo Ganadera',
