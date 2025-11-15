@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import adminAuth from '../middlewares/adminAuth.js';
-import NotificationController from '../controllers/NotificationController.js';
+// import NotificationController from '../controllers/NotificationController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,6 +46,8 @@ router.get('/status', adminAuth, (req, res) => {
 });
 
 // === RUTAS DE NOTIFICACIONES ADMIN ===
+// Temporalmente comentadas para solucionar error de despliegue
+/*
 // POST /admin/notifications - Crear notificación
 router.post('/notifications', adminAuth, NotificationController.create);
 
@@ -60,5 +62,6 @@ router.get('/notifications', adminAuth, NotificationController.listAdmin);
 
 // GET /admin/notifications/:id - Obtener notificación por ID
 router.get('/notifications/:id', adminAuth, NotificationController.getById);
+*/
 
 export default router;
