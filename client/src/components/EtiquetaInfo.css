@@ -172,13 +172,42 @@
 .modal-contenido {
   background: white;
   border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh;
-  overflow: auto;                    /* Scroll interno si es muy alto */
-  position: relative;
+  width: 350px;                       /* Ancho automático */
+  max-width: 500px;                  /* Máximo 500px de ancho */
+  height: 400px;                     /* Altura fija de 500px */
+  overflow-y: auto;                  /* Scroll vertical cuando sea necesario */
+  overflow-x: hidden;                /* Ocultar scroll horizontal */
+  position: fixed;                   /* Posición fija para centrado perfecto */
+  top: 50%;                         /* Centrar verticalmente */
+  left: 50%;                        /* Centrar horizontalmente */
+  transform: translate(-50%, -50%);  /* Ajuste perfecto al centro */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   z-index: 2147483647;
+  padding: 0;                        /* Sin padding en el contenedor principal */
+  
+  /* Mejorar apariencia del scroll */
+  scrollbar-width: thin;             /* Firefox */
+  scrollbar-color: #ccc #f0f0f0;     /* Firefox */
+}
+
+/* Personalizar scrollbar para Webkit (Chrome, Safari, Edge) */
+.modal-contenido::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-contenido::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.modal-contenido::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.modal-contenido::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 
 /* ===== BOTÓN PARA CERRAR EL MODAL ===== */
@@ -230,7 +259,7 @@
 
 /* ===== INFORMACIÓN DEL MODAL ===== */
 .modal-info {
-  padding: 20px;
+  padding: 20px 20px 30px 20px;     /* Padding extra en la parte inferior */
 }
 
 /* Estado dentro del modal */
