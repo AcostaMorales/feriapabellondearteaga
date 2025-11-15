@@ -20,6 +20,7 @@ import ZonaPeques from "./pages/ZonaPeques.jsx";
 import ExpoGanadera from "./pages/ExpoGanadera.jsx";
 import Notificaciones from "./pages/Notificaciones.jsx";
 
+
 function AppLayout() {
   const location = useLocation();
   
@@ -56,6 +57,7 @@ function AppLayout() {
           <Route path="/zonapeques" element={<ZonaPeques />} />
           <Route path="/expoganadera" element={<ExpoGanadera />} />
           <Route path="/notificaciones" element={<Notificaciones />} />
+         
         </Routes>
       </main>
       

@@ -1,328 +1,220 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import EtiquetaInfo from '../components/EtiquetaInfo';
 import './TeatroDelPueblo.css';
 
 const TeatroDelPueblo = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+  const [mostrarTodos, setMostrarTodos] = useState(false);
 
-    // Datos de bandas/cantantes - El primer elemento será el del día actual
-    const bandas = [
-        {
-            id: 1,
-            nombre: "El Bebeto",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905831/14nov_wtjheo.jpg", // Placeholder - reemplaza con imagen real
-            fechaPresentacion: "19 Noviembre", 
-            hora: "21:00 hrs",
-            genero: "",
-            descripcion: "",
-            biografia: "Carlos Alberto García Villanueva, artísticamente conocido como El Bebeto, es un cantante y compositor mexicano.​ Grabó su primer material discográfico titulado, Quiero que seas tú en 2010, bajo el sello discográfico de Universal Music.",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 2,
-            nombre: "La firrma",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905838/15nov_wpbtlm.jpg", // Placeholder
-            fechaPresentacion: "15 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 3,
-            nombre: "Inspector",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905835/16nov_sjcdfa.jpg", // Placeholder
-            fechaPresentacion: "16 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 4,
-            nombre: "La fiera",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905841/17nov_rk2xcb.jpg", // Placeholder
-            fechaPresentacion: "17 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 5,
-            nombre: "Tropicalismo apache",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905815/18nov_zktzj7.jpg", // Placeholder
-            fechaPresentacion: "18 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 6,
-            nombre: "Bacilos",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905820/19nov_tsyqll.jpg", // Placeholder
-            fechaPresentacion: "19 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "EL BEBETO nace en Guasave, Sinaloa. En el 2010 graba su primer disco como solista titulado “QUIERO QUE SEAS TÚ”, y participa junto a 3BALLMTY en los temas “Inténtalo” y “De las 12 a las 12”, pertenecientes al disco de los DJ’S. En el 2012 lanza “ESE SOY YO” con el éxito “Lo legal” y en el 2014 “EN TU MIRADA” con: “Lo más interesante”, “No fue necesario” y “No te creas tan importante”. En el 2015, estrena su primer disco con Mariachi titulado “ETERNAMENTE MEXICANO” del que promueve “Cuando tú me besas” y “Besos nuevos”. Este sería el despunte de su carrera dentro de este género. Ha sido nominado al Premio Lo Nuestro. Ganador de varios Premios Billboard de la Música Regional Mexicana. Nominado a Premios Billboard de la Música Latina. Nominado a Premios Bandamax, Premios de la Calle y Latin Grammy. ",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 7,
-            nombre: "Los Acosta",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905818/20nov_aubicd.jpg", // Placeholder
-            fechaPresentacion: "20 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 8,
-            nombre: "Isaías Lucero Los involucrados de Nuevo Leon",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905824/21nov_dpmagg.jpg", // Placeholder
-            fechaPresentacion: "21 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 9,
-            nombre: "Banda corona del rey",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905826/22nov_ccy5ke.jpg", // Placeholder
-            fechaPresentacion: "22 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
-        {
-            id: 10,
-            nombre: "La mafia",
-            imagen: "https://res.cloudinary.com/dbebikryr/image/upload/v1762905829/23nov_r0tbnd.jpg", // Placeholder
-            fechaPresentacion: "16 Noviembre",
-            hora: "21:00 hrs", 
-            genero: "",
-            descripcion: "",
-            biografia: "",
-            redesSociales: {
-                facebook: "#",
-                instagram: "#",
-                youtube: "#"
-            },
-            canciones: [""]
-        },
+  // Función para determinar el estado basado en la fecha
+  const determinarEstado = (fecha) => {
+    // Obtener fecha actual en formato YYYY-MM-DD
+    const hoy = new Date();
+    const añoHoy = hoy.getFullYear();
+    const mesHoy = (hoy.getMonth() + 1).toString().padStart(2, '0');
+    const diaHoy = hoy.getDate().toString().padStart(2, '0');
+    const fechaHoyStr = `${añoHoy}-${mesHoy}-${diaHoy}`;
+    
+    // Comparación directa de strings (más confiable)
+    if (fecha === fechaHoyStr) {
+      return 'activo';
+    } else if (fecha < fechaHoyStr) {
+      return 'expirado';
+    } else {
+      return 'proximo';
+    }
+  };
+
+  // Procesar eventos con sus estados
+  const eventosConEstado = useMemo(() => {
+    // Array de eventos con fechas en lugar de estados
+    const eventosTeatro = [
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905838/15nov_wpbtlm.jpg',
+        titulo: 'La firma',
+        descripcion: 'El Grupo La Firma es una agrupación musical mexicana originaria de la ciudad de San Nicolás de los Garza, Nuevo León, México surgida en el año de 1996, cuando Juan Cárdenas y Adrián González aliaron su talento junto al joven compositor y cantante Luis "Louie" Padilla junto con otros 9 miembros para crear un concepto muy innovador al combinar los ritmos de jazz, norteño, tex-mex, entre otros, con el inconfundible sabor grupero para así obtener un grupo totalmente original: La Firma',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: 'https://maps.google.com/?q=Teatro+del+Pueblo+Pabellon+de+Arteaga',
+        fecha: '2025-11-15' // Hoy - activo
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905835/16nov_sjcdfa.jpg',
+        titulo: 'Inspector',
+        descripcion: 'Inspector es una banda mexicana de rock y ska. Fundada en Noviembre del año 1995 en Monterrey, integraron el auge del ska en México a finales de los años 90;saltaron a la fama en su país en 2001 con su disco Alma en Fuego,que incluyó los temas Amnesia y Amargo adiós​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: 'https://maps.google.com/?q=Teatro+del+Pueblo+Pabellon+de+Arteaga',
+        fecha: '2025-11-16' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905841/17nov_rk2xcb.jpg',
+        titulo: 'La fiera',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-17' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905815/18nov_zktzj7.jpg',
+        titulo: 'Tropicalismo Apcahe de Arturo Ortiz',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-18' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905820/19nov_tsyqll.jpg',
+        titulo: 'Bacilos',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-19' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905818/20nov_aubicd.jpg',
+        titulo: 'Los Acosta',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-20' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905824/21nov_dpmagg.jpg',
+        titulo: 'Isaías Lucero',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-21' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905826/22nov_ccy5ke.jpg',
+        titulo: 'Banda Corona del Rey',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-22' 
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905829/23nov_r0tbnd.jpg',
+        titulo: 'La mafia',
+        descripcion: '​',
+        hora: '8:00 PM',
+        lugar: 'Teatro del Pueblo',
+        enlaceLugar: '',
+        fecha: '2025-11-23' 
+      },
     ];
 
-    // Auto-scroll del carrusel deshabilitado para mejor lectura
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setCurrentSlide((prev) => 
-    //             prev === bandas.length - 1 ? 0 : prev + 1
-    //         );
-    //     }, 5000);
+    return eventosTeatro.map(evento => ({
+      ...evento,
+      estado: determinarEstado(evento.fecha)
+    }));
+  }, []);
 
-    //     return () => clearInterval(interval);
-    // }, [bandas.length]);
+  // Filtrar eventos activos
+  const eventosActivos = eventosConEstado.filter(evento => evento.estado === 'activo');
+  
+  // Eventos no activos para mostrar al expandir
+  const eventosNoActivos = eventosConEstado.filter(evento => evento.estado !== 'activo');
 
-    const handleSlideChange = (index) => {
-        setCurrentSlide(index);
+  // Obtener fecha actual formateada
+  const fechaActual = useMemo(() => {
+    const hoy = new Date();
+    const opciones = { 
+      day: 'numeric', 
+      month: 'long',
+      timeZone: 'America/Mexico_City'
     };
+    return hoy.toLocaleDateString('es-MX', opciones);
+  }, []);
 
-    //const bandaActual = bandas[currentSlide];
+  return (
+    <div className="teatro-del-pueblo">
+      {/* Imagen promocional */}
+      <div className="imagen-promocional">
+        <img 
+          src="https://res.cloudinary.com/dbebikryr/image/upload/v1762905844/promocional_kyss74.jpg" 
+          alt="Teatro del Pueblo - Imagen promocional"
+          className="imagen-hero"
+        />
+      </div>
 
-    return (
-        <div className="teatro-container">
-            {/* Imagen Promocional del Teatro */}
-            <div className="teatro-promocional-container">
-                <img 
-                    src="https://res.cloudinary.com/dbebikryr/image/upload/v1762905844/promocional_kyss74.jpg"
-                    alt="Teatro del Pueblo - Feria de Pabellón de Arteaga" 
-                    className="teatro-imagen-promocional"
-                />
-            </div>
+      {/* Título de la página */}
+      <div className="titulo-pagina">
+        <h1>Teatro del Pueblo</h1>
+      </div>
 
-            {/* Carrusel de Bandas */}
-            <div className="bandas-section">
-                <h2 className="bandas-title">Artistas Invitados</h2>
-                
-                <div className="bandas-carrusel-container">
-                    <div className="bandas-carrusel-wrapper">
-                        <div 
-                            className="bandas-carrusel-track"
-                            style={{ 
-                                transform: `translateX(-${currentSlide * 100}%)` 
-                            }}
-                        >
-                            {bandas.map((banda, index) => (
-                                <div 
-                                    key={banda.id} 
-                                    className="bandas-carrusel-slide"
-                                    onClick={() => handleSlideChange(index)}
-                                >
-                                    <div className="banda-card">
-                                        <img 
-                                            src={banda.imagen} 
-                                            alt={banda.nombre}
-                                            className="banda-imagen"
-                                        />
-                                        
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    
-                    {/* Indicadores del carrusel */}
-                    <div className="bandas-carrusel-indicators">
-                        {bandas.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`banda-indicator ${index === currentSlide ? 'active' : ''}`}
-                                onClick={() => handleSlideChange(index)}
-                                aria-label={`Ver ${bandas[index].nombre}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </div>
+      {/* Fecha del día */}
+      <div className="fecha-actual">
+        <p>Hoy, {fechaActual}</p>
+      </div>
 
-            {/* Información de la Banda Actual 
-            <div className="banda-info-section">
-                <div className="banda-info-container">
-                    <div className="banda-info-header">
-                        <h2 className="banda-info-nombre">{bandaActual.nombre}</h2>
-                        <div className="banda-info-meta">
-                            <span className="banda-info-fecha">
-                                📅 {bandaActual.fechaPresentacion} • ⏰ {bandaActual.hora}
-                            </span>
-                            <span className="banda-info-genero">🎵 {bandaActual.genero}</span>
-                        </div>
-                    </div>
-
-                    <div className="banda-info-content">
-                        <div className="banda-descripcion">
-                            <h3>Sobre el Espectáculo</h3>
-                            <p>{bandaActual.descripcion}</p>
-                        </div>
-
-                        <div className="banda-biografia">
-                            <h3>Biografía</h3>
-                            <p>{bandaActual.biografia}</p>
-                        </div>
-
-                        <div className="banda-canciones">
-                            <h3>Canciones Populares</h3>
-                            <ul className="canciones-lista">
-                                {bandaActual.canciones.map((cancion, index) => (
-                                    <li key={index} className="cancion-item">
-                                        🎶 {cancion}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="banda-redes">
-                            <h3>Síguelos en Redes Sociales</h3>
-                            <div className="redes-sociales">
-                                <a 
-                                    href={bandaActual.redesSociales.facebook} 
-                                    className="red-social facebook"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    📘 Facebook
-                                </a>
-                                <a 
-                                    href={bandaActual.redesSociales.instagram} 
-                                    className="red-social instagram"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    📷 Instagram
-                                </a>
-                                <a 
-                                    href={bandaActual.redesSociales.youtube} 
-                                    className="red-social youtube"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    📺 YouTube
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*}
-
-            {/* Información Adicional del Teatro */}
-            <div className="teatro-info-adicional">
-                <div className="teatro-info-card">
-                    <h3>Información del Teatro</h3>
-                    <div className="teatro-detalles">
-                        <p><strong>📍 Ubicación:</strong> Centro de la Feria, Pabellón de Arteaga</p>
-                        <p><strong>🪑 Capacidad:</strong> 5,000 personas</p>
-                        <p><strong>🎫 Entrada:</strong> Libre</p>
-                        <p><strong>⏰ Horarios:</strong> Funciones desde las 19:00 hrs</p>
-                    </div>
-                </div>
-            </div>
+      {/* Eventos activos */}
+      {eventosActivos.length > 0 ? (
+        <div className="eventos-activos">
+          <h2>🎭 Hoy en el Teatro</h2>
+          <div className="contenedor-etiquetas">
+            {eventosActivos.map((evento, index) => (
+              <EtiquetaInfo
+                key={`activo-${index}`}
+                imagen={evento.imagen}
+                titulo={evento.titulo}
+                descripcion={evento.descripcion}
+                hora={evento.hora}
+                lugar={evento.lugar}
+                enlaceLugar={evento.enlaceLugar}
+                estado={evento.estado}
+              />
+            ))}
+          </div>
         </div>
-    );
+      ) : (
+        <div className="sin-eventos-activos">
+          <p>😴 No hay funciones programadas para hoy</p>
+        </div>
+      )}
+
+      {/* Sección para ver programación completa */}
+      <div className="programacion-completa">
+        <p className="texto-programacion">Mira la programación completa</p>
+        <button 
+          className="boton-ver-todo"
+          onClick={() => setMostrarTodos(!mostrarTodos)}
+        >
+          {mostrarTodos ? 'Ocultar' : 'Ver todo'}
+        </button>
+      </div>
+
+      {/* Eventos expirados y próximos */}
+      {mostrarTodos && eventosNoActivos.length > 0 && (
+        <div className="eventos-programacion">
+          <h2>📅 Programación Completa</h2>
+          <div className="contenedor-etiquetas">
+            {eventosNoActivos
+              .sort((a, b) => new Date(b.fecha) - new Date(a.fecha)) // Ordenar por fecha descendente
+              .map((evento, index) => (
+                <EtiquetaInfo
+                  key={`programacion-${index}`}
+                  imagen={evento.imagen}
+                  titulo={evento.titulo}
+                  descripcion={evento.descripcion}
+                  hora={evento.hora}
+                  lugar={evento.lugar}
+                  enlaceLugar={evento.enlaceLugar}
+                  estado={evento.estado}
+                />
+              ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default TeatroDelPueblo;

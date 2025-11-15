@@ -188,6 +188,15 @@
     bottom: 50%;
     transform: translateY(50%);
 }
+/* Normaliza logos especiales (Teatro del Pueblo y Coronación de Reina) */
+.logo-evento {
+    height: 170px;       /* Ajusta aquí la altura visual deseada */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;      /* Centra la imagen si es necesario */
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
