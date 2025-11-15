@@ -1,21 +1,21 @@
 // routes/pushRoutes.js
 import { Router } from 'express';
-import SimpleSubscriptionController from '../controllers/SimpleSubscriptionController.js';
+import SubscriptionController from '../controllers/SubscriptionController.js';
 import adminAuth from '../middlewares/adminAuth.js';
 
 const router = Router();
 
 // Público
-router.post('/subscribe', SimpleSubscriptionController.subscribe);
+router.post('/subscribe', SubscriptionController.subscribe);
 
 // Admin (requiere autenticación)
-router.post('/broadcast', adminAuth, SimpleSubscriptionController.broadcast);
-router.get('/subscriptions', adminAuth, SimpleSubscriptionController.listSubscriptions);
+router.post('/broadcast', adminAuth, SubscriptionController.broadcast);
+router.get('/subscriptions', adminAuth, SubscriptionController.listSubscriptions);
 
 // --- Opcionales ---
-router.post('/unsubscribe', SimpleSubscriptionController.unsubscribe);
-router.delete('/unsubscribe/:deviceId', SimpleSubscriptionController.unsubscribeByDevice);
-router.post('/touch', SimpleSubscriptionController.touch);
-router.post('/to-device', adminAuth, SimpleSubscriptionController.sendToDevice);
+router.post('/unsubscribe', SubscriptionController.unsubscribe);
+router.delete('/unsubscribe/:deviceId', SubscriptionController.unsubscribeByDevice);
+router.post('/touch', SubscriptionController.touch);
+router.post('/to-device', adminAuth, SubscriptionController.sendToDevice);
 
 export default router;
