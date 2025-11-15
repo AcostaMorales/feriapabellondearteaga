@@ -6,6 +6,8 @@ export const corsOptions = {
             'http://localhost:3000',
             'http://127.0.0.1:5173',
             'https://feriapabellondearteaga.vercel.app',
+            'https://feriapabellondearteaga.onrender.com', // Cliente en Render
+            'https://feria-pabellon-client.onrender.com', // Si está en otro servicio
             process.env.FRONTEND_URL,
             process.env.CLIENT_URL
         ].filter(Boolean);
@@ -15,7 +17,12 @@ export const corsOptions = {
         // Permitir requests sin origin (Postman, etc)
         if (!origin) return callback(null, true);
         
-        if (allowedOrigins.includes(origin)) {
+        // Verificar si el origin está en la lista de permitidos
+        const isAllowed = allowedOrigins.includes(origin) || 
+                         (origin && origin.includes('onrender.com')) || // Permitir subdominios de Render
+                         (origin && origin.includes('vercel.app'));     // Permitir subdominios de Vercel
+        
+        if (isAllowed) {
             console.log(`✅ CORS Allowed for: ${origin}`);
             callback(null, true);
         } else {
