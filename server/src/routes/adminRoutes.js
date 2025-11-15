@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import adminAuth from '../middlewares/adminAuth.js';
-// import NotificationController from '../controllers/NotificationController.js';
+import SimpleNotificationController from '../controllers/SimpleNotificationController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,22 +46,19 @@ router.get('/status', adminAuth, (req, res) => {
 });
 
 // === RUTAS DE NOTIFICACIONES ADMIN ===
-// Temporalmente comentadas para solucionar error de despliegue
-/*
 // POST /admin/notifications - Crear notificación
-router.post('/notifications', adminAuth, NotificationController.create);
+router.post('/notifications', adminAuth, SimpleNotificationController.create);
 
 // PUT /admin/notifications/:id - Actualizar notificación
-router.put('/notifications/:id', adminAuth, NotificationController.update);
+router.put('/notifications/:id', adminAuth, SimpleNotificationController.update);
 
 // DELETE /admin/notifications/:id - Eliminar notificación
-router.delete('/notifications/:id', adminAuth, NotificationController.remove);
+router.delete('/notifications/:id', adminAuth, SimpleNotificationController.remove);
 
 // GET /admin/notifications - Listar notificaciones (admin)
-router.get('/notifications', adminAuth, NotificationController.listAdmin);
+router.get('/notifications', adminAuth, SimpleNotificationController.listAdmin);
 
 // GET /admin/notifications/:id - Obtener notificación por ID
-router.get('/notifications/:id', adminAuth, NotificationController.getById);
-*/
+router.get('/notifications/:id', adminAuth, SimpleNotificationController.getById);
 
 export default router;

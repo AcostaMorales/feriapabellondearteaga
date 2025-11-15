@@ -1,17 +1,14 @@
 // routes/notificationRoutes.js
 import { Router } from 'express';
-// import NotificationController from '../controllers/NotificationController.js';
+import SimpleNotificationController from '../controllers/SimpleNotificationController.js';
 
 const router = Router();
 
 /** Rutas públicas para notificaciones */
-// Temporalmente comentadas para solucionar error de despliegue
-/*
-router.get('/', NotificationController.listPublic);
-router.get('/has-new', NotificationController.hasNew);
-router.get('/unread-count', NotificationController.getUnreadCount);
-router.patch('/mark-read', NotificationController.markAllAsRead);
-router.delete('/:id', NotificationController.deleteNotification);
-*/
+router.get('/', SimpleNotificationController.listPublic);
+router.get('/has-new', SimpleNotificationController.hasNew);
+router.get('/unread-count', SimpleNotificationController.getUnreadCount);
+router.patch('/mark-read', SimpleNotificationController.markAllAsRead);
+router.delete('/:id', SimpleNotificationController.deleteNotification);
 
 export default router;
