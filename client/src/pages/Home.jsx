@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavigationGrid from '../components/NavigationGrid.jsx';
 import HeroVideo from '../components/HeroVideo.jsx';
 import PromoCarousel from '../components/PromoCarousel.jsx';
+import PDFAnnouncement from '../components/PDFAnnouncement.jsx';
 import './Home.css';
 
 const Home = () => {
+    const [showAnnouncement, setShowAnnouncement] = useState(true);
+
+    // Configuración del anuncio con imagen personalizada
+    const announcementImage = 'https://res.cloudinary.com/dbebikryr/image/upload/v1763151519/Mensaje_presidenta_mptszs.png';
+
+    // Función para cerrar el anuncio
+    const handleCloseAnnouncement = () => {
+        setShowAnnouncement(false);
+    };
     // Array de imágenes promocionales para el carrusel
     const promocionalImages = [
         {
@@ -94,6 +104,18 @@ const Home = () => {
 
     return (
         <div className="home-container">
+            {/* Anuncio con imagen personalizada */}
+            {showAnnouncement && (
+                <PDFAnnouncement
+                    pdfUrl={announcementImage}
+                    isImage={true}
+                    duration={8000}
+                    showCloseButton={true}
+                    title="¡Bienvenido a la Feria de Pabellon de Arteaga 2025!"
+                    onClose={handleCloseAnnouncement}
+                />
+            )}
+
             {/* Video Hero en la parte superior */}
             <HeroVideo 
                 videoUrl="https://www.youtube.com/embed/7OFjFb2iePU?autoplay=1&mute=1&loop=1&playlist=7OFjFb2iePU"

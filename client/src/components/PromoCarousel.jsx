@@ -5,6 +5,11 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
 
+  // Función para abrir imagen completa
+  const handleImageClick = (imageUrl) => {
+    window.open(imageUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+  };
+
   // Función para ir a la siguiente imagen
   const nextSlide = useCallback(() => {
     setCurrentSlide(prev => (prev + 1) % images.length);
@@ -54,6 +59,9 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
                 alt={image.alt || `Promocional ${index + 1}`}
                 className="promo-carousel-image"
                 loading={index === 0 ? "eager" : "lazy"}
+                onClick={() => handleImageClick(image.url)}
+                style={{ cursor: 'pointer' }}
+                title="Haz clic para ver imagen completa"
               />
               
             </div>
