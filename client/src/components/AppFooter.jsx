@@ -53,15 +53,7 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
       label: 'Inicio', 
       route: '/'
     },
-    { 
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
-      ), 
-      label: 'Eventos', 
-      route: '/eventos'
-    },
+    
     { 
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -70,6 +62,15 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
       ), 
       label: 'Mapa', 
       route: 'https://view.genially.com/6913fa88c898b013b0b39c94/interactive-content-mapa-interactivo'
+    },
+    { 
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c1.1 0 2 .9 2 2v1h3c1.1 0 2 .9 2 2v11c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3V4c0-1.1.9-2 2-2zm0 2c-.6 0-1 .4-1 1v1h2V5c0-.6-.4-1-1-1zm6 15V7H6v12h12zm-9-9h6v2H9v-2zm0 3h6v2H9v-2z"/>
+        </svg>
+      ), 
+      label: 'Notificaciones', 
+      route: '/notificaiones'
     },
     
   ];
