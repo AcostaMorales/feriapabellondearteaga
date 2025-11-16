@@ -29,7 +29,7 @@ const TeatroBicentenario = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosBicentenario = [
       {
-        imagen: 'https://via.placeholder.com/300x200/8B0000/white?text=Coronación+Reina',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Elección y Coronación de la Reina FRR2025',
         descripcion: 'Ceremonia especial de elección y coronación de la Reina de la Feria Regional de la Raza 2025, acompañada por la prestigiosa Orquesta Sinfónica de Aguascalientes.',
         hora: '8:00 PM',
@@ -38,8 +38,8 @@ const TeatroBicentenario = () => {
         fecha: '2025-11-14'
       },
       {
-        imagen: 'https://via.placeholder.com/300x200/4B0082/white?text=Ballet+Bali+Hai',
-        titulo: 'Teatro Bicentenari Ballet Bali Hai',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Teatro Bicentenario Ballet Bali Hai',
         descripcion: '',
         hora: '7:00 PM',
         lugar: 'Teatro Bicentenario',
@@ -47,7 +47,7 @@ const TeatroBicentenario = () => {
         fecha: '2025-11-15'
       },
       {
-        imagen: 'https://via.placeholder.com/300x200/FF4500/white?text=Danza+Folklórica',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Ballet municipal de danza folklorico izkaltékatl, alternando con el grupo de danza folklórica kan ometeotl',
         descripcion: '',
         hora: '7:00 PM',
@@ -56,7 +56,7 @@ const TeatroBicentenario = () => {
         fecha: '2025-11-22'
       },
       {
-        imagen: 'https://via.placeholder.com/300x200/228B22/white?text=Danza+Ehecatl',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Grupo de danza folklórica ehecatl de pabellón de arteaga, alternando con el grupo de danza folklórica metsi nei ',
         descripcion: '',
         hora: '7:00 PM',

@@ -61,6 +61,7 @@
   flex-direction: column;           /* Título → descripción → hora/lugar */
   justify-content: flex-start;      /* Contenido más compacto */
   overflow: hidden;
+  min-width: 60%;
 }
 
 /* ===== TITULO ===== */
@@ -75,7 +76,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   line-clamp: 2;
   -webkit-box-orient: vertical;
 }
