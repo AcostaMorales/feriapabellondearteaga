@@ -1,160 +1,229 @@
-import React from 'react';
-import './ForoJuvenil.css';
+import React, { useState, useMemo } from 'react';
+import EtiquetaInfo from '../components/EtiquetaInfo';
+import '../styles/PaginasEventos.css';
 
 const ForoJuvenil = () => {
-    // Array de eventos organizados por fechas (14-23 noviembre) - HARDCODEADOS
-    const eventos = {
-        '2025-11-14': [
-            
-        ],
-        '2025-11-15': [
-            
-        ],
-        '2025-11-16': [
-           
-        ],
-        '2025-11-17': [
-            
-        ],
-        '2025-11-18': [
-            
-        ],
-        '2025-11-19': [
-            {
-                id: 1,
-                titulo: 'Conjunto plata',
-                descripcion: '',
-                hora: '19:00',
-                ponente: '',
-                tema: ''
-            }
-        ],
-        '2025-11-20': [
-            {
-                id: 2,
-                titulo: 'LDB Vázquez',
-                descripcion: '',
-                hora: '19:00',
-                ponente: '',
-                tema: ''
-            }
-        ],
-        '2025-11-21': [
-            {
-                id: 3,
-                titulo: 'Nueva era',
-                descripcion: '',
-                hora: '19:00',
-                ponente: '',
-                tema: ''
-            }
-        ],
-        '2025-11-22': [
-            {
-                id: 4,
-                titulo: 'Super Sammy',
-                descripcion: '',
-                hora: '19:00',
-                ponente: '',
-                tema: ''
-            }
-        ],
-        '2025-11-23': [
-            {
-                id: 5,
-                titulo: 'Caldo de brujas',
-                descripcion: '',
-                hora: '19:00',
-                ponente: '',
-                tema: ''
-            }
-        ]
-    };
+  const [mostrarTodos, setMostrarTodos] = useState(false);
 
-    const fechas = [
-        { fecha: '2025-11-14', dia: 'Jueves 14', nombre: 'Noviembre' },
-        { fecha: '2025-11-15', dia: 'Viernes 15', nombre: 'Noviembre' },
-        { fecha: '2025-11-16', dia: 'Sábado 16', nombre: 'Noviembre' },
-        { fecha: '2025-11-17', dia: 'Domingo 17', nombre: 'Noviembre' },
-        { fecha: '2025-11-18', dia: 'Lunes 18', nombre: 'Noviembre' },
-        { fecha: '2025-11-19', dia: 'Martes 19', nombre: 'Noviembre' },
-        { fecha: '2025-11-20', dia: 'Miércoles 20', nombre: 'Noviembre' },
-        { fecha: '2025-11-21', dia: 'Jueves 21', nombre: 'Noviembre' },
-        { fecha: '2025-11-22', dia: 'Viernes 22', nombre: 'Noviembre' },
-        { fecha: '2025-11-23', dia: 'Sábado 23', nombre: 'Noviembre' }
+  // Función para determinar el estado basado en la fecha
+  const determinarEstado = (fecha) => {
+    // Obtener fecha actual en formato YYYY-MM-DD
+    const hoy = new Date();
+    const añoHoy = hoy.getFullYear();
+    const mesHoy = (hoy.getMonth() + 1).toString().padStart(2, '0');
+    const diaHoy = hoy.getDate().toString().padStart(2, '0');
+    const fechaHoyStr = `${añoHoy}-${mesHoy}-${diaHoy}`;
+    
+    // Comparación directa de strings (más confiable)
+    if (fecha === fechaHoyStr) {
+      return 'activo';
+    } else if (fecha < fechaHoyStr) {
+      return 'expirado';
+    } else {
+      return 'proximo';
+    }
+  };
+
+  // Procesar eventos con sus estados
+  const eventosConEstado = useMemo(() => {
+    // Array de eventos con fechas en lugar de estados
+    const eventosJuveniles = [
+        {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Torneo de Box Dualmeet',
+        descripcion: '',
+        hora: '8:00 AM',
+        lugar: 'Foro Juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: 'https://maps.google.com/?q=Centro+Deportivo+Pabellon+de+Arteaga',
+        fecha: '2025-11-15'
+      },
+        {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Torneo de Ajedrez',
+        descripcion: '',
+        hora: '8:00 AM',
+        lugar: 'Foro Juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: 'https://maps.google.com/?q=Casa+Cultura+Pabellon+de+Arteaga',
+        fecha: '2025-11-16'
+      },
+        {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Carrera de carros sin motor',
+        descripcion: '',
+        hora: '7:00 PM',
+        lugar: 'Foro juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: '',
+        fecha: '2025-11-17'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Exhibición de tablas rítmicas (CECYTEA Pabellón de Arteaga)',
+        descripcion: '',
+        hora: '5:00 PM',
+        lugar: 'Foro juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: '',
+        fecha: '2025-11-18'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Master class Zumba',
+        descripcion: '',
+        hora: '6:00 PM',
+        lugar: 'Foro juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: '',
+        fecha: '2025-11-18'
+      },
+        {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Conjunto Plata',
+        descripcion: '',
+        hora: '7:00 PM',
+        lugar: 'Foro juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: '',
+        fecha: '2025-11-19'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'LDB Vázquez',
+        descripcion: '',
+        hora: '7:00 PM',
+        lugar: 'Foro Juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: 'https://maps.google.com/?q=Foro+Juvenil+Pabellon+de+Arteaga',
+        fecha: '2025-11-20'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Nueva Era',
+        descripcion: '',
+        hora: '7:00 PM',
+        lugar: 'Foro Juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: 'https://maps.google.com/?q=Foro+Juvenil+Pabellon+de+Arteaga',
+        fecha: '2025-11-21'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Super Sammy',
+        descripcion: '',
+        hora: '7:00 PM',
+        lugar: 'Foro Juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: 'https://maps.google.com/?q=Foro+Juvenil+Pabellon+de+Arteaga',
+        fecha: '2025-11-22'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Caldo de brujas',
+        descripcion: '',
+        hora: '7:00 PM',
+        lugar: 'Foro juvenil explanada de los Símbolos Patrios',
+        enlaceLugar: '',
+        fecha: '2025-11-23'
+      },
     ];
 
-    
+    return eventosJuveniles.map(evento => ({
+      ...evento,
+      estado: determinarEstado(evento.fecha)
+    }));
+  }, []);
 
-    // Función para eliminar evento - DESHABILITADA
-    // const eliminarEvento = (fecha, eventoId) => {
-    //     // Función deshabilitada - eventos hardcodeados
-    //     console.log('Función de eliminación deshabilitada para eventos hardcodeados');
-    // };
+  // Filtrar eventos activos
+  const eventosActivos = eventosConEstado.filter(evento => evento.estado === 'activo');
+  
+  // Eventos no activos para mostrar al expandir
+  const eventosNoActivos = eventosConEstado.filter(evento => evento.estado !== 'activo');
 
-    return (
-        <div className="foro-juvenil-container">
+  // Obtener fecha actual formateada
+  const fechaActual = useMemo(() => {
+    const hoy = new Date();
+    const opciones = { 
+      day: 'numeric', 
+      month: 'long',
+      timeZone: 'America/Mexico_City'
+    };
+    return hoy.toLocaleDateString('es-MX', opciones);
+  }, []);
 
-            {/* Título principal */}
-            <div className="titulo-section">
-                <h1 className="titulo-principal">Foro Juvenil</h1>
-                <p className="subtitulo">Programación del 14 al 23 de Noviembre 2025</p>
-            </div>
+  return (
+    <div className="pagina-eventos foro-juvenil">
+      {/* Imagen promocional */}
+      <div className="imagen-promocional">
+        <img 
+          src="/src/assets/images/foro-juvenil/portada.jpg" 
+          alt="Foro Juvenil - Imagen promocional"
+          className="imagen-hero"
+        />
+      </div>
 
-            {/* Sección de eventos por fechas */}
-            <div className="eventos-contenedor">
-                {fechas.map(({ fecha, dia, nombre }) => (
-                    <div key={fecha} className="fecha-seccion">
-                        <div className="fecha-header">
-                            <h2 className="fecha-titulo">{dia}</h2>
-                            <span className="fecha-mes">{nombre}</span>
-                        </div>
+      {/* Título de la página */}
+      <div className="titulo-pagina">
+        <h1>Foro Juvenil</h1>
+      </div>
 
-                        {/* Lista de eventos para esta fecha */}
-                        <div className="eventos-lista">
-                            {eventos[fecha].length > 0 ? (
-                                eventos[fecha].map(evento => (
-                                    <div key={evento.id} className="evento-card">
-                                        <div className="evento-info">
-                                            <div className="evento-hora">{evento.hora}</div>
-                                            <div className="evento-detalles">
-                                                <h3 className="evento-titulo">{evento.titulo}</h3>
-                                                <div className="evento-meta">
-                                                    <span className="evento-ponente">{evento.ponente}</span>
-                                                    {evento.tema && (
-                                                        <span className="evento-tema">{evento.tema}</span>
-                                                    )}
-                                                </div>
-                                                <p className="evento-descripcion">{evento.descripcion}</p>
-                                            </div>
-                                        </div>
-                                        <button 
-                                            className="btn-eliminar"
-                                            onClick={() => console.log('Función de eliminación deshabilitada')}
-                                            aria-label="Eliminar evento"
-                                            disabled
-                                        >
-                                            ✕
-                                        </button>
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="sin-eventos">
-                                    <p>No hay eventos juveniles programados para esta fecha</p>
-                                </div>
-                            )}
-                        </div>
+      {/* Fecha del día */}
+      <div className="fecha-actual">
+        <p>Hoy, {fechaActual}</p>
+      </div>
 
-                        {/* Formulario deshabilitado - eventos hardcodeados */}
-                        {/* <FormularioEventoJuvenil 
-                            fecha={fecha} 
-                            onAgregarEvento={agregarEvento} 
-                        /> */}
-                    </div>
-                ))}
-            </div>
+      {/* Eventos activos */}
+      {eventosActivos.length > 0 ? (
+        <div className="eventos-activos">
+          <h2>🎵 Hoy en el Foro</h2>
+          <div className="contenedor-etiquetas">
+            {eventosActivos.map((evento, index) => (
+              <EtiquetaInfo
+                key={`activo-${index}`}
+                imagen={evento.imagen}
+                titulo={evento.titulo}
+                descripcion={evento.descripcion}
+                hora={evento.hora}
+                lugar={evento.lugar}
+                enlaceLugar={evento.enlaceLugar}
+                estado={evento.estado}
+              />
+            ))}
+          </div>
         </div>
-    );
+      ) : (
+        <div className="sin-eventos-activos">
+          <p>😴 No hay eventos programados para hoy</p>
+        </div>
+      )}
+
+      {/* Sección para ver programación completa */}
+      <div className="programacion-completa">
+        <p className="texto-programacion">Mira la programación completa</p>
+        <button 
+          className="boton-ver-todo"
+          onClick={() => setMostrarTodos(!mostrarTodos)}
+        >
+          {mostrarTodos ? 'Ocultar' : 'Ver todo'}
+        </button>
+      </div>
+
+      {/* Eventos expirados y próximos */}
+      {mostrarTodos && eventosNoActivos.length > 0 && (
+        <div className="eventos-programacion">
+          <h2>📅 Programación Completa</h2>
+          <div className="contenedor-etiquetas">
+            {eventosNoActivos
+              .sort((a, b) => new Date(b.fecha) - new Date(a.fecha)) // Ordenar por fecha descendente
+              .map((evento, index) => (
+                <EtiquetaInfo
+                  key={`programacion-${index}`}
+                  imagen={evento.imagen}
+                  titulo={evento.titulo}
+                  descripcion={evento.descripcion}
+                  hora={evento.hora}
+                  lugar={evento.lugar}
+                  enlaceLugar={evento.enlaceLugar}
+                  estado={evento.estado}
+                />
+              ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default ForoJuvenil;

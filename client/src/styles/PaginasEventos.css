@@ -244,6 +244,27 @@
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
+/* Desfile de la Revolución */
+.desfile-revolucion .imagen-promocional {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.desfile-revolucion .titulo-pagina h1 {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desfile-revolucion .boton-ver-todo {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.desfile-revolucion .boton-ver-todo:hover {
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .titulo-pagina h1 {
@@ -377,4 +398,85 @@
 
 .pagina-eventos::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #e85a5a, #45b7aa);
+}
+
+/* Temas específicos por página */
+.teatro-pueblo {
+    --primary-color: #8b5cf6;
+    --primary-hover: #7c3aed;
+    --secondary-color: #a78bfa;
+    --gradient-start: #8b5cf6;
+    --gradient-end: #06b6d4;
+}
+
+.teatro-bicentenario {
+    --primary-color: #059669;
+    --primary-hover: #047857;
+    --secondary-color: #10b981;
+    --gradient-start: #059669;
+    --gradient-end: #06b6d4;
+}
+
+.feria-deportiva {
+    --primary-color: #dc2626;
+    --primary-hover: #b91c1c;
+    --secondary-color: #ef4444;
+    --gradient-start: #dc2626;
+    --gradient-end: #f59e0b;
+}
+
+.voces-pueblo {
+    --primary-color: #0284c7;
+    --primary-hover: #0369a1;
+    --secondary-color: #0ea5e9;
+    --gradient-start: #0284c7;
+    --gradient-end: #8b5cf6;
+}
+
+.desfile-revolucion {
+    --primary-color: #dc2626;
+    --primary-hover: #b91c1c;
+    --secondary-color: #ef4444;
+    --gradient-start: #dc2626;
+    --gradient-end: #92400e;
+}
+
+.plaza-abuelo {
+    --primary-color: #92400e;
+    --primary-hover: #78350f;
+    --secondary-color: #b45309;
+    --gradient-start: #92400e;
+    --gradient-end: #eab308;
+}
+
+.lienzo-charro {
+    --primary-color: #b45309;
+    --primary-hover: #92400e;
+    --secondary-color: #d97706;
+    --gradient-start: #b45309;
+    --gradient-end: #059669;
+}
+
+.zona-peques {
+    --primary-color: #ec4899;
+    --primary-hover: #db2777;
+    --secondary-color: #f472b6;
+    --gradient-start: #ec4899;
+    --gradient-end: #f59e0b;
+}
+
+.expo-ganadera {
+    --primary-color: #059669;
+    --primary-hover: #047857;
+    --secondary-color: #10b981;
+    --gradient-start: #059669;
+    --gradient-end: #92400e;
+}
+
+.foro-juvenil {
+    --primary-color: #0ea5e9;
+    --primary-hover: #0284c7;
+    --secondary-color: #38bdf8;
+    --gradient-start: #0ea5e9;
+    --gradient-end: #8b5cf6;
 }

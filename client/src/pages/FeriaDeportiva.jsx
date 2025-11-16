@@ -28,89 +28,101 @@ const FeriaDeportiva = () => {
   const eventosConEstado = useMemo(() => {
     // Array de eventos deportivos
     const eventosDeportivos = [
+      
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Torneo de Box Dualmeet',
-        descripcion: '',
-        hora: '8:00 AM',
-        lugar: 'Centro Deportivo - Ring Principal',
-        enlaceLugar: 'https://maps.google.com/?q=Centro+Deportivo+Pabellon+de+Arteaga',
-        fecha: '2025-11-15'
-      },
-      {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de Tocho Flag',
         descripcion: '',
         hora: '8:00 AM',
-        lugar: 'Campo de Fútbol Municipal',
-        enlaceLugar: 'https://maps.google.com/?q=Campo+Futbol+Pabellon+de+Arteaga',
+        lugar: 'unidad deportiva municipal "cancha de fútbol"',
+        enlaceLugar: '',
         fecha: '2025-11-15'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo Local de Tenis',
         descripcion: '',
         hora: '8:30 AM',
-        lugar: 'Canchas de Tenis Municipales',
-        enlaceLugar: 'https://maps.google.com/?q=Canchas+Tenis+Pabellon+de+Arteaga',
+        lugar: 'Canchas de Tenis Municipales(Primera fase)',
+        enlaceLugar: '',
         fecha: '2025-11-15'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Torneo de tocho flag libre',
+        descripcion: '',
+        hora: '8:30 AM',
+        lugar: 'Estadio de fútbol americano',
+        enlaceLugar: '',
+        fecha: '2025-11-15'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular de tocho infantil lIPAFF',
+        descripcion: '',
+        hora: '9:00 AM',
+        lugar: 'Cancha de fútbol americano',
+        enlaceLugar: '',
+        fecha: '2025-11-15'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Derby de la Revolución Homerun',
         descripcion: '',
         hora: '5:00 PM',
-        lugar: 'Campo de Béisbol Municipal',
+        lugar: 'Parque de Béisbol Revolución',
         enlaceLugar: 'https://maps.google.com/?q=Campo+Beisbol+Pabellon+de+Arteaga',
         fecha: '2025-11-15'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Nacional de Artes Marciales Mixtas',
         descripcion: '',
         hora: '5:00 PM',
-        lugar: 'Gimnasio Municipal',
+        lugar: 'Auditprop municipal',
         enlaceLugar: 'https://maps.google.com/?q=Gimnasio+Municipal+Pabellon+de+Arteaga',
         fecha: '2025-11-15'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Torneo de Ajedrez',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular 1era especial de béisbol',
         descripcion: '',
-        hora: '8:00 AM',
-        lugar: 'Casa de la Cultura',
-        enlaceLugar: 'https://maps.google.com/?q=Casa+Cultura+Pabellon+de+Arteaga',
-        fecha: '2025-11-16'
+        hora: '6:30 PM',
+        lugar: 'Parque de Béisbol Revolución',
+        enlaceLugar: 'https://maps.google.com/?q=Campo+Beisbol+Pabellon+de+Arteaga',
+        fecha: '2025-11-15'
       },
+      //Dia 16
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de Rugby',
         descripcion: '',
         hora: '9:00 AM',
-        lugar: 'Campo de Fútbol Municipal',
+        lugar: 'Parque de béisbol',
         enlaceLugar: 'https://maps.google.com/?q=Campo+Futbol+Pabellon+de+Arteaga',
         fecha: '2025-11-16'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular de softbol',
+        descripcion: '',
+        hora: '10:00 AM',
+        lugar: 'Parque de béisbol',
+        enlaceLugar: 'https://maps.google.com/?q=Campo+Futbol+Pabellon+de+Arteaga',
+        fecha: '2025-11-16'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular Municipal de Fútbol Libre',
         descripcion: '',
         hora: '9:00 AM',
-        lugar: 'Campo de Fútbol Municipal',
+        lugar: 'Unidad Deportiva',
         enlaceLugar: 'https://maps.google.com/?q=Campo+Futbol+Pabellon+de+Arteaga',
         fecha: '2025-11-16'
       },
+      //Dia 17
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Carrera de Carros Sin Motor',
-        descripcion: '',
-        hora: '5:00 PM',
-        lugar: 'Avenida Principal',
-        enlaceLugar: 'https://maps.google.com/?q=Avenida+Principal+Pabellon+de+Arteaga',
-        fecha: '2025-11-17'
-      },
-      {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de Voleibol',
         descripcion: '',
         hora: '5:00 PM',
@@ -118,96 +130,147 @@ const FeriaDeportiva = () => {
         enlaceLugar: 'https://maps.google.com/?q=Cancha+Voleibol+Pabellon+de+Arteaga',
         fecha: '2025-11-17'
       },
+      //Dia 18
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Torneo Nacional de Cachibol',
-        descripcion: '',
-        hora: '8:00 AM',
-        lugar: 'Cancha Municipal',
-        enlaceLugar: 'https://maps.google.com/?q=Cancha+Municipal+Pabellon+de+Arteaga',
-        fecha: '2025-11-18'
-      },
-      {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Clínica de Basquetbol con Mtra. Jezabel',
         descripcion: '',
         hora: '8:00 AM',
-        lugar: 'Cancha de Basquetbol Municipal',
+        lugar: 'Unidad Deportiva',
         enlaceLugar: 'https://maps.google.com/?q=Cancha+Basquetbol+Pabellon+de+Arteaga',
         fecha: '2025-11-18'
       },
+      //Dia 19
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Clínica Deportiva de Básquetbol con Horacio Llamas',
         descripcion: '',
         hora: '6:00 PM',
-        lugar: 'Cancha de Basquetbol Municipal',
+        lugar: 'Auditorio municipal',
         enlaceLugar: 'https://maps.google.com/?q=Cancha+Basquetbol+Pabellon+de+Arteaga',
         fecha: '2025-11-19'
       },
+      //Dia 20
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'invitado especial Horacio Llamas',
+        descripcion: '',
+        hora: '8:00 AM',
+        lugar: 'Unidad Deportiva',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Basquetbol+Pabellon+de+Arteaga',
+        fecha: '2025-11-19'
+      },
+      //Dia 21
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular Fútbol "Copa Revolución 2025"',
         descripcion: '',
         hora: '6:00 PM',
-        lugar: 'Campo de Fútbol Municipal',
+        lugar: 'Unidad Deportiva',
         enlaceLugar: 'https://maps.google.com/?q=Campo+Futbol+Pabellon+de+Arteaga',
         fecha: '2025-11-21'
       },
+      //Dia 22
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Encuentro de Taekwondo',
         descripcion: '',
         hora: '8:00 AM',
-        lugar: 'Gimnasio Municipal',
+        lugar: 'Tecnológico de Pabellón de Arteaga',
         enlaceLugar: 'https://maps.google.com/?q=Gimnasio+Municipal+Pabellon+de+Arteaga',
         fecha: '2025-11-22'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo Revolucionario de Frontenis',
         descripcion: '',
         hora: '8:00 AM',
-        lugar: 'Cancha de Frontenis',
+        lugar: 'Unidad deportiva',
         enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
         fecha: '2025-11-22'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Torneo local de tenis',
+        descripcion: '',
+        hora: '8:30 AM',
+        lugar: 'Unidad deportiva "Final"',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
+        fecha: '2025-11-22'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular de básquetbol varonil 40 y más',
+        descripcion: '',
+        hora: '9:00 AM',
+        lugar: 'Auditorio municipal',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
+        fecha: '2025-11-22'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Crossfit Marvelous',
         descripcion: '',
         hora: '9:00 AM',
-        lugar: 'Gimnasio Municipal',
+        lugar: 'Parque de los chaneques',
         enlaceLugar: 'https://maps.google.com/?q=Gimnasio+Municipal+Pabellon+de+Arteaga',
         fecha: '2025-11-22'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Cuadrangular de Basquetbol Femenil Libre',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Torneo de tocho flag libre',
         descripcion: '',
         hora: '10:00 AM',
-        lugar: 'Cancha de Basquetbol Municipal',
-        enlaceLugar: 'https://maps.google.com/?q=Cancha+Basquetbol+Pabellon+de+Arteaga',
+        lugar: 'Estadio de fútbol americano',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
         fecha: '2025-11-22'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Carrera Atlética "De la Pista al Campo"',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular fútbol "Copa Revolución"',
         descripcion: '',
-        hora: '8:00 AM',
-        lugar: 'Pista de Atletismo Municipal',
-        enlaceLugar: 'https://maps.google.com/?q=Pista+Atletismo+Pabellon+de+Arteaga',
+        hora: '10:00 AM',
+        lugar: 'Unidad deportiva municipal "Final"',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
+        fecha: '2025-11-22'
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular 1era especial de béisbol',
+        descripcion: '',
+        hora: '5:30 PM',
+        lugar: 'Parque de béisbol revolución',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
+        fecha: '2025-11-22'
+      },
+      //Dia 23
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Torne de tocho flag libre',
+        descripcion: '',
+        hora: '10:00 AM',
+        lugar: 'Estadio de fútbol americano finales',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
         fecha: '2025-11-23'
       },
       {
-        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
-        titulo: 'Final de Sóftbol',
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Cuadrangular municipal de fútbol libre',
         descripcion: '',
         hora: '10:00 AM',
-        lugar: 'Campo de Sóftbol Municipal',
-        enlaceLugar: 'https://maps.google.com/?q=Campo+Softbol+Pabellon+de+Arteaga',
+        lugar: 'unidad deportiva municipal final',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
         fecha: '2025-11-23'
-      }
+      },
+      {
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Final de sóftbol',
+        descripcion: '',
+        hora: '10:00 AM',
+        lugar: 'Parque de beísbol',
+        enlaceLugar: 'https://maps.google.com/?q=Cancha+Frontenis+Pabellon+de+Arteaga',
+        fecha: '2025-11-23'
+      },
     ];
 
     return eventosDeportivos.map(evento => ({
