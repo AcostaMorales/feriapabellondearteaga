@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationGrid from '../components/NavigationGrid.jsx';
-import FloatingVideo from '../components/FloatingVideo.jsx';
+import HeroVideo from '../components/HeroVideo.jsx';
 import PromoCarousel from '../components/PromoCarousel.jsx';
 import './Home.css';
 
@@ -94,11 +94,12 @@ const Home = () => {
 
     return (
         <div className="home-container">
-            {/* Video Flotante */}
-            <FloatingVideo 
+            {/* Video Hero en la parte superior */}
+            <HeroVideo 
                 videoUrl="https://www.youtube.com/embed/7OFjFb2iePU?autoplay=1&mute=1&loop=1&playlist=7OFjFb2iePU"
-                title="Video Promocional - Feria de Pabellón de Arteaga"
+                title="Feria de Pabellón de Arteaga 2025"
                 isYouTube={true}
+                height="60vh"
             />
 
             {/* Carrusel Promocional Principal */}
