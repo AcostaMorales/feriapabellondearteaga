@@ -23,11 +23,11 @@ const Home = () => {
         },
     ];
 
-    // Array de secciones principales (más grandes)
-    const mainSections = [
+    // Array de botones de navegación (adaptado para NavigationGrid)
+    const navigationItems = [
         {
             title: 'Mapa de pabellón',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763157921/ChatGPT_Image_13_nov_2025_08_37_10_p.m._o3sq0l.png',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763269268/Mapaoficial_2_ypxmyc.png',
             route: 'https://view.genially.com/6913fa88c898b013b0b39c94/interactive-content-mapa-interactivo',
         },
         {
@@ -36,38 +36,22 @@ const Home = () => {
             route: '/teatrodelpueblo',
         },
         {
-            title: 'Lienzo charro',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763268616/LienzoCharro_vmjqup.png',
-            route: '/lienzocharro',
-        },
-        {
-            title: 'Zona Peques',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763268511/Zona_peques_1_rol3hl.png',
-            route: '/zonapeques',
-        },
-        {
-            title: 'Expo Ganadera',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763157161/ExpoGanadera_vy80e7.jpg',
-            route: '/expoganadera',
-        },
-    ];
-
-    // Array de eventos secundarios (tamaño normal)
-    const navigationItems = [
-        {
             title: 'Coronación de la Reina',
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389321/coronacion_de_reyna_vptlh6.png', 
             route: '/coronacion',
+            
         },
         {
             title: 'Teatro Bicentenario',
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389323/teatro_bicentenario_mkovq6.png',
             route: '/teatrobicentenario',
+            
         },
         {
             title: 'Voces del Pueblo',
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389323/voces_del_pueblo_ikzwc7.png',
             route: '/vocesdelpueblo',
+            
         },
         {
             title: 'Feria Deportiva Revolucionaria',
@@ -89,6 +73,23 @@ const Home = () => {
             image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/plaza_del_abuelo_zp7vqz.png',
             route: '/plazadelabuelo',
         },
+        {
+            title: 'Lienzo charro',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763268616/LienzoCharro_vmjqup.png',
+            route: '/lienzocharro',
+        },
+        {
+            title: 'Zona Peques',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763268511/Zona_peques_1_rol3hl.png',
+            route: '/zonapeques',
+        },
+        {
+            title: 'Expo Ganadera',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763269580/ExpoGanadera_wylsmj.png',
+            route: '/expoganadera',
+        },
+    
+        
     ];
 
     return (
@@ -108,17 +109,9 @@ const Home = () => {
                 interval={6000}
             />
 
-            {/* Secciones Principales - más grandes */}
+            {/* Grid de Navegación usando el componente NavigationGrid */}
             <NavigationGrid 
-                title="Secciones Principales"
-                items={mainSections}
-                columns={2}
-                className="main-sections"
-            />
-
-            {/* Grid de Navegación Eventos - tamaño normal */}
-            <NavigationGrid 
-                title="Eventos y Actividades"
+                title="Explora la Feria"
                 items={navigationItems}
                 columns={1}
                 className="home-navigation"

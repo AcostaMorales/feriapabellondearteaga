@@ -41,7 +41,7 @@ const NavigationGrid = ({
                             <img 
                                 src={item.image} 
                                 alt={item.title}
-                                className="navigation-image logo-evento"
+                                className="navigation-image"
                             />
                             
                         </div>

@@ -176,7 +176,7 @@ const ZonaPeques = () => {
       </div>
 
       {/* Eventos activos */}
-      {eventosActivos.length > 0 ? (
+      {eventosActivos.length > 0 && (
         <div className="eventos-activos">
           <h2>🎈 Hoy en Zona Peques</h2>
           <div className="contenedor-etiquetas">
@@ -195,33 +195,26 @@ const ZonaPeques = () => {
             ))}
           </div>
         </div>
-      ) : (
-        <div className="sin-eventos-activos">
-          <p>😴 No hay actividades programadas para hoy</p>
-        </div>
       )}
 
-      {/* Programación Completa - Siempre visible */}
+      {/* Todos los eventos */}
       {eventosNoActivos.length > 0 && (
-        <div className="eventos-programacion">
-          <h2>📅 Programación Completa</h2>
-          <div className="contenedor-etiquetas">
-            {eventosNoActivos
-              .sort((a, b) => new Date(b.fecha) - new Date(a.fecha)) // Ordenar por fecha descendente
-              .map((evento, index) => (
-                <EtiquetaInfo
-                  key={`programacion-${index}`}
-                  id={evento.id}
-                  imagen={evento.imagen}
-                  titulo={evento.titulo}
-                  descripcion={evento.descripcion}
-                  hora={evento.hora}
-                  lugar={evento.lugar}
-                  enlaceLugar={evento.enlaceLugar}
-                  estado={evento.estado}
-                />
-              ))}
-          </div>
+        <div className="contenedor-etiquetas">
+          {eventosNoActivos
+            .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+            .map((evento, index) => (
+              <EtiquetaInfo
+                key={`programacion-${index}`}
+                id={evento.id}
+                imagen={evento.imagen}
+                titulo={evento.titulo}
+                descripcion={evento.descripcion}
+                hora={evento.hora}
+                lugar={evento.lugar}
+                enlaceLugar={evento.enlaceLugar}
+                estado={evento.estado}
+              />
+            ))}
         </div>
       )}
     </div>
