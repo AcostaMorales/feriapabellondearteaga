@@ -9,7 +9,7 @@ const Home = () => {
     const [showAnnouncement, setShowAnnouncement] = useState(true);
 
     // Configuración del anuncio con imagen personalizada
-    const announcementImage = 'https://res.cloudinary.com/dbebikryr/image/upload/v1763151519/Mensaje_presidenta_mptszs.png';
+    const announcementImage = 'https://res.cloudinary.com/dbebikryr/image/upload/v1763275854/Mensaje_cv0wol.jpg';
 
     // Función para cerrar el anuncio
     const handleCloseAnnouncement = () => {
@@ -25,7 +25,7 @@ const Home = () => {
             subtitle: '¡Vive la tradición y la cultura!'
         },
         {
-            url: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763151519/Mensaje_presidenta_mptszs.png',
+            url: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763275854/Mensaje_cv0wol.jpg',
             alt: 'Mensaje de la presidenta',
             overlay: true,
             title: 'Teatro del Pueblo',
@@ -121,7 +121,7 @@ const Home = () => {
                 videoUrl="https://www.youtube.com/embed/7OFjFb2iePU?autoplay=1&mute=1&loop=1&playlist=7OFjFb2iePU"
                 title="Feria de Pabellón de Arteaga 2025"
                 isYouTube={true}
-                height="60vh"
+                height="30vh"
             />
 
             {/* Carrusel Promocional Principal */}

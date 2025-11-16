@@ -15,7 +15,7 @@ const TeatroDelPueblo = () => {
   // Función para obtener una imagen aleatoria de anuncios
   const getRandomAnnouncement = () => {
     const randomNumber = Math.floor(Math.random() * NUMERO_DE_ANUNCIOS) + 1;
-    const imagePath = `/anuncios/anuncio${randomNumber}.png`;
+    const imagePath = `/anuncios/anuncio${randomNumber}.jpg`;
     console.log('🎲 Generando imagen aleatoria:', imagePath);
     return imagePath;
   };
@@ -208,7 +208,7 @@ const TeatroDelPueblo = () => {
 
       {/* Fecha del día */}
       <div className="fecha-actual">
-        <p>Hoy, {fechaActual}</p>
+        <h2 className="fecha-prominente">📅 Hoy, {fechaActual}</h2>
       </div>
 
       {/* Eventos activos */}
@@ -226,6 +226,7 @@ const TeatroDelPueblo = () => {
                 hora={evento.hora}
                 lugar={evento.lugar}
                 enlaceLugar={evento.enlaceLugar}
+                fecha={evento.fecha}
                 estado={evento.estado}
               />
             ))}
@@ -248,6 +249,7 @@ const TeatroDelPueblo = () => {
                 hora={evento.hora}
                 lugar={evento.lugar}
                 enlaceLugar={evento.enlaceLugar}
+                fecha={evento.fecha}
                 estado={evento.estado}
               />
             ))}

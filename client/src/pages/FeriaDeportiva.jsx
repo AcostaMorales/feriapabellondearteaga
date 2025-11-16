@@ -339,7 +339,7 @@ const FeriaDeportiva = () => {
 
       {/* Fecha del día */}
       <div className="fecha-actual">
-        <p>Hoy, {fechaActual}</p>
+        <h2 className="fecha-prominente">📅 Hoy, {fechaActual}</h2>
       </div>
 
       {/* Eventos activos */}
@@ -357,6 +357,7 @@ const FeriaDeportiva = () => {
                 hora={evento.hora}
                 lugar={evento.lugar}
                 enlaceLugar={evento.enlaceLugar}
+                fecha={evento.fecha}
                 estado={evento.estado}
               />
             ))}
@@ -379,6 +380,7 @@ const FeriaDeportiva = () => {
                 hora={evento.hora}
                 lugar={evento.lugar}
                 enlaceLugar={evento.enlaceLugar}
+                fecha={evento.fecha}
                 estado={evento.estado}
               />
             ))}

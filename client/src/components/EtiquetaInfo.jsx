@@ -8,7 +8,8 @@ const EtiquetaInfo = ({
   descripcion, 
   hora, 
   lugar, 
-  enlaceLugar, 
+  enlaceLugar,
+  fecha, // Nueva prop para la fecha
   estado = 'activo' // 'activo', 'proximo', 'expirado'
 }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -49,6 +50,22 @@ const EtiquetaInfo = ({
     if (!texto) return '';
     if (texto.length <= limite) return texto;
     return texto.substring(0, limite) + '...';
+  };
+
+  // Función para formatear fecha
+  const formatearFecha = (fechaStr) => {
+    if (!fechaStr) return '';
+    try {
+      const fecha = new Date(fechaStr + 'T00:00:00');
+      const opciones = { 
+        day: 'numeric', 
+        month: 'short',
+        timeZone: 'America/Mexico_City'
+      };
+      return fecha.toLocaleDateString('es-MX', opciones);
+    } catch {
+      return fechaStr;
+    }
   };
 
   // Calcular dimensiones basadas en el ancho de la pantalla
@@ -145,6 +162,11 @@ const EtiquetaInfo = ({
           </p>
           
           <div className="info-adicional">
+            <p className="fecha-etiqueta">
+              <span className="icono">📅</span>
+              {formatearFecha(fecha)}
+            </p>
+            
             <p className="hora-etiqueta">
               <span className="icono">🕒</span>
               {truncarTexto(hora, 10)}
@@ -186,6 +208,11 @@ const EtiquetaInfo = ({
               <p className="modal-descripcion">{descripcion}</p>
               
               <div className="modal-detalles">
+                <div className="detalle">
+                  <span className="icono">📅</span>
+                  <span className="texto">{formatearFecha(fecha)}</span>
+                </div>
+                
                 <div className="detalle">
                   <span className="icono">🕒</span>
                   <span className="texto">{hora}</span>

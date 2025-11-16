@@ -120,7 +120,7 @@ const ExpoGanadera = () => {
 
       {/* Fecha del día */}
       <div className="fecha-actual">
-        <p>Hoy, {fechaActual}</p>
+        <h2 className="fecha-prominente">📅 Hoy, {fechaActual}</h2>
       </div>
 
       {/* Eventos activos */}
@@ -136,9 +136,10 @@ const ExpoGanadera = () => {
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
                 hora={evento.hora}
-                lugar={evento.lugar}
-                enlaceLugar={evento.enlaceLugar}
-                estado={evento.estado}
+                  lugar={evento.lugar}
+                  enlaceLugar={evento.enlaceLugar}
+                  fecha={evento.fecha}
+                  estado={evento.estado}
               />
             ))}
           </div>

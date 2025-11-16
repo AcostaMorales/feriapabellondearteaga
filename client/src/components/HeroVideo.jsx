@@ -91,15 +91,7 @@ const HeroVideo = ({ videoUrl, title = "Video de la Feria", isYouTube = false, h
         />
       )}
 
-      {/* Overlay con información */}
-      <div className="hero-video-overlay">
-        <div className="hero-video-content">
-          <h1 className="hero-video-title">{title}</h1>
-          <div className="hero-video-subtitle">
-            ¡Vive la tradición y la cultura!
-          </div>
-        </div>
-      </div>
+      
 
       {/* Controles solo para videos locales (no YouTube) */}
       {!isYouTube && (
@@ -142,13 +134,7 @@ const HeroVideo = ({ videoUrl, title = "Video de la Feria", isYouTube = false, h
         </div>
       )}
 
-      {/* Indicador de scroll */}
-      <div className="hero-scroll-indicator">
-        <span>Desliza para explorar</span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
-      </div>
+      
     </div>
   );
 };

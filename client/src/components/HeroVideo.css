@@ -14,24 +14,27 @@
 
 .hero-video-element {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
   object-fit: cover;
   border: none;
 }
 
-/* Para iframes de YouTube */
+/* Para iframes de YouTube - usar aspect ratio inteligente */
 .hero-video-element[src*="youtube.com"],
 .hero-video-element[src*="youtu.be"] {
-  width: 100vw;
-  height: 56.25vw; /* 16:9 aspect ratio */
-  min-height: 100%;
-  min-width: 177.77vh; /* 16:9 aspect ratio */
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 177.78vh; /* 16:9 aspect ratio basado en altura del contenedor */
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 56.25vw; /* 16:9 aspect ratio basado en ancho del contenedor */
   transform: translate(-50%, -50%);
   border: none;
 }

@@ -132,7 +132,7 @@ const PlazaDelAbuelo = () => {
 
       {/* Fecha del día */}
       <div className="fecha-actual">
-        <p>Hoy, {fechaActual}</p>
+        <h2 className="fecha-prominente">📅 Hoy, {fechaActual}</h2>
       </div>
 
       {/* Eventos activos */}

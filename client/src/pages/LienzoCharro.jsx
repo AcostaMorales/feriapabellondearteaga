@@ -120,7 +120,7 @@ const LienzoCharro = () => {
 
       {/* Fecha del día */}
       <div className="fecha-actual">
-        <p>Hoy, {fechaActual}</p>
+        <h2 className="fecha-prominente">📅 Hoy, {fechaActual}</h2>
       </div>
 
       {/* Eventos activos */}
@@ -137,8 +137,9 @@ const LienzoCharro = () => {
                 descripcion={evento.descripcion}
                 hora={evento.hora}
                 lugar={evento.lugar}
-                enlaceLugar={evento.enlaceLugar}
-                estado={evento.estado}
+                  enlaceLugar={evento.enlaceLugar}
+                  fecha={evento.fecha}
+                  estado={evento.estado}
               />
             ))}
           </div>

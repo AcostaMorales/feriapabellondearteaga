@@ -27,9 +27,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 220px;
-    min-height: 220px;
-    max-height: 220px;
+    height: 260px;
+    min-height: 260px;
+    max-height: 260px;
 }
 
 .navigation-item:hover {
@@ -45,7 +45,7 @@
 /* Hace que todas las imágenes tengan el MISMO tamaño visual */
 .navigation-image-container {
     width: 100%;
-    height: 220px;
+    height: 260px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -234,13 +234,13 @@
     }
     
     .navigation-item {
-        height: 200px;
-        min-height: 200px;
-        max-height: 200px;
+        height: 240px;
+        min-height: 240px;
+        max-height: 240px;
     }
     
     .navigation-image-container {
-        height: 200px;
+        height: 240px;
     }
     
     .navigation-content {
@@ -276,13 +276,13 @@
     }
     
     .navigation-item {
-        height: 180px;
-        min-height: 180px;
-        max-height: 180px;
+        height: 200px;
+        min-height: 200px;
+        max-height: 200px;
     }
     
     .navigation-image-container {
-        height: 180px;
+        height: 200px;
     }
     
     .navigation-content {
