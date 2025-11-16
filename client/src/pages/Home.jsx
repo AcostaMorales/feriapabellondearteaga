@@ -80,7 +80,7 @@ const Home = () => {
         },
         {
             title: 'Zona Peques',
-            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762389322/feria_deportiva_hcfkdr.png',
+            image: 'https://res.cloudinary.com/dbebikryr/image/upload/v1763157027/ZonaPeques_vkpsug.jpg',
             route: '/zonapeques',
         },
         {
