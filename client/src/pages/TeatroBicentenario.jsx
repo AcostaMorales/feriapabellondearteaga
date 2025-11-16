@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import EtiquetaInfo from '../components/EtiquetaInfo';
-import './TeatroBicentenario.css';
+import '../styles/PaginasEventos.css';
 
 const TeatroBicentenario = () => {
   const [mostrarTodos, setMostrarTodos] = useState(false);
@@ -90,7 +90,7 @@ const TeatroBicentenario = () => {
   }, []);
 
   return (
-    <div className="teatro-bicentenario">
+    <div className="pagina-eventos teatro-bicentenario">
       {/* Imagen promocional */}
       <div className="imagen-promocional">
         <img 

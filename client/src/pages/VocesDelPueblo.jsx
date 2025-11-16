@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import EtiquetaInfo from '../components/EtiquetaInfo';
-import './VocesDelPueblo.css';
+import '../styles/PaginasEventos.css';
 
 const VocesDelPueblo = () => {
   const [mostrarTodos, setMostrarTodos] = useState(false);
@@ -135,7 +135,7 @@ const VocesDelPueblo = () => {
   }, []);
 
   return (
-    <div className="voces-del-pueblo">
+    <div className="pagina-eventos voces-del-pueblo">
       {/* Imagen promocional */}
       <div className="imagen-promocional">
         <img 

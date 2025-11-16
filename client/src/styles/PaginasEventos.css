@@ -1,5 +1,7 @@
-/* Feria Deportiva Revolucionaria - Página completa */
-.feria-deportiva {
+/* CSS Común para Páginas de Eventos - Teatro del Pueblo, Teatro Bicentenario, Voces del Pueblo, Feria Deportiva */
+
+/* Contenedor principal */
+.pagina-eventos {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -12,15 +14,15 @@
 .imagen-promocional {
   width: 100%;
   height: auto;
-  min-height: 250px;
+  min-height: 600px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #10b981, #059669);
-  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+  margin-bottom: 3rem;
   position: relative;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 .imagen-hero {
@@ -47,7 +49,7 @@
   margin: 0;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -130,7 +132,7 @@
 }
 
 .boton-ver-todo {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
   padding: 0.7rem 1.5rem;
@@ -139,7 +141,7 @@
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -161,7 +163,7 @@
 
 .boton-ver-todo:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
 }
 
 .boton-ver-todo:active {
@@ -181,6 +183,65 @@
   margin-bottom: 1.5rem;
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Variantes de colores para diferentes páginas */
+
+/* Teatro del Pueblo */
+.teatro-del-pueblo .imagen-promocional {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.teatro-del-pueblo .titulo-pagina h1 {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Teatro Bicentenario */
+.teatro-bicentenario .imagen-promocional {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.teatro-bicentenario .titulo-pagina h1 {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Voces del Pueblo */
+.voces-del-pueblo .imagen-promocional {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+}
+
+.voces-del-pueblo .titulo-pagina h1 {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Feria Deportiva */
+.feria-deportiva .imagen-promocional {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.feria-deportiva .titulo-pagina h1 {
+  background: linear-gradient(135deg, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.feria-deportiva .boton-ver-todo {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.feria-deportiva .boton-ver-todo:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
 /* Responsive Design */
@@ -220,8 +281,9 @@
   }
   
   .imagen-promocional {
-    height: 200px;
-    margin-bottom: 1.5rem;
+    min-height: 450px;
+    margin-bottom: 2.5rem;
+    padding: 2.5rem;
   }
   
   .eventos-activos,
@@ -250,8 +312,9 @@
   }
   
   .imagen-promocional {
-    height: 150px;
-    margin-bottom: 1rem;
+    min-height: 350px;
+    margin-bottom: 2rem;
+    padding: 2rem;
   }
   
   .titulo-pagina {
@@ -298,20 +361,20 @@
 }
 
 /* Scrollbar personalizado para consistencia */
-.feria-deportiva::-webkit-scrollbar {
+.pagina-eventos::-webkit-scrollbar {
   width: 8px;
 }
 
-.feria-deportiva::-webkit-scrollbar-track {
+.pagina-eventos::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 4px;
 }
 
-.feria-deportiva::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #10b981, #059669);
+.pagina-eventos::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
   border-radius: 4px;
 }
 
-.feria-deportiva::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #047857, #065f46);
+.pagina-eventos::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #e85a5a, #45b7aa);
 }
