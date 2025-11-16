@@ -9,7 +9,6 @@ const TeatroDelPueblo = () => {
   // Constante para manejar el número de anuncios que existen
   const NUMERO_DE_ANUNCIOS = 1; // Modifica este número según cuántos anuncios tengas en la carpeta /anuncios
   
-  const [mostrarTodos, setMostrarTodos] = useState(false);
   const [randomAnnouncementUrl, setRandomAnnouncementUrl] = useState('');
   const location = useLocation();
   
@@ -238,19 +237,8 @@ const TeatroDelPueblo = () => {
         </div>
       )}
 
-      {/* Sección para ver programación completa */}
-      <div className="programacion-completa">
-        <p className="texto-programacion">Mira la programación completa</p>
-        <button 
-          className="boton-ver-todo"
-          onClick={() => setMostrarTodos(!mostrarTodos)}
-        >
-          {mostrarTodos ? 'Ocultar' : 'Ver todo'}
-        </button>
-      </div>
-
-      {/* Eventos expirados y próximos */}
-      {mostrarTodos && eventosNoActivos.length > 0 && (
+      {/* Programación Completa - Siempre visible */}
+      {eventosNoActivos.length > 0 && (
         <div className="eventos-programacion">
           <h2>📅 Programación Completa</h2>
           <div className="contenedor-etiquetas">

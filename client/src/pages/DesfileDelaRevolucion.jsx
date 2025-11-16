@@ -1,9 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import EtiquetaInfo from '../components/EtiquetaInfo';
 import '../styles/PaginasEventos.css';
 
 const DesfileDelaRevolucion = () => {
-  const [mostrarTodos, setMostrarTodos] = useState(false);
 
   // Función para determinar el estado basado en la fecha
   const determinarEstado = (fecha) => {
@@ -121,19 +120,8 @@ const DesfileDelaRevolucion = () => {
         </div>
       )}
 
-      {/* Sección para ver programación completa */}
-      <div className="programacion-completa">
-        <p className="texto-programacion">Mira la programación completa de la Revolución</p>
-        <button 
-          className="boton-ver-todo"
-          onClick={() => setMostrarTodos(!mostrarTodos)}
-        >
-          {mostrarTodos ? 'Ocultar' : 'Ver todo'}
-        </button>
-      </div>
-
-      {/* Eventos expirados y próximos */}
-      {mostrarTodos && eventosNoActivos.length > 0 && (
+      {/* Programación Completa - Siempre visible */}
+      {eventosNoActivos.length > 0 && (
         <div className="eventos-programacion">
           <h2>🇲🇽 Programación Revolución Completa</h2>
           <div className="contenedor-etiquetas">
