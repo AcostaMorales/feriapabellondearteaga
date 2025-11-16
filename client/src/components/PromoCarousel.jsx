@@ -4,10 +4,19 @@ import './PromoCarousel.css';
 const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState('');
 
-  // Función para abrir imagen completa
+  // Función para abrir modal con imagen
   const handleImageClick = (imageUrl) => {
-    window.open(imageUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+    setModalImageUrl(imageUrl);
+    setModalOpen(true);
+  };
+
+  // Función para cerrar modal
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalImageUrl('');
   };
 
   // Función para ir a la siguiente imagen
@@ -19,6 +28,19 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
+
+  // Controlar scroll del body cuando el modal esté abierto
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalOpen]);
 
   // Auto-play funcionalidad
   useEffect(() => {
@@ -105,6 +127,21 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
               <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
             </svg>
           </button>
+        </div>
+      )}
+
+      {/* Modal de Previsualización */}
+      {modalOpen && (
+        <div className="carousel-modal-overlay" onClick={closeModal}>
+          <div className="carousel-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="carousel-modal-close" onClick={closeModal}>
+              ✕
+            </button>
+            
+            <div className="carousel-modal-image">
+              <img src={modalImageUrl} alt="Imagen completa" />
+            </div>
+          </div>
         </div>
       )}
     </div>
