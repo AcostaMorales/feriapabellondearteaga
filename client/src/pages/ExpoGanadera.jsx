@@ -29,6 +29,7 @@ const ExpoGanadera = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosGanaderos = [
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Inauguración Expo Ganadera',
         descripcion: 'Música en vivo banda del rancho',
@@ -38,6 +39,7 @@ const ExpoGanadera = () => {
         fecha: '2025-11-20'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Expo Leche',
         descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo cabllos, expo borregos, expor reptiles, rodeo infantil',
@@ -47,6 +49,7 @@ const ExpoGanadera = () => {
         fecha: '2025-11-20'
       },
       {
+        id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Expo Leche',
         descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo cabllos, expo borregos, expor reptiles, rodeo infantil',
@@ -56,6 +59,7 @@ const ExpoGanadera = () => {
         fecha: '2025-11-21'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Expo Leche',
         descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo cabllos, expo borregos, expor reptiles, rodeo infantil',
@@ -65,6 +69,7 @@ const ExpoGanadera = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Expo Leche',
         descripcion: 'Expo leche, expo carne, exposición de gallitos miniatura, expo cabllos, expo borregos, expor reptiles, rodeo infantil',
@@ -127,6 +132,7 @@ const ExpoGanadera = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -165,6 +171,7 @@ const ExpoGanadera = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

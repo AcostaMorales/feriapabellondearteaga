@@ -1,0 +1,224 @@
+/* Estilos para el componente PDFAnnouncement */
+.pdf-announcement-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.pdf-announcement-container {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  max-width: 900px;
+  max-height: 700px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.4s ease-out;
+}
+
+.pdf-announcement-container.closing {
+  animation: slideOut 0.3s ease-in;
+}
+
+/* Indicador de cuenta regresiva */
+.countdown-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  z-index: 10;
+}
+
+.countdown-text {
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  transition: width 1s linear;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Botón de cierre */
+.close-button {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  color: #ff4757;
+}
+
+/* Contenedor del PDF */
+.pdf-container {
+  flex: 1;
+  margin-top: 45px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-object {
+  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-fallback {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  color: #666;
+}
+
+.pdf-fallback p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.pdf-fallback a:hover {
+  background: #5a67d8 !important;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Mensaje informativo */
+.announcement-info {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  margin: 0;
+}
+
+.announcement-info p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.8) translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8) translateY(-50px);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pdf-announcement-container {
+    width: 95vw;
+    height: 85vh;
+    border-radius: 15px;
+  }
+  
+  .countdown-text {
+    font-size: 12px;
+    padding: 6px;
+  }
+  
+  .close-button {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    top: 45px;
+    right: 10px;
+  }
+  
+  .announcement-info p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-announcement-container {
+    width: 98vw;
+    height: 80vh;
+    border-radius: 10px;
+  }
+  
+  .pdf-container {
+    padding: 5px;
+  }
+}

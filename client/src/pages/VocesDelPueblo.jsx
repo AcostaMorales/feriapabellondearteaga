@@ -29,6 +29,7 @@ const VocesDelPueblo = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosVoces = [
       {
+        id:1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Renacidos de Pabellón',
         descripcion: '',
@@ -38,6 +39,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Marijuana',
         descripcion: '',
@@ -47,6 +49,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-16'
       },
       {
+        id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Los Aguerridos',
         descripcion: '',
@@ -56,6 +59,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-17'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Los Gallardos',
         descripcion: '',
@@ -65,6 +69,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-18'
       },
       {
+        id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Mariachi Monumental Gigantes vs Pichi Macías',
         descripcion: '',
@@ -74,6 +79,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-19'
       },
       {
+        id: 6,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'CLS',
         descripcion: '',
@@ -83,6 +89,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-20'
       },
       {
+        id: 7,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Grupo Índigo',
         descripcion: '',
@@ -92,6 +99,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-21'
       },
       {
+        id: 8,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Grupo Denso',
         descripcion: '',
@@ -101,6 +109,7 @@ const VocesDelPueblo = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 9,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Grupo Pro Activo',
         descripcion: '',
@@ -163,6 +172,7 @@ const VocesDelPueblo = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -201,6 +211,7 @@ const VocesDelPueblo = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

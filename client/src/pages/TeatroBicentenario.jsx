@@ -29,6 +29,7 @@ const TeatroBicentenario = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosBicentenario = [
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Elección y Coronación de la Reina FRR2025',
         descripcion: 'Ceremonia especial de elección y coronación de la Reina de la Feria Regional de la Raza 2025, acompañada por la prestigiosa Orquesta Sinfónica de Aguascalientes.',
@@ -38,6 +39,7 @@ const TeatroBicentenario = () => {
         fecha: '2025-11-14'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Teatro Bicentenario Ballet Bali Hai',
         descripcion: '',
@@ -47,6 +49,7 @@ const TeatroBicentenario = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Ballet municipal de danza folklorico izkaltékatl, alternando con el grupo de danza folklórica kan ometeotl',
         descripcion: '',
@@ -56,6 +59,7 @@ const TeatroBicentenario = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Grupo de danza folklórica ehecatl de pabellón de arteaga, alternando con el grupo de danza folklórica metsi nei ',
         descripcion: '',
@@ -118,6 +122,7 @@ const TeatroBicentenario = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -156,6 +161,7 @@ const TeatroBicentenario = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

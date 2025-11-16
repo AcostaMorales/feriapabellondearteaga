@@ -31,15 +31,17 @@ const PlazaDelAbuelo = () => {
       
       
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Tarde de Rondallas (Principales CAlles)',
         descripcion: '',
-        hora: '05:00 PM',
+        hora: '5:00 PM',
         lugar: 'Jardín Juárez, Recorrido Madero, Revolución e Instalaciones de la feria',
         enlaceLugar: 'https://maps.google.com/?q=Plaza+del+Abuelo+Pabellon+de+Arteaga',
         fecha: '2025-11-17'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Musica en vivo',
         descripcion: '',
@@ -49,6 +51,7 @@ const PlazaDelAbuelo = () => {
         fecha: '2025-11-18'
       },
       {
+        id:3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Tamborazo',
         descripcion: '',
@@ -58,6 +61,7 @@ const PlazaDelAbuelo = () => {
         fecha: '2025-11-19'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Musica en vivo',
         descripcion: '',
@@ -67,6 +71,7 @@ const PlazaDelAbuelo = () => {
         fecha: '2025-11-20'
       },
       {
+        id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Musica en vivo',
         descripcion: '',
@@ -76,6 +81,7 @@ const PlazaDelAbuelo = () => {
         fecha: '2025-11-21'
       },
       {
+        id: 6,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Musica en vivo',
         descripcion: '',
@@ -114,7 +120,7 @@ const PlazaDelAbuelo = () => {
       {/* Imagen promocional */}
       <div className="imagen-promocional">
         <img 
-          src="/src/assets/images/plaza-abuelo/portada.jpg" 
+          src="https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png" 
           alt="Plaza del Abuelo - Imagen promocional"
           className="imagen-hero"
         />
@@ -138,6 +144,7 @@ const PlazaDelAbuelo = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -176,6 +183,7 @@ const PlazaDelAbuelo = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './EtiquetaInfo.css';
 
 const EtiquetaInfo = ({ 
+  id,
   imagen, 
   titulo, 
   descripcion, 
@@ -12,6 +13,10 @@ const EtiquetaInfo = ({
 }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [modalAbierto, setModalAbierto] = useState(false);
+
+  // Determinar si es par o impar para el layout
+  const esPar = id % 2 === 0;
+  const layoutInvertido = !esPar; // Impares serán invertidos
 
   // Detectar cambios en el tamaño de la pantalla
   useEffect(() => {
@@ -89,10 +94,11 @@ const EtiquetaInfo = ({
     <>
       {/* Etiqueta Principal */}
       <div 
-        className={`etiqueta-info ${estado}`}
+        className={`etiqueta-info ${estado} ${layoutInvertido ? 'layout-invertido' : ''}`}
         style={{
           width: `${dimensiones.anchoEtiqueta}px`,
-          height: `${dimensiones.altoEtiqueta}px`
+          height: `${dimensiones.altoEtiqueta}px`,
+          flexDirection: layoutInvertido ? 'row-reverse' : 'row'
         }}
         onClick={abrirModal}
       >
@@ -105,7 +111,7 @@ const EtiquetaInfo = ({
 
         {/* Contenedor de imagen */}
         <div 
-          className="contenedor-imagen"
+          className={`contenedor-imagen ${layoutInvertido ? 'imagen-derecha' : ''}`}
           style={{
             width: `${dimensiones.anchoImagen}px`,
             height: `${dimensiones.altoEtiqueta}px`
@@ -124,7 +130,7 @@ const EtiquetaInfo = ({
 
         {/* Contenedor de contenido */}
         <div 
-          className="contenedor-contenido"
+          className={`contenedor-contenido ${layoutInvertido ? 'contenido-izquierda' : ''}`}
           style={{
             width: `${dimensiones.anchoContenido}px`,
             height: `${dimensiones.altoEtiqueta}px`

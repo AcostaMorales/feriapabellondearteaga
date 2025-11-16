@@ -30,6 +30,7 @@ const FeriaDeportiva = () => {
     const eventosDeportivos = [
       
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de Tocho Flag',
         descripcion: '',
@@ -39,6 +40,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo Local de Tenis',
         descripcion: '',
@@ -48,6 +50,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo de tocho flag libre',
         descripcion: '',
@@ -57,6 +60,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de tocho infantil lIPAFF',
         descripcion: '',
@@ -66,6 +70,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Derby de la Revolución Homerun',
         descripcion: '',
@@ -75,6 +80,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 6,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Nacional de Artes Marciales Mixtas',
         descripcion: '',
@@ -84,6 +90,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 7,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular 1era especial de béisbol',
         descripcion: '',
@@ -94,6 +101,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 16
       {
+        id: 8,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de Rugby',
         descripcion: '',
@@ -103,6 +111,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-16'
       },
       {
+        id: 9,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de softbol',
         descripcion: '',
@@ -112,6 +121,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-16'
       },
       {
+        id: 10,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular Municipal de Fútbol Libre',
         descripcion: '',
@@ -122,6 +132,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 17
       {
+        id: 11,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de Voleibol',
         descripcion: '',
@@ -132,6 +143,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 18
       {
+        id: 12,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Clínica de Basquetbol con Mtra. Jezabel',
         descripcion: '',
@@ -142,6 +154,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 19
       {
+        id: 13,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Clínica Deportiva de Básquetbol con Horacio Llamas',
         descripcion: '',
@@ -152,6 +165,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 20
       {
+        id: 14,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'invitado especial Horacio Llamas',
         descripcion: '',
@@ -162,6 +176,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 21
       {
+        id: 15,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular Fútbol "Copa Revolución 2025"',
         descripcion: '',
@@ -172,6 +187,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 22
       {
+        id: 16,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Encuentro de Taekwondo',
         descripcion: '',
@@ -181,6 +197,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 17,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo Revolucionario de Frontenis',
         descripcion: '',
@@ -190,6 +207,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 18,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo local de tenis',
         descripcion: '',
@@ -199,6 +217,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 19,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular de básquetbol varonil 40 y más',
         descripcion: '',
@@ -208,6 +227,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 20,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Crossfit Marvelous',
         descripcion: '',
@@ -217,6 +237,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 21,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo de tocho flag libre',
         descripcion: '',
@@ -226,6 +247,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 22,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular fútbol "Copa Revolución"',
         descripcion: '',
@@ -235,6 +257,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 23,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular 1era especial de béisbol',
         descripcion: '',
@@ -245,6 +268,7 @@ const FeriaDeportiva = () => {
       },
       //Dia 23
       {
+        id: 24,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torne de tocho flag libre',
         descripcion: '',
@@ -254,6 +278,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-23'
       },
       {
+        id: 25,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Cuadrangular municipal de fútbol libre',
         descripcion: '',
@@ -263,6 +288,7 @@ const FeriaDeportiva = () => {
         fecha: '2025-11-23'
       },
       {
+        id: 26,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Final de sóftbol',
         descripcion: '',
@@ -325,6 +351,7 @@ const FeriaDeportiva = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -363,6 +390,7 @@ const FeriaDeportiva = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

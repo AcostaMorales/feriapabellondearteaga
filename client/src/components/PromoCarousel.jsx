@@ -55,16 +55,7 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
                 className="promo-carousel-image"
                 loading={index === 0 ? "eager" : "lazy"}
               />
-              {image.overlay && (
-                <div className="promo-carousel-overlay">
-                  {image.title && (
-                    <h2 className="promo-carousel-title">{image.title}</h2>
-                  )}
-                  {image.subtitle && (
-                    <p className="promo-carousel-subtitle">{image.subtitle}</p>
-                  )}
-                </div>
-              )}
+              
             </div>
           ))}
         </div>

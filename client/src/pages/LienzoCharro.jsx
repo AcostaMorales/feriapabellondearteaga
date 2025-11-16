@@ -29,6 +29,7 @@ const LienzoCharro = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosCharros = [
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Rodeo',
         descripcion: '',
@@ -38,6 +39,7 @@ const LienzoCharro = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Charreada de Gala "Banda tierra buena',
         descripcion: '',
@@ -47,6 +49,7 @@ const LienzoCharro = () => {
         fecha: '2025-11-16'
       },
       {
+        id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Corrida de Toros',
         descripcion: '',
@@ -56,6 +59,7 @@ const LienzoCharro = () => {
         fecha: '2025-11-20'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Enanitos Toreros de Aguascalientes',
         descripcion: 'Espectáculo único y divertido con los famosos enanitos toreros que han conquistado al público mexicano',
@@ -65,6 +69,7 @@ const LienzoCharro = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Charreada de gala "Banda riel nueva era',
         descripcion: '',
@@ -127,6 +132,7 @@ const LienzoCharro = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -165,6 +171,7 @@ const LienzoCharro = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

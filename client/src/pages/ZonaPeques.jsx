@@ -29,7 +29,8 @@ const ZonaPeques = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosPeques = [
       {
-        imagen: '/src/assets/images/zona-peques/inauguracion.jpg',
+        id: 1,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Inauguración Zona Peques',
         descripcion: '',
         hora: '5:30 PM',
@@ -38,6 +39,7 @@ const ZonaPeques = () => {
         fecha: '2025-11-15'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Experiencia Multisensorial',
         descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
@@ -47,50 +49,87 @@ const ZonaPeques = () => {
         fecha: '2025-11-15'
       },
       {
-        imagen: '/src/assets/images/zona-peques/creatividad.jpg',
-        titulo: 'Juegos de Creatividad',
-        descripcion: 'Actividades lúdicas diseñadas para fomentar la imaginación y creatividad infantil con materiales seguros y divertidos',
-        hora: '4:00 PM',
-        lugar: 'Zona Peques Central',
-        enlaceLugar: 'https://maps.google.com/?q=Zona+Peques+Pabellon+de+Arteaga',
+        id: 3,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
+        hora: '5:00 PM',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
         fecha: '2025-11-16'
       },
       {
-        imagen: '/src/assets/images/zona-peques/titeres.jpg',
-        titulo: 'Teatro de Títeres',
-        descripcion: 'Espectáculo mágico de títeres interactivo con la Compañía de Títeres Mágicos para estimular la participación de los pequeños',
+        id: 4,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
         hora: '5:00 PM',
-        lugar: 'Zona Peques Central',
-        enlaceLugar: 'https://maps.google.com/?q=Zona+Peques+Pabellon+de+Arteaga',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
         fecha: '2025-11-17'
       },
       {
-        imagen: '/src/assets/images/zona-peques/pintura.jpg',
-        titulo: 'Taller de Pintura Libre',
-        descripcion: 'Espacio creativo libre para que los niños expresen su arte con pinturas seguras y lavables bajo supervisión especializada',
-        hora: '4:30 PM',
-        lugar: 'Zona Peques Central',
-        enlaceLugar: 'https://maps.google.com/?q=Zona+Peques+Pabellon+de+Arteaga',
+        id: 5,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
+        hora: '5:00 PM',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
         fecha: '2025-11-18'
       },
       {
-        imagen: '/src/assets/images/zona-peques/musica.jpg',
-        titulo: 'Círculo Musical Infantil',
-        descripcion: 'Sesión musical interactiva con instrumentos apropiados para la edad y canciones que estimulan el desarrollo auditivo',
-        hora: '4:00 PM',
-        lugar: 'Zona Peques Central',
-        enlaceLugar: 'https://maps.google.com/?q=Zona+Peques+Pabellon+de+Arteaga',
+        id: 6,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
+        hora: '5:00 PM',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
         fecha: '2025-11-19'
       },
       {
-        imagen: '/src/assets/images/zona-peques/cuentacuentos.jpg',
-        titulo: 'Hora del Cuento',
-        descripcion: 'Narración de cuentos clásicos y modernos adaptados para los más pequeños con elementos visuales y participación activa',
+        id: 7,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
         hora: '5:00 PM',
-        lugar: 'Zona Peques Central',
-        enlaceLugar: 'https://maps.google.com/?q=Zona+Peques+Pabellon+de+Arteaga',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
         fecha: '2025-11-20'
-      }
+      },
+      {
+        id: 8,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
+        hora: '5:00 PM',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
+        fecha: '2025-11-21'
+      },
+      {
+        id: 9,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
+        hora: '5:00 PM',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
+        fecha: '2025-11-22'
+      },
+      {
+        id: 10,
+        imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
+        titulo: 'Experiencia Multisensorial',
+        descripcion: 'Estimulación sensorial, Sonidos y vibraciones, aromas y sabores, juegos de creatividad e imaginación, actividades Peque-Revoluciones, casa ciencia, juegos infantiles y actividades recreativas',
+        hora: '5:00 PM',
+        lugar: 'Canchitas',
+        enlaceLugar: '',
+        fecha: '2025-11-23'
+      },
+      
+      
     ];
 
     return eventosPeques.map(evento => ({
@@ -145,6 +184,7 @@ const ZonaPeques = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -183,6 +223,7 @@ const ZonaPeques = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

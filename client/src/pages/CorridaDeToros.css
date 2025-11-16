@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 414px;
   margin: 0 auto;
-  background: #ffffff; /* Fondo blanco en lugar de negro */
+  background: rgba(255, 255, 255, 0.9);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow: hidden;
   /* Ocupar toda la altura disponible entre header y footer */

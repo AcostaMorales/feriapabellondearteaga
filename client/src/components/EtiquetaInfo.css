@@ -20,6 +20,20 @@
   transform: translateY(-2px);               /* Se eleva visualmente */
 }
 
+/* ===== LAYOUT INVERTIDO ===== */
+.etiqueta-info.layout-invertido .contenedor-imagen {
+  border-right: none;
+  border-left: 1px solid #e0e0e0; /* Línea divisoria a la izquierda */
+}
+
+.etiqueta-info.layout-invertido .contenedor-contenido {
+  text-align: right; /* Alinear texto a la derecha cuando está invertido */
+}
+
+.etiqueta-info.layout-invertido .info-adicional {
+  justify-content: flex-end; /* Alinear elementos adicionales a la derecha */
+}
+
 /* ===== INDICADOR DE ESTADO (icono arriba a la derecha) ===== */
 .indicador-estado {
   position: absolute;               /* Posicionado respecto a la tarjeta */

@@ -29,6 +29,7 @@ const ForoJuvenil = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosJuveniles = [
         {
+          id:1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo de Box Dualmeet',
         descripcion: '',
@@ -38,6 +39,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-15'
       },
         {
+          id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Torneo de Ajedrez',
         descripcion: '',
@@ -47,6 +49,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-16'
       },
         {
+          id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Carrera de carros sin motor',
         descripcion: '',
@@ -56,6 +59,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-17'
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Exhibición de tablas rítmicas (CECYTEA Pabellón de Arteaga)',
         descripcion: '',
@@ -65,6 +69,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-18'
       },
       {
+          id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Master class Zumba',
         descripcion: '',
@@ -74,6 +79,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-18'
       },
         {
+          id: 6,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Conjunto Plata',
         descripcion: '',
@@ -83,6 +89,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-19'
       },
       {
+        id: 7,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'LDB Vázquez',
         descripcion: '',
@@ -92,6 +99,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-20'
       },
       {
+        id: 8,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Nueva Era',
         descripcion: '',
@@ -101,6 +109,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-21'
       },
       {
+        id: 9,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Super Sammy',
         descripcion: '',
@@ -110,6 +119,7 @@ const ForoJuvenil = () => {
         fecha: '2025-11-22'
       },
       {
+        id: 10,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Caldo de brujas',
         descripcion: '',
@@ -172,6 +182,7 @@ const ForoJuvenil = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -210,6 +221,7 @@ const ForoJuvenil = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

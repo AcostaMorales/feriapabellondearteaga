@@ -29,6 +29,7 @@ const DesfileDelaRevolucion = () => {
     // Array de eventos del Desfile de la Revolución
     const eventosDesfile = [
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Desfile de Prescolar',
         descripcion: '',
@@ -38,6 +39,7 @@ const DesfileDelaRevolucion = () => {
         fecha: '2025-11-19'
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png',
         titulo: 'Desfile de la Revolución',
         descripcion: '',
@@ -101,6 +103,7 @@ const DesfileDelaRevolucion = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -139,6 +142,7 @@ const DesfileDelaRevolucion = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}

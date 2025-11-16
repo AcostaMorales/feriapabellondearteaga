@@ -10,10 +10,14 @@ const NavigationGrid = ({
 }) => {
     const navigate = useNavigate();
 
-    const handleItemClick = (route) => {
+    const handleItemClick = (route, itemTitle) => {
         if (route.startsWith('http')) {
             window.open(route, '_blank');
         } else {
+            // Si es Teatro del Pueblo, marcar que se navegó desde el Home
+            if (route === '/teatrodelpueblo') {
+                sessionStorage.setItem('navigatedFromHome', 'true');
+            }
             navigate(route);
         }
     };
@@ -31,7 +35,7 @@ const NavigationGrid = ({
                     <div
                         key={index}
                         className="navigation-item"
-                        onClick={() => handleItemClick(item.route)}
+                        onClick={() => handleItemClick(item.route, item.title)}
                     >
                         <div className="navigation-image-container">
                             <img 

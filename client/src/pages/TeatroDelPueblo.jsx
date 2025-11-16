@@ -1,9 +1,57 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import EtiquetaInfo from '../components/EtiquetaInfo';
+import PDFAnnouncement from '../components/PDFAnnouncement';
+import usePDFAnnouncement from '../hooks/usePDFAnnouncement';
+import { useLocation } from 'react-router-dom';
 import '../styles/PaginasEventos.css';
 
 const TeatroDelPueblo = () => {
+  // Constante para manejar el número de anuncios que existen
+  const NUMERO_DE_ANUNCIOS = 1; // Modifica este número según cuántos anuncios tengas en la carpeta /anuncios
+  
   const [mostrarTodos, setMostrarTodos] = useState(false);
+  const [randomAnnouncementUrl, setRandomAnnouncementUrl] = useState('');
+  const location = useLocation();
+  
+  // Función para obtener una imagen aleatoria de anuncios
+  const getRandomAnnouncement = () => {
+    const randomNumber = Math.floor(Math.random() * NUMERO_DE_ANUNCIOS) + 1;
+    const imagePath = `/anuncios/anuncio${randomNumber}.png`;
+    console.log('🎲 Generando imagen aleatoria:', imagePath);
+    return imagePath;
+  };
+  
+  const pdfHook = usePDFAnnouncement(randomAnnouncementUrl, 6000);
+
+  // Detectar si se navegó desde el Home o desde NavigationGrid
+  useEffect(() => {
+    const fromHome = location.state?.fromHome || sessionStorage.getItem('navigatedFromHome');
+    const fromNavigation = sessionStorage.getItem('showTeatroAnnouncement');
+    
+    console.log('🔍 Verificando navegación - fromHome:', fromHome, 'fromNavigation:', fromNavigation);
+    
+    if (fromHome || fromNavigation === 'true') {
+      console.log('✅ Condición cumplida, generando anuncio...');
+      
+      // Generar URL de imagen aleatoria
+      const imageUrl = getRandomAnnouncement();
+      setRandomAnnouncementUrl(imageUrl);
+      console.log('📸 URL de imagen establecida:', imageUrl);
+      
+      // Mostrar el anuncio después de un pequeño delay
+      setTimeout(() => {
+        console.log('🎭 Mostrando anuncio...');
+        pdfHook.openPDF();
+      }, 1500);
+      
+      // Limpiar los flags
+      sessionStorage.removeItem('navigatedFromHome');
+      sessionStorage.removeItem('showTeatroAnnouncement');
+      console.log('🧹 Flags limpiados');
+    } else {
+      console.log('❌ No se encontraron flags de navegación');
+    }
+  }, [location, pdfHook]);
 
   // Función para determinar el estado basado en la fecha
   const determinarEstado = (fecha) => {
@@ -29,6 +77,7 @@ const TeatroDelPueblo = () => {
     // Array de eventos con fechas en lugar de estados
     const eventosTeatro = [
       {
+        id: 1,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905838/15nov_wpbtlm.jpg',
         titulo: 'La firma',
         descripcion: 'El Grupo La Firma es una agrupación musical mexicana originaria de la ciudad de San Nicolás de los Garza, Nuevo León, México surgida en el año de 1996, cuando Juan Cárdenas y Adrián González aliaron su talento junto al joven compositor y cantante Luis "Louie" Padilla junto con otros 9 miembros para crear un concepto muy innovador al combinar los ritmos de jazz, norteño, tex-mex, entre otros, con el inconfundible sabor grupero para así obtener un grupo totalmente original: La Firma',
@@ -38,6 +87,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-15' // Hoy - activo
       },
       {
+        id: 2,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905835/16nov_sjcdfa.jpg',
         titulo: 'Inspector',
         descripcion: 'Inspector es una banda mexicana de rock y ska. Fundada en Noviembre del año 1995 en Monterrey, integraron el auge del ska en México a finales de los años 90;saltaron a la fama en su país en 2001 con su disco Alma en Fuego,que incluyó los temas Amnesia y Amargo adiós​',
@@ -47,6 +97,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-16' 
       },
       {
+        id: 3,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905841/17nov_rk2xcb.jpg',
         titulo: 'La fiera',
         descripcion: '​',
@@ -56,6 +107,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-17' 
       },
       {
+        id: 4,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905815/18nov_zktzj7.jpg',
         titulo: 'Tropicalismo Apcahe de Arturo Ortiz',
         descripcion: '​',
@@ -65,6 +117,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-18' 
       },
       {
+        id: 5,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905820/19nov_tsyqll.jpg',
         titulo: 'Bacilos',
         descripcion: '​',
@@ -74,6 +127,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-19' 
       },
       {
+        id: 6,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905818/20nov_aubicd.jpg',
         titulo: 'Los Acosta',
         descripcion: '​',
@@ -83,6 +137,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-20' 
       },
       {
+        id: 7,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905824/21nov_dpmagg.jpg',
         titulo: 'Isaías Lucero',
         descripcion: '​',
@@ -92,6 +147,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-21' 
       },
       {
+        id: 8,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905826/22nov_ccy5ke.jpg',
         titulo: 'Banda Corona del Rey',
         descripcion: '​',
@@ -101,6 +157,7 @@ const TeatroDelPueblo = () => {
         fecha: '2025-11-22' 
       },
       {
+        id: 9,
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905829/23nov_r0tbnd.jpg',
         titulo: 'La mafia',
         descripcion: '​',
@@ -163,6 +220,7 @@ const TeatroDelPueblo = () => {
             {eventosActivos.map((evento, index) => (
               <EtiquetaInfo
                 key={`activo-${index}`}
+                id={evento.id}
                 imagen={evento.imagen}
                 titulo={evento.titulo}
                 descripcion={evento.descripcion}
@@ -201,6 +259,7 @@ const TeatroDelPueblo = () => {
               .map((evento, index) => (
                 <EtiquetaInfo
                   key={`programacion-${index}`}
+                  id={evento.id}
                   imagen={evento.imagen}
                   titulo={evento.titulo}
                   descripcion={evento.descripcion}
@@ -212,6 +271,18 @@ const TeatroDelPueblo = () => {
               ))}
           </div>
         </div>
+      )}
+
+      {/* Anuncio de imagen aleatoria controlado */}
+      {pdfHook.showAnnouncement && (
+        <PDFAnnouncement
+          pdfUrl={pdfHook.pdfUrl}
+          duration={pdfHook.duration}
+          onClose={pdfHook.closePDF}
+          showCloseButton={true}
+          isImage={true}
+          title="Anuncio Especial del Teatro"
+        />
       )}
     </div>
   );
