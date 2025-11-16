@@ -19,15 +19,34 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
     setModalImageUrl('');
   };
 
-  // Función para ir a la siguiente imagen
+  // Función para ir a la siguiente imagen (loop infinito)
   const nextSlide = useCallback(() => {
-    setCurrentSlide(prev => (prev + 1) % images.length);
-  }, [images.length]);
+    setCurrentSlide(prev => prev + 1);
+  }, []);
 
   // Función para ir a una imagen específica
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
+
+  // Auto-play funcionalidad - movimiento continuo hacia la derecha
+  useEffect(() => {
+    if (isPlaying && images.length > 0) {
+      const timer = setInterval(() => {
+        setCurrentSlide(prev => {
+          const nextSlide = prev + 1;
+          // Si llega al final de las imágenes originales, hacer reset instantáneo
+          if (nextSlide >= images.length) {
+            // Reset instantáneo sin transición
+            setTimeout(() => setCurrentSlide(0), 10);
+            return images.length; // Muestra brevemente la última duplicada
+          }
+          return nextSlide;
+        });
+      }, interval);
+      return () => clearInterval(timer);
+    }
+  }, [isPlaying, interval, images.length]);
 
   // Controlar scroll del body cuando el modal esté abierto
   useEffect(() => {
@@ -41,14 +60,6 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
       document.body.style.overflow = 'auto';
     };
   }, [modalOpen]);
-
-  // Auto-play funcionalidad
-  useEffect(() => {
-    if (isPlaying && images.length > 1) {
-      const timer = setInterval(nextSlide, interval);
-      return () => clearInterval(timer);
-    }
-  }, [isPlaying, interval, nextSlide, images.length]);
 
   // Pausar auto-play en hover
   const handleMouseEnter = () => {
@@ -72,8 +83,12 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
       <div className="promo-carousel-wrapper">
         <div 
           className="promo-carousel-track"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          style={{ 
+            transform: `translateX(-${(currentSlide % images.length) * 100}%)`,
+            transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+          }}
         >
+          {/* Solo imágenes originales - CSS manejará el loop */}
           {images.map((image, index) => (
             <div key={index} className="promo-carousel-slide">
               <img 
@@ -85,7 +100,6 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
                 style={{ cursor: 'pointer' }}
                 title="Haz clic para ver imagen completa"
               />
-              
             </div>
           ))}
         </div>
@@ -97,7 +111,7 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
           {images.map((_, index) => (
             <button
               key={index}
-              className={`promo-indicator ${index === currentSlide ? 'active' : ''}`}
+              className={`promo-indicator ${index === (currentSlide % images.length) ? 'active' : ''}`}
               onClick={() => goToSlide(index)}
               aria-label={`Ir a imagen ${index + 1}`}
             />
@@ -110,7 +124,12 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
         <div className="promo-carousel-controls">
           <button
             className="promo-control-btn promo-prev"
-            onClick={() => goToSlide((currentSlide - 1 + images.length) % images.length)}
+            onClick={() => {
+              // Botón anterior ahora también va hacia la derecha
+              // Calcula qué imagen anterior mostrar en el loop continuo
+              const targetSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
+              setCurrentSlide(targetSlide);
+            }}
             aria-label="Imagen anterior"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -120,7 +139,7 @@ const PromoCarousel = ({ images, autoPlay = true, interval = 5000 }) => {
           
           <button
             className="promo-control-btn promo-next"
-            onClick={() => goToSlide((currentSlide + 1) % images.length)}
+            onClick={nextSlide}
             aria-label="Imagen siguiente"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">

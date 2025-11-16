@@ -1,46 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import PWAInstall from './PWAInstall';
+import InfiniteCarousel from './InfiniteCarousel';
 import './AppFooter.css';
 
 const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Datos por defecto de patrocinadores
-  const defaultSponsors = [
-    {
-      id: 1,
-      name: 'Coca Cola',
-      logo: 'https://1000marcas.net/wp-content/uploads/2019/12/Coca-Cola-Logo.png',
-      url: 'https://www.coca-cola.com'
-    },
-    {
-      id: 2,
-      name: 'Pepsi',
-      logo: 'https://1000marcas.net/wp-content/uploads/2020/01/Pepsi-Logo.png',
-      url: 'https://www.pepsi.com'
-    },
-    {
-      id: 3,
-      name: 'McDonald\'s',
-      logo: 'https://1000marcas.net/wp-content/uploads/2019/12/McDonalds-Logo.png',
-      url: 'https://www.mcdonalds.com'
-    },
-    {
-      id: 4,
-      name: 'Nike',
-      logo: 'https://1000marcas.net/wp-content/uploads/2019/11/Nike-Logo.png',
-      url: 'https://www.nike.com'
-    },
-    {
-      id: 5,
-      name: 'Adidas',
-      logo: 'https://1000marcas.net/wp-content/uploads/2019/11/Adidas-logo.png',
-      url: 'https://www.adidas.com'
-    }
-  ];
 
   // Navegación por defecto
   const defaultNavigation = [
@@ -75,19 +41,7 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
     
   ];
 
-  const sponsors = sponsorsData.length > 0 ? sponsorsData : defaultSponsors;
   const navItems = navigationItems.length > 0 ? navigationItems : defaultNavigation;
-
-  // Auto-slide cada 5 segundos
-  useEffect(() => {
-    if (sponsors.length <= 1) return;
-    
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sponsors.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [sponsors.length]);
 
   const handleNavigate = (route) => {
     // Si es una URL externa (comienza con http o https), abrir en nueva pestaña
@@ -97,10 +51,6 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
       // Si es una ruta interna, usar navigate
       navigate(route);
     }
-  };
-
-  const handleSponsorClick = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const isActiveRoute = (route) => {
@@ -115,30 +65,9 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
       <PWAInstall />
       
       {/* Carrusel de patrocinadores */}
-      {sponsors.length > 0 && (
-        <div className="sponsors-carousel">
-          <div className="sponsors-track" style={{
-            transform: `translateX(-${currentSlide * 100}%)`
-          }}>
-            {sponsors.map((sponsor) => (
-              <div 
-                key={sponsor.id} 
-                className="sponsor-slide"
-                onClick={() => handleSponsorClick(sponsor.url)}
-              >
-                <img 
-                  src={sponsor.logo} 
-                  alt={sponsor.name}
-                  className="sponsor-logo"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <div className="sponsors-carousel">
+        <InfiniteCarousel sponsors={sponsorsData} />
+      </div>
 
       {/* Navegación principal */}
       <nav className="footer-navigation">
