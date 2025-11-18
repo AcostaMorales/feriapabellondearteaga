@@ -11,15 +11,15 @@
 .carousel-track {
   display: flex;
   width: max-content;
-  animation: scroll 25s linear infinite; /* Animación más lenta para mejor apreciación */
+  animation: scroll 15s linear infinite; /* Velocidad optimizada para ver todo el carousel */
   align-items: center;
   height: 100%;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  width: 160px; /* Tamaño optimizado para mejor visibilidad */
-  height: 120px; /* Altura aumentada para mejor proporción */
+  width: auto; /* Tamaño optimizado para mejor visibilidad */
+  height: 90%; /* Altura optimizada para mejor fluidez */
   margin-right: 0px; /* Eliminamos el espacio entre elementos */
   cursor: pointer;
   display: flex;
@@ -30,7 +30,7 @@
   transform: scale(1); /* Tamaño normal sin escalado */
   opacity: 0.9; /* Ligeramente más visible */
   filter: grayscale(10%); /* Menos desaturación */
-  padding: 6px; /* Padding ligeramente mayor */
+  padding: 8px; /* Padding optimizado */
   border-radius: 12px;
   position: relative; /* Para el overlay del GIF */
   overflow: hidden; /* Para bordes redondeados limpios */
@@ -82,6 +82,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.33%);
   }
 }
