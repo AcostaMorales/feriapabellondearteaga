@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--gray-light) 0%, #f1f3f4 100%);
+  
 }
 
 .carousel-track {
@@ -19,7 +19,7 @@
 .carousel-item {
   flex: 0 0 auto;
   width: auto; /* Tamaño optimizado para mejor visibilidad */
-  height: 90%; /* Altura optimizada para mejor fluidez */
+  height: 100%; /* Altura optimizada para mejor fluidez */
   margin-right: 0px; /* Eliminamos el espacio entre elementos */
   cursor: pointer;
   display: flex;
@@ -30,7 +30,7 @@
   transform: scale(1); /* Tamaño normal sin escalado */
   opacity: 0.9; /* Ligeramente más visible */
   filter: grayscale(10%); /* Menos desaturación */
-  padding: 8px; /* Padding optimizado */
+  padding: 2px; /* Padding optimizado */
   border-radius: 12px;
   position: relative; /* Para el overlay del GIF */
   overflow: hidden; /* Para bordes redondeados limpios */
@@ -82,6 +82,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-250%);
   }
 }
