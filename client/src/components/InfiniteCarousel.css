@@ -11,7 +11,7 @@
 .carousel-track {
   display: flex;
   width: max-content;
-  animation: scroll 15s linear infinite; /* Velocidad optimizada para ver todo el carousel */
+  animation: scroll 60s linear infinite; /* Velocidad optimizada para ver todo el carousel */
   align-items: center;
   height: 100%;
 }
@@ -82,6 +82,6 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-33.33%);
+    transform: translateX(-200%);
   }
 }
