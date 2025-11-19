@@ -19,7 +19,7 @@
 
 .carousel-item {
   flex: 0 0 auto;
-  width: auto; /* Tamaño optimizado para mejor visibilidad */
+   /* Tamaño optimizado para mejor visibilidad */
   height: 100%; /* Altura optimizada para mejor fluidez */
   margin-right: 0px; /* Eliminamos el espacio entre elementos */
   cursor: pointer;

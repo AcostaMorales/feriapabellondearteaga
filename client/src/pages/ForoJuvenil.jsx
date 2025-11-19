@@ -157,7 +157,7 @@ const ForoJuvenil = () => {
       {/* Imagen promocional */}
       <div className="imagen-promocional">
         <img 
-          src="/src/assets/images/foro-juvenil/portada.jpg" 
+          src="https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png" 
           alt="Foro Juvenil - Imagen promocional"
           className="imagen-hero"
         />
