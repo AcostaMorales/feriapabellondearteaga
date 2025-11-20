@@ -13,37 +13,47 @@
   display: flex;
   width: max-content;
   animation: scroll 60s linear infinite; /* Velocidad optimizada para ver todo el carousel */
+  -webkit-animation: scroll 60s linear infinite; /* Compatibilidad iOS */
   align-items: center;
   height: 100%;
+  gap: 0; /* Eliminar cualquier gap en iOS */
+  -webkit-transform: translateZ(0); /* Hardware acceleration para iOS */
+  transform: translateZ(0); /* Propiedad estándar */
+  will-change: transform; /* Optimización de rendimiento */
 }
 
 .carousel-item {
   flex: 0 0 auto;
    /* Tamaño optimizado para mejor visibilidad */
   height: 100%; /* Altura optimizada para mejor fluidez */
-  margin-right: 0px; /* Eliminamos el espacio entre elementos */
+  margin: 0; /* Eliminamos completamente cualquier margen */
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   transition: all 0.3s ease;
-  transform: scale(1); /* Tamaño normal sin escalado */
+  transform: scale(1) translateZ(0); /* Tamaño normal con hardware acceleration */
+  -webkit-transform: scale(1) translateZ(0); /* Compatibilidad iOS */
   opacity: 0.9; /* Ligeramente más visible */
   filter: grayscale(10%); /* Menos desaturación */
-  padding: 2px; /* Padding optimizado */
-  border-radius: 12px;
+  padding: 0; /* Eliminamos padding que puede causar separación */
+  border-radius: 0; /* Eliminamos border-radius que puede crear gaps */
   position: relative; /* Para el overlay del GIF */
   overflow: hidden; /* Para bordes redondeados limpios */
+  -webkit-backface-visibility: hidden; /* Evitar glitches en iOS */
+  backface-visibility: hidden;
 }
 
 /* Efecto hover */
 .carousel-item:hover {
-  transform: scale(1.05); /* Hover ligeramente más grande */
+  transform: scale(1.05) translateZ(0); /* Hover ligeramente más grande con hardware acceleration */
+  -webkit-transform: scale(1.05) translateZ(0); /* Compatibilidad iOS */
   opacity: 1;
   background: rgba(102, 126, 234, 0.1);
   filter: grayscale(0%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px; /* Solo agregar border-radius en hover */
 }
 
 
@@ -53,8 +63,11 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
-  border-radius: 8px;
+  border-radius: 0; /* Eliminamos border-radius por defecto */
   transition: all 0.3s ease;
+  display: block; /* Evitar espacios en iOS */
+  -webkit-transform: translateZ(0); /* Hardware acceleration para iOS */
+  transform: translateZ(0);
 }
 
 /* Estilos específicos para diferentes tipos de contenido */
@@ -77,12 +90,26 @@
   transform: scale(1.05);
 }
 
-/* Animación infinita */
+/* Animación infinita optimizada para iOS */
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
+    -webkit-transform: translateX(0) translateZ(0);
   }
   100% {
-    transform: translateX(-530%);
+    transform: translateX(-550%) translateZ(0);
+    -webkit-transform: translateX(-550%) translateZ(0);
+  }
+}
+
+/* Soporte para animaciones en iOS */
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0) translateZ(0);
+    transform: translateX(0) translateZ(0);
+  }
+  100% {
+    -webkit-transform: translateX(-550%) translateZ(0);
+    transform: translateX(-550%) translateZ(0);
   }
 }
