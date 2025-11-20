@@ -1,14 +1,8 @@
 export const corsOptions = {
     origin: function (origin, callback) {
         const allowedOrigins = [
-            'http://localhost:5173',
-            'http://localhost:4173',
-            'http://localhost:3000',
-            'http://127.0.0.1:5173',
-            'https://feriapabellondearteaga.vercel.app', // Vercel deployment
-            'https://feriapabellondearteaga.onrender.com', // Cliente en Render
-            'https://feria-pabellon-client.onrender.com', // Cliente separado en Render
-            process.env.FRONTEND_URL,
+            process.env.CLIENT_URL_PRODUCTION,
+            process.env.SERVER_URL,
             process.env.CLIENT_URL
         ].filter(Boolean);
         

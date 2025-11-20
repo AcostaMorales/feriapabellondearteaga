@@ -36,7 +36,7 @@ const AppFooter = ({ sponsorsData = [], navigationItems = [] }) => {
         </svg>
       ), 
       label: 'Notificaciones', 
-      route: '/notificaiones'
+      route: '/notificaciones'
     },
     
   ];

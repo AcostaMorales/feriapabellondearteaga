@@ -80,7 +80,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905838/15nov_wpbtlm.jpg',
         titulo: 'La firma',
         descripcion: 'El Grupo La Firma es una agrupación musical mexicana originaria de la ciudad de San Nicolás de los Garza, Nuevo León, México surgida en el año de 1996, cuando Juan Cárdenas y Adrián González aliaron su talento junto al joven compositor y cantante Luis "Louie" Padilla junto con otros 9 miembros para crear un concepto muy innovador al combinar los ritmos de jazz, norteño, tex-mex, entre otros, con el inconfundible sabor grupero para así obtener un grupo totalmente original: La Firma',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: 'https://maps.google.com/?q=Teatro+del+Pueblo+Pabellon+de+Arteaga',
         fecha: '2025-11-15' // Hoy - activo
@@ -90,7 +90,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905835/16nov_sjcdfa.jpg',
         titulo: 'Inspector',
         descripcion: 'Inspector es una banda mexicana de rock y ska. Fundada en Noviembre del año 1995 en Monterrey, integraron el auge del ska en México a finales de los años 90;saltaron a la fama en su país en 2001 con su disco Alma en Fuego,que incluyó los temas Amnesia y Amargo adiós​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: 'https://maps.google.com/?q=Teatro+del+Pueblo+Pabellon+de+Arteaga',
         fecha: '2025-11-16' 
@@ -100,7 +100,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905841/17nov_rk2xcb.jpg',
         titulo: 'La fiera',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-17' 
@@ -110,7 +110,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905815/18nov_zktzj7.jpg',
         titulo: 'Tropicalismo Apcahe de Arturo Ortiz',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-18' 
@@ -120,7 +120,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905820/19nov_tsyqll.jpg',
         titulo: 'Bacilos',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-19' 
@@ -130,7 +130,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905818/20nov_aubicd.jpg',
         titulo: 'Los Acosta',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-20' 
@@ -140,7 +140,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905824/21nov_dpmagg.jpg',
         titulo: 'Isaías Lucero',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-21' 
@@ -150,7 +150,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905826/22nov_ccy5ke.jpg',
         titulo: 'Banda Corona del Rey',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-22' 
@@ -160,7 +160,7 @@ const TeatroDelPueblo = () => {
         imagen: 'https://res.cloudinary.com/dbebikryr/image/upload/v1762905829/23nov_r0tbnd.jpg',
         titulo: 'La mafia',
         descripcion: '​',
-        hora: '8:00 PM',
+        hora: '9:00 PM',
         lugar: 'Teatro del Pueblo',
         enlaceLugar: '',
         fecha: '2025-11-23' 
