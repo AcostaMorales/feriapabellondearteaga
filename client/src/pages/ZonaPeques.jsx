@@ -169,7 +169,7 @@ const ZonaPeques = () => {
       {/* Imagen promocional */}
       <div className="imagen-promocional">
         <img 
-          src="/src/assets/images/zona-peques/portada.jpg" 
+          src="https://res.cloudinary.com/dbebikryr/image/upload/v1760499614/CartelPabellon_i1hcvc.png" 
           alt="Zona Peques - Imagen promocional"
           className="imagen-hero"
         />

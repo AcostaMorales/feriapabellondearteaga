@@ -1,7 +1,7 @@
 import { precacheAndRoute } from 'workbox-precaching';
 
 // Versión del Service Worker para forzar actualizaciones
-const CACHE_VERSION = 'v1.7.8';
+const CACHE_VERSION = 'v1.7.9';
 console.log('Service Worker iniciado -', CACHE_VERSION);
 
 // Precache de archivos estáticos
