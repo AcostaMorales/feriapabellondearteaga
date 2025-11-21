@@ -10,8 +10,9 @@ const Notificaciones = () => {
 
   // API Base URL
   const API_BASE = process.env.NODE_ENV === 'production' 
-    ? 'https://feriapabellondearteaga.onrender.com/api' 
-    : 'http://localhost:10000/api';
+    ? 'https://feriapabellondearteaga.onrender.com/api'
+    //? 'https://localhost:4000/api' 
+    : 'http://localhost:4000/api';
 
   useEffect(() => {
     // Verificar el estado actual de las notificaciones

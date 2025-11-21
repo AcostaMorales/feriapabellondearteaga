@@ -18,6 +18,13 @@ export default function InfiniteCarousel({ sponsors = [], images = [], items = [
       url: '',
       type: 'sponsor'
     },
+     {
+      id: 3,
+      name: 'Pediatra UNAM',
+      logo: '/anuncios/PediatraUnam.gif',
+      url: '',
+      type: 'sponsor'
+    },
   ];
 
   // Combinar todos los tipos de contenido

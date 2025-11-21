@@ -97,8 +97,8 @@
     -webkit-transform: translateX(0) translateZ(0);
   }
   100% {
-    transform: translateX(-550%) translateZ(0);
-    -webkit-transform: translateX(-550%) translateZ(0);
+    transform: translateX(-650%) translateZ(0);
+    -webkit-transform: translateX(-650%) translateZ(0);
   }
 }
 
@@ -109,7 +109,7 @@
     transform: translateX(0) translateZ(0);
   }
   100% {
-    -webkit-transform: translateX(-550%) translateZ(0);
-    transform: translateX(-550%) translateZ(0);
+    -webkit-transform: translateX(-650%) translateZ(0);
+    transform: translateX(-650%) translateZ(0);
   }
 }

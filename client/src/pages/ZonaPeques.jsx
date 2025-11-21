@@ -1,8 +1,18 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import EtiquetaInfo from '../components/EtiquetaInfo';
+import PDFAnnouncement from '../components/PDFAnnouncement';
 import '../styles/PaginasEventos.css';
 
 const ZonaPeques = () => {
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
+  
+  // URL del GIF promocional de pediatra
+  const announcementGif = '/Promociones/PromoPediatra.gif';
+  
+  // Función para cerrar el anuncio
+  const handleCloseAnnouncement = () => {
+    setShowAnnouncement(false);
+  };
 
   // Función para determinar el estado basado en la fecha
   const determinarEstado = (fecha) => {
@@ -217,6 +227,18 @@ const ZonaPeques = () => {
               />
             ))}
         </div>
+      )}
+
+      {/* Anuncio GIF promocional del pediatra */}
+      {showAnnouncement && (
+        <PDFAnnouncement
+          pdfUrl={announcementGif}
+          isImage={true}
+          duration={5000}
+          showCloseButton={true}
+          title="¡Promoción especial para los peques!"
+          onClose={handleCloseAnnouncement}
+        />
       )}
     </div>
   );

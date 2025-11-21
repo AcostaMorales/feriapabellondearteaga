@@ -21,6 +21,7 @@ import ExpoGanadera from "./pages/ExpoGanadera.jsx";
 import Notificaciones from "./pages/Notificaciones.jsx";
 
 
+
 function AppLayout() {
   const location = useLocation();
   
@@ -63,6 +64,8 @@ function AppLayout() {
       
       {/* Footer en todas las páginas */}
       <AppFooter />
+      
+     
     </div>
   );
 }
